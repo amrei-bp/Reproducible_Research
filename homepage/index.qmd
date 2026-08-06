@@ -2,11 +2,15 @@
 title: "Reproducible Research"
 ---
 <br>
+This website contains the material for the advanced module of Reproducible Research in Bioinformatics and Computational Biology (course P000187, 4.5 credits) — a collaboration between SLU's GS-VMAS Graduate School and MedBioInfo.
+
+The full course runs 31 August – 18 September 2026 in three parts: a one-week online introductory module, a week for an individual assignment, and this one-week advanced module, taught on location in Ultuna for both cohorts (14–18 September 2026).
+
 The aim of this module is to share how to use bioinformatics tools in a **reproducible and scalable way**. We will use **environments**, **containers**, and **established pipelines** so that you can run these analyses on any operating system, as well as on systems that are not high performance computing clusters. And first and foremost: these tools and techniques can be used regardless of which type of bioinformatics you are ultimately working with. 
 
 The website will remain active after the course so that you have access to the material even after the course. 
 
-We will meet in person in Ultuna between **Monday, September 14th, and Friday, September 18th, 2026**. However, to get the most out of this course, we expect you to do some preparation in advance. This is to set-up and get aquainted with some of the tools we will be using. The week before the in-person meeting, there will be regular Zoom drop-in times where you can ask questions while working through the material. 
+To get the most out of this course, we expect you to do some preparation in advance. This is to set-up and get aquainted with some of the tools we will be using. The week before the in-person meeting, there will be regular Zoom drop-in times where you can ask questions while working through the material. 
 
 ::: {.callout-important}
 **You will not be able to participate properly without completing the pre-course material!** If possible **start today and do a bit every day**.
@@ -14,9 +18,9 @@ We will meet in person in Ultuna between **Monday, September 14th, and Friday, S
 
 I want to thank [Lizel Potgieter](https://github.com/lpotgieter) for her valuable contributions to the materials for this course! 
 
-## Course content
+## Module content
 
-### before the course:
+### before this module:
 
 | Topic  | Content  |
 |--------|--------|
@@ -30,7 +34,7 @@ I want to thank [Lizel Potgieter](https://github.com/lpotgieter) for her valuabl
 
 : Before the course {.striped .hover}
 
-### during the course:
+### during this module:
 
 | Day  | Session  |
 |--------|--------|
