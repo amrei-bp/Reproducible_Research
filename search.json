@@ -554,11 +554,11 @@
     ]
   },
   {
-    "objectID": "course_intro.html#hello-and-welcome-to-the-course",
-    "href": "course_intro.html#hello-and-welcome-to-the-course",
+    "objectID": "course_intro.html#hello-and-welcome-to-the-advanced-module-of-reproducible-research-in-bioinformatics-and-computational-biology",
+    "href": "course_intro.html#hello-and-welcome-to-the-advanced-module-of-reproducible-research-in-bioinformatics-and-computational-biology",
     "title": "Personal course homepage",
-    "section": "Hello and welcome to the course!",
-    "text": "Hello and welcome to the course!\nToday we will talk about the why’s and how’s of this course, and you will set up your own course homepage. This homepage will be your personal learning space throughout the course. Each evening, you’ll write a short blog post to reflect on what you’ve learned during the day. Some days, you might write several posts if you have a lot to share. These daily reflections will help you keep track of your progress, deepen your understanding, and build a clear record of your learning, as well as a habit of documentation.",
+    "section": "Hello and welcome to the advanced module of Reproducible Research in Bioinformatics and Computational Biology!",
+    "text": "Hello and welcome to the advanced module of Reproducible Research in Bioinformatics and Computational Biology!\nToday we will talk about the why’s and how’s of this module, and you will set up your own course homepage. This homepage will be your personal learning space throughout the module. Each evening, you’ll write a short blog post to reflect on what you’ve learned during the day. Some days, you might write several posts if you have a lot to share. These daily reflections will help you keep track of your progress, deepen your understanding, and build a clear record of your learning, as well as a habit of documentation.",
     "crumbs": [
       "Home",
       "Why this course?",
@@ -570,7 +570,7 @@
     "href": "course_intro.html#your-homepage-and-github",
     "title": "Personal course homepage",
     "section": "Your Homepage and GitHub",
-    "text": "Your Homepage and GitHub\nYour Quarto homepage will be version-controlled using Git and GitHub. By the end of the course, you will share both the URL of your GitHub repository and the URL of your published homepage. This way I can review your work, follow your progress, and see how your site has developed over time.",
+    "text": "Your Homepage and GitHub\nYour Quarto homepage will be version-controlled using Git and GitHub. By the end of the module, you will share both the URL of your GitHub repository and the URL of your published homepage. This way I can review your work, follow your progress, and see how your site has developed over time.",
     "crumbs": [
       "Home",
       "Why this course?",
@@ -582,7 +582,7 @@
     "href": "course_intro.html#good-git-practices",
     "title": "Personal course homepage",
     "section": "Good Git Practices",
-    "text": "Good Git Practices\nThroughout the course, I expect you to follow good Git practices. This means writing clear and informative commit messages, keeping each commit focused on one topic or change, and committing regularly rather than saving everything for the end. These habits are an essential part of professional software development and will make your project much easier to follow and maintain.",
+    "text": "Good Git Practices\nThroughout the module, I expect you to follow good Git practices. This means writing clear and informative commit messages, keeping each commit focused on one topic or change, and committing regularly rather than saving everything for the end. These habits are an essential part of professional software development and will make your project much easier to follow and maintain.",
     "crumbs": [
       "Home",
       "Why this course?",
@@ -1081,7 +1081,7 @@
     "href": "about.html",
     "title": "About",
     "section": "",
-    "text": "This course is a hosted by the Swedish Agricultural University’s Bioinformatics Infrastructure (SLUBI).\nIn this course we hope to give you information on how to use reproducible bioinformatics pipelines, report results in a streamlined manner, and implement the system in your own research.\nFeedback is appreciated!\n(This is a Quarto website. To learn more about Quarto websites visit https://quarto.org/docs/websites.)"
+    "text": "This advanced module of P000187, Reproducible Research in Bioinformatics and Computational Biology, is hosted by the Swedish Agricultural University’s Bioinformatics Infrastructure (SLUBI).\nIn this module we hope to advance your knowledge on how to use reproducible bioinformatics pipelines, report results in a streamlined manner, and implement the system in your own research.\nFeedback is appreciated!\n(This is a Quarto website. To learn more about Quarto websites visit https://quarto.org/docs/websites.)"
   },
   {
     "objectID": "course_clean_up.html",
@@ -1366,17 +1366,17 @@
     "href": "index.html",
     "title": "Reproducible Research",
     "section": "",
-    "text": "The aim of this module is to share how to use bioinformatics tools in a reproducible and scalable way. We will use environments, containers, and established pipelines so that you can run these analyses on any operating system, as well as on systems that are not high performance computing clusters. And first and foremost: these tools and techniques can be used regardless of which type of bioinformatics you are ultimately working with.\nThe website will remain active after the course so that you have access to the material even after the course.\nWe will meet in person in Ultuna between Monday, September 14th, and Friday, September 18th, 2026. However, to get the most out of this course, we expect you to do some preparation in advance. This is to set-up and get aquainted with some of the tools we will be using. The week before the in-person meeting, there will be regular Zoom drop-in times where you can ask questions while working through the material.\nI want to thank Lizel Potgieter for her valuable contributions to the materials for this course!",
+    "text": "This website contains the material for the advanced module of Reproducible Research in Bioinformatics and Computational Biology (course P000187, 4.5 credits) — a collaboration between SLU’s GS-VMAS Graduate School and MedBioInfo.\nThe full course runs 31 August – 18 September 2026 in three parts: a one-week online introductory module, a week for an individual assignment, and this one-week advanced module, taught on location in Ultuna for both cohorts (14–18 September 2026).\nThe aim of this module is to share how to use bioinformatics tools in a reproducible and scalable way. We will use environments, containers, and established pipelines so that you can run these analyses on any operating system, as well as on systems that are not high performance computing clusters. And first and foremost: these tools and techniques can be used regardless of which type of bioinformatics you are ultimately working with.\nThe website will remain active after the course so that you have access to the material even after the course.\nTo get the most out of this course, we expect you to do some preparation in advance. This is to set-up and get aquainted with some of the tools we will be using. The week before the in-person meeting, there will be regular Zoom drop-in times where you can ask questions while working through the material.\nI want to thank Lizel Potgieter for her valuable contributions to the materials for this course!",
     "crumbs": [
       "Home"
     ]
   },
   {
-    "objectID": "index.html#course-content",
-    "href": "index.html#course-content",
+    "objectID": "index.html#module-content",
+    "href": "index.html#module-content",
     "title": "Reproducible Research",
-    "section": "Course content",
-    "text": "Course content\n\nbefore the course:\n\nBefore the course\n\n\nTopic\nContent\n\n\n\n\nHPC access\nCreate user accounts for the HPC resources\n\n\nVScode\nSettting up and getting aquainted with VScode\n\n\nServer access\nSSH connect to the course server\n\n\nCommand line\nUse the command line to manipulate data\n\n\nscreen\nManage persistent bash sessions\n\n\nQuarto\nInstalling and using Quarto with VScode\n\n\ngit and GitHub\nVersion control with git and GitHub\n\n\n\n\n\nduring the course:\n\nDuring the course\n\n\nDay\nSession\n\n\n\n\nMonday\nWelcome, course setup\n\n\n\nData Management & Reproducible Research\n\n\n\nUsing git collaboratively\n\n\n\nCreate a blog with Quarto\n\n\n\nPublish your blog with GitHub actions\n\n\nTuesday\nIntroduction to environments\n\n\n\nQuality control of sequencing data\n\n\n\nBonus: Python in Pixi\n\n\n\nIntroduction to containers\n\n\n\nUsing containers on your data\n\n\nWednesday\nIntroduction to Nextflow\n\n\n\nNextflow basics\n\n\n\nNextflow RNAseq\n\n\nThursday\nnf-core\n\n\n\nTest a nf-core pipeline\n\n\n\nSet up a nf-core pipeline\n\n\nFriday\nVisualize your results: ggplot\n\n\n\nDiscussion: AI in Bioinformatics\n\n\n\nclean-up & finishing",
+    "section": "Module content",
+    "text": "Module content\n\nbefore this module:\n\nBefore the course\n\n\nTopic\nContent\n\n\n\n\nHPC access\nCreate user accounts for the HPC resources\n\n\nVScode\nSettting up and getting aquainted with VScode\n\n\nServer access\nSSH connect to the course server\n\n\nCommand line\nUse the command line to manipulate data\n\n\nscreen\nManage persistent bash sessions\n\n\nQuarto\nInstalling and using Quarto with VScode\n\n\ngit and GitHub\nVersion control with git and GitHub\n\n\n\n\n\nduring this module:\n\nDuring the course\n\n\nDay\nSession\n\n\n\n\nMonday\nWelcome, course setup\n\n\n\nData Management & Reproducible Research\n\n\n\nUsing git collaboratively\n\n\n\nCreate a blog with Quarto\n\n\n\nPublish your blog with GitHub actions\n\n\nTuesday\nIntroduction to environments\n\n\n\nQuality control of sequencing data\n\n\n\nBonus: Python in Pixi\n\n\n\nIntroduction to containers\n\n\n\nUsing containers on your data\n\n\nWednesday\nIntroduction to Nextflow\n\n\n\nNextflow basics\n\n\n\nNextflow RNAseq\n\n\nThursday\nnf-core\n\n\n\nTest a nf-core pipeline\n\n\n\nSet up a nf-core pipeline\n\n\nFriday\nVisualize your results: ggplot\n\n\n\nDiscussion: AI in Bioinformatics\n\n\n\nclean-up & finishing",
     "crumbs": [
       "Home"
     ]
