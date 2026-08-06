@@ -1,0 +1,8 @@
+/* css styles */
+
+/* Make ONLY the section labels bold + darker */
+.sidebar .sidebar-item-section > .sidebar-item-container > .sidebar-item-text,
+.sidebar .sidebar-item-section > .sidebar-item-container > .sidebar-link {
+  font-weight: 700;
+  color: var(--bs-primary);
+}
