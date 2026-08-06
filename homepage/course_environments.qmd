@@ -2,6 +2,8 @@
 title: "Introduction to Pixi"
 ---
 
+Differing software versions and dependencies break reproducibility. We solve this for command-line bioinformatics tools with Pixi environments. (Module 1 showed the same problem, and the container solution, in R.)
+
 ## Introduction
 
 Different operating systems bring different challenges to bioinformatics. Windows, for instance, doesn't really support most bioinformatics tools, or your computer might run a different version of a specific tool than mine. One way to solve this, and make research more reproducible, is through the use of environments. Bioinformatics environments specify the tools neded for the task at hand, and environment managers install these tools with all their dependencies. There are many different kinds of environment managers, and for this course we are going to use [Pixi](https://pixi.sh/latest/).

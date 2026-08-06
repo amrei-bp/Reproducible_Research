@@ -4,6 +4,8 @@ title: "git and GitHub"
 
 <br>
 
+This module uses git from the command line and VScode, with a focus on collaborating with others. (If you took module 1, this goes further than the git-in-RStudio session.)
+
 ## Version control
 
 We all have worked on data before, done analyses, talked with our PI, changed the analyses, worked a bit more... and in the end we have something like this: 

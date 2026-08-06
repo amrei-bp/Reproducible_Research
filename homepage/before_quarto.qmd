@@ -2,6 +2,8 @@
 title: "Quarto"
 ---
 
+Here we install Quarto in VScode and use it to build and publish a blog. (If you did module 1, you have already seen Quarto; this puts it to practical use.)
+
 ## Literate programming
 
 When analysing data, it is good practice to work as `reproducible`as possible. Part of that is not only developing and executing code (for example in a R session), but to save and comment the code. As always, this documentation step is crucial to understand the code, especially when sharing code with others, or getting back to it at a later point in time.

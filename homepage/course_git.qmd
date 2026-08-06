@@ -2,4 +2,6 @@
 title: "Using git collaboratively"
 ---
 
+Here we use git collaboratively — branches and pull requests to develop code together. (Module 1 covered git basics in RStudio; this extends that to teamwork.)
+
 This module will be run by Sam, and he has his own slides and content on Canvas. 
