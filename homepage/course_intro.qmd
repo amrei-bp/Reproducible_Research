@@ -1,0 +1,22 @@
+---
+title: "Personal course homepage"
+---
+
+<br>
+
+## Hello and welcome to the course!
+
+Today we will talk about the why's and how's of this course, and you will set up your own course homepage. This homepage will be your personal learning space throughout the course. Each evening, you’ll write a short blog post to reflect on what you’ve learned during the day. Some days, you might write several posts if you have a lot to share. These daily reflections will help you keep track of your progress, deepen your understanding, and build a clear record of your learning, as well as a habit of documentation.
+
+## Your Homepage and GitHub
+
+Your Quarto homepage will be version-controlled using Git and GitHub. **By the end of the course, you will share both the URL of your GitHub repository and the URL of your published homepage.** This way I can review your work, follow your progress, and see how your site has developed over time.
+
+
+## Good Git Practices
+
+Throughout the course, I expect you to follow good Git practices. This means writing clear and informative commit messages, keeping each commit focused on one topic or change, and committing regularly rather than saving everything for the end. These habits are an essential part of professional software development and will make your project much easier to follow and maintain.
+
+## Writing Your Daily Blog
+
+Your daily posts do not have to be long or perfect. **The goal is to build a habit of documentation and communication.** Use simple language, write honestly about what you’ve learned, and don’t be afraid to include code, images, or links to illustrate your thoughts. Over time, these posts will form a valuable record of your growth and achievements during the course - and maybe later?

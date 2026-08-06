@@ -1,0 +1,311 @@
+---
+title: "Quality control of sequencing data"
+subtitle: "screen, slurm, pixi, FastQC, MultiQC"
+---
+
+<br>
+Regardless of what type of bioinformatics project you are working on, you will have to assess whether the data you have is of good enough quality to proceed with - bad input data can seriously impair your ability to draw conclusions from the samples later on!
+
+Poor quality sequencing data can be caused by a variety of factors, such as sample contamination, improper sample handling, technical problems. Some of these problems will be checked for before and during the sequencing - it is always good to read all documentation coming from the sequencing facility. 
+
+When it comes to sequencing data, FastQC is a well known and often used software to check raw reads for their quality. 
+
+::: {.callout-note}
+Sample preparation includes fragmenting the genome into the **sequencing library**.
+
+A **read** is the inferred nucleotide base sequence of a genome fragment as determined by the sequencer. 
+:::
+
+
+## Quality Control Tutorial
+
+Within this tutorial we will
+
+- get familiar with the command line. 
+- use the job scheduler `slurm`.
+- make a `Pixi` environment. 
+- run `FastQC` on some raw sequencing files to practice and to understand the output.
+- use `MultiQC` to summarize the FastQC output.
+
+
+### Screen
+
+Screen or GNU Screen is a terminal multiplexer. In other words, it means that you can start a screen session and then open any number of windows (virtual terminals) inside that session. Processes running in Screen will continue to run when their window is not visible even if you get disconnected.
+
+Start a named session
+
+```{.bash}
+screen -S fastqc
+```
+
+Detach from Linux Screen Session
+
+You can detach from the screen session at any time by typing:
+
+```{.bash}
+Ctrl + a d
+```
+
+Reattach to a Linux Screen
+
+To find the session ID list the current running screen sessions with:
+
+```{.bash}
+screen -ls
+```
+
+To resume your screen session use the following command:
+
+```{.bash}
+screen -r fastqc
+```
+
+## Choose your adventure:
+
+The next part - choosing your data - will be different depending on which dataset you want to work with. Please select the tab that applies. 
+
+::: {.callout-tip}
+Since we will create a lot of output, some we will use in a downstream analysis, I would recommend to get very well organized with a clear system of directories.
+
+I called my working directory after the type of data (e.g. RNASeq), so I know which project I am working on. Within that directory I have my data in a sub-directory called data. This way, the data is not in the way, and I remember to **not alter it**. 
+:::
+
+::::: {.panel-tabset}
+## RNAseq 
+
+Time series of the induction of human regulatory T cells (Tregs).
+
+The dataset is available at the European Nucleotide Archive (ENA) under the accession: [PRJNA369563](https://www.ebi.ac.uk/ena/browser/view/PRJNA369563){.external target="_blank"}. 
+
+I have downloaded four paired samples for you, and they are available at: 
+
+```{.bash}
+medbioinfo2025/common_data/RNAseq
+```
+
+If you want to work with this data, make a symbolic link to the data, do this from within a subdirectory called `data`(or something similar). You want to avoid mingling your data with the analyses:
+
+```{.bash}
+ln -s path/to/common_data/RNAseq/*fastq.gz .
+```
+
+## Metagenomics
+
+This metagenomics data set is a soil sample taken in the Argentinian pampa, for which the 16S rDNA V4 region has been sequenced using 454 GS FLX Titanium. This allows us to analyze the genetic variation the 16S rDNA, which is present in all living organisms. 
+
+The dataset is available at the European Nucleotide Archive (ENA) under the accession: [PRJNA178180](https://www.ebi.ac.uk/ena/browser/view/PRJNA178180). 
+
+I have downloaded two samples for you, and they are available at: 
+
+```{.bash}
+medbioinfo2025/common_data/metagenomics
+```
+
+If you want to work with this data, make a symbolic link to the data, do this from within a subdirectory called `data`(or something similar). You want to avoid mingling your data with the analyses:
+
+```{.bash}
+ln -s path/to/common_data/metagenomics/*fastq.gz .
+```
+
+## Whole genome sequencing
+
+This data set contains population genomics data of the Shiitake mushroom, *Lentinula edodes*, which was sequenced with Illumina, using whole genome sequencing. 
+
+This data set is available at the European Nucleotide Archive (ENA) under the accession: [PRJNA535345](https://www.ebi.ac.uk/ena/browser/view/SRP193830). 
+
+I have downloaded four paired end samples for you, which are available at: 
+
+```{.bash}
+medbioinfo2025/common_data/wgs
+```
+
+If you want to work with this data, make a symbolic link to the data, do this from within a subdirectory called `data`(or something similar). You want to avoid mingling your data with the analyses:
+
+```{.bash}
+ln -s path/to/common_data/wgs/*fastq.gz .
+```
+
+:::::
+
+
+## Data format
+
+You now have the raw sequencing data, in a very common data format, fastq. Let's have a look at the data (change accordingly): 
+
+```{.bash}
+zcat data/sample.fastq.gz | head -n 10 
+```
+
+For each read we see an entry consisting of four lines. Every new read starts with an `@`. 
+
+| Line | Content|
+|-|-----|
+| 1    | Information about the read, always starts with an `@`|
+| 2    | nucleic sequence of the read|
+| 3    | starts with \`+\`, can (but does not have to) contain data|
+| 4    | characters representing the quality scores with the bases of the read sequence |
+
+: Fastq format
+
+::: {.callout-note}
+The quality score is encoded in ASCII, to represent scores from 0 (high probability of error in calling the base) to 42 (low probability of error in calling the base). 
+:::
+
+We could now look through the fastq file and scan the quality scores for the reads in our sample one by one. Sounds kind of tedious, doesn't it? Luckily, here comes FastQC (and other, similar tools). 
+
+## [FastQC](https://www.bioinformatics.babraham.ac.uk/projects/fastqc/)
+
+Fastqc is a tool to monitor the quality and the properties of a NGS sequencing file in fastq, SAM and BAM format. It summarizes its findings for a quick visual overview. More information [here](https://www.bioinformatics.babraham.ac.uk/projects/fastqc/){.external target="_blank"}. 
+
+FastQC will give us an overview of the entire sample, so we won't have to look at the quality score of every single read in the sample. In addition to the quality scores, FastQC also checks other quality measures. 
+
+You will now check the quality of the data set you chose.
+
+::: {.callout-tip}
+Find someone who is working on the same data set, so you can discuss what you are finding in just your data. 
+:::
+
+Now, first we check if FastQC is installed on the system: 
+
+```{.bash}
+fastqc --help
+```
+
+Since it isn't (`bash: fastqc: command not found`) we will now make a Pixi environment that contains FastQC. 
+
+### Pixi environment with FastQC
+
+Initiate a pixi environment, with permitted package sources from conda-forge and bioconda. Then add FastQC to the environment (at the moment we do not care which version, so we do not specify a version). Last, queck that we can run FastQC via Pixi. 
+
+```{.bash}
+pixi init -c conda-forge -c bioconda
+pixi add fastqc
+pixi run fastqc --help
+```
+
+::: {.callout-important}
+The order of the channels matters. Add conda-forge first, then bioconda. 
+:::
+
+Then, activate the environment with: 
+
+```{.bash}
+pixi shell
+```
+
+
+### SLURM
+
+HPC2N is running SLURM (Simple Linux Utility for Resource Management) as its job scheduling system. When you submit a job on the cluster log-in node, SLURM will start, execute and monitor your jobs on the working nodes. It allocates access to the cluster resources, and manages the queue of pending jobs. 
+
+To be able to do so, SLURM needs a bit of information from us when we submit a job:
+
+-A: project_ID (to deduct the used computing time from the correct project)
+-t allocated time dd-hh:mm:ss (to optimize the job queue)
+-n number of cores (default is one)
+
+The basic usage of slurm on the command line is thus:
+
+```{.bash}
+srun -A project_ID -t 30:00 -n 1 <tool options and commands>
+```
+
+We want to use FastQC on the samples, so we add the FastQC specific commands:
+
+```{.bash}
+srun -A project_ID -t 15:00 -n 1 fastqc --noextract -o fastqc data/sample_1.fastq.gz data/sample_2.fastq.gz 
+```
+
+You will of course have to modify for your project structure. 
+
+::: {.callout-important}
+## To do for you
+Now you can download the .html report from the server (in VScode: right click on the file in the file explorer --> download, otherwise rsync from the local system) and look at them. 
+
+- What is the quality of your sample? 
+- Can you use it for downstream analyses? Discuss with your neighbour. 
+- Look at online resources to see if what you see is a problem, or expected because of the type of data you work with. A nice resource here is for example the [FastQC tutorial from the Michigan State University](https://rtsf.natsci.msu.edu/genomics/technical-documents/fastqc-tutorial-and-faq.aspx).
+:::
+
+Now, srun works fine if you're working on one sample. But what if you want to run FastQC on many samples? Or if you want to go back and run the command again in a few weeks, will you remember exactly what you ran?
+
+## sbatch
+
+Make a new directory, called `scripts`. This is where you will house all scripts of your project. Within scripts, touch a new file, `fastqc.sh`.
+
+This is how my project directory looks like at this point:
+
+```{.verbatim}
+.
+├── data
+│   ├── sample1_1.fastq.gz
+│   ├── sample1_2.fastq.gz
+│   ├── sample2_1.fastq.gz
+│   ├── sample2_2.fastq.gz
+├── fastqc
+│   ├── sample1_1_fastqc.html
+│   ├── sample1_1_fastqc.zip
+│   ├── sample1_2_fastqc.html
+│   └── sample1_2_fastqc.zip
+├── pixi.lock
+├── pixi.toml
+└── scripts
+    └── fastqc.sh
+```
+
+Copy the following into the `fastqc.sh` file, and save the contents. Read through the file and try to understand what the different lines are doing.
+
+```{.bash}
+#! /bin/bash -l
+#SBATCH -A project_ID
+#SBATCH -t 30:00
+#SBATCH -n 1
+
+fastqc -o ../fastqc --noextract ../data/*fastq.gz
+```
+
+Save and run within your Pixi environment: 
+
+```{.bash}
+sbatch fastqc.sh 
+```
+
+Check your job with:
+```{.bash}
+squeue -u <user-name>
+```
+
+After running a bash script you will get a slurm output file in the directory you submitted your job from. Look at that output. See if you understand what that output contains.
+
+```{.bash}
+less slurm-<jobID>.out
+```
+
+Now you have a .html file for each sample, which is fine for a few samples, but gets tedious when running a project with many samples. So let's go and summarize them with MultiQC.
+
+## MultiQC
+
+Multi-QC summarises the output of a lot of different tools. Only having run FastQC it might not seem powerful, but at the end of workflows it is really nice to have a program go through all the files and summarize them, saving you the hassle.
+
+::: {.callout-important}
+## To do for you
+Set up and run MultiQC on your FastQC output. Things to think about: 
+
+- add MultiQC to the Pixi environment
+- write a sbatch script, just because you can
+- save the output in a separate directory
+
+Once you have run MultiQC, go through the report and understand what it says about your data. 
+:::
+
+## Notes, tips and tricks
+
+[RNAseq failed per base sequence content](https://sequencing.qcfail.com/articles/positional-sequence-bias-in-random-primed-libraries/)
+
+Check your running jobs:
+
+`squeue -u <user_name>`
+
+Check the projects you are a member of: 
+
+`projinfo`

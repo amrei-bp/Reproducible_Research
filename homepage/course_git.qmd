@@ -1,0 +1,5 @@
+---
+title: "Using git collaboratively"
+---
+
+This module will be run by Sam, and he has his own slides and content on Canvas. 

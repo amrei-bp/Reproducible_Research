@@ -1,0 +1,10 @@
+---
+title: "Python notebook: Marimo"
+---
+
+<br>
+[Marimo](https://docs.marimo.io/) is not only a nice algae, but also an open-source Python notebook. If you are used to running Jupyter notebooks most of Marimo will be familiar for you. However, Marimo has some nice features, such as automatically flagging stale cells, or running dependent cells when upstream input has changed. 
+
+To test it: 
+- [Install marimo](https://docs.marimo.io/)
+- In VScode, install the Marimo extension. 

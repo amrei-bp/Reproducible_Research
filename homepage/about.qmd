@@ -1,0 +1,13 @@
+---
+title: "About"
+---
+
+This course is a hosted by the [Swedish Agricultural University's Bioinformatics Infrastructure (SLUBI)](www.slubi.se). 
+
+In this course we hope to give you information on how to use reproducible bioinformatics pipelines, report results in a streamlined manner, and implement the system in your own research.
+
+Feedback is appreciated!
+
+(This is a Quarto website. To learn more about Quarto websites visit <https://quarto.org/docs/websites>.)
+
+![](figures/logo/SLUBI_logo.png)

@@ -1,0 +1,63 @@
+---
+title: "Publish your blog"
+---
+
+To publish your blog we need to first start tracking it with git: 
+
+## Tracking your blog with git
+
+In the terminal, make sure you are in the directory of your blog, then type: 
+
+```{.md}
+git init
+```
+
+This will initialize your blog directory as a git repository. 
+
+> Initialized empty Git repository in path/to/directory
+
+Now, if you check with
+
+```{.md}
+git status
+```
+you will see that the repository is indeed empty. You will also see some untracked files. 
+
+![Terminal after checking the git status](figures/blog/empty_repo.png)
+
+Add all the files to the repository and commit the changes to git. 
+
+## add the blog to GitHub
+
+Now we need to add the local repository to GitHub. Log into GitHub on the homepage. Then add a new repository, give it a name and make it public. **Do not add anything to it, not .gitignore, README, license etc. **
+
+Once initialized, GitHub will give you several suggestions of what to do with your new repository.  Follow the instructions of the option:
+`...or push an existing repository from the command line`
+
+Back in VScode, check in the terminal that you are in the correct directory (the one of your blog). 
+
+You can then add the remote origin etc with the commands given on GitHub: 
+
+```{.md}
+git remote add origin <specifics of your repository>
+git branch -M main
+git push -u origin main
+```
+
+Check on Github if the content of your blog has been added. You might have to refresh your page. 
+
+## publish via GitHub actions
+
+Now that you have a local git repository that is synced to GitHub you can publish your blog using [GitHub Pages](https://docs.github.com/en/pages), a website hosting service. 
+
+The default URL of your blog will be a combination of your GitHub user name and the name of the repository. If you have your own domain you can also use that at a later point in time. 
+
+The steps for publishing your blog with GitHub Actions are [here](https://quarto.org/docs/publishing/github-pages.html#github-action). Follow the instructions until the section `Executing code`. 
+
+Now, the publish command will be triggered automatically every time you push changes to the remote repository. 
+
+## Tips and tricks
+
+When working on the blog, use git (adding, committing, pushing) often. Try to keep commits to one topic - maybe one blog entry per time. This way it is easier to label the commits and backtrack what has happened in the repository. 
+
+Do not add large files to the repository. GitHub is a code hosting platform, not a data hosting platform. If you have data in your local directory you can exlude it from the repository with the .gitignore file. 

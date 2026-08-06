@@ -1,0 +1,9 @@
+---
+title: "Quarto Homepage on Github"
+---
+
+[Creating a website in Quarto](https://quarto.org/docs/websites/)
+
+Publish the quarto homepage on [GitHub via GitHub Actions](https://quarto.org/docs/publishing/github-pages.html#github-action). 
+
+

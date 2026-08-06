@@ -1,0 +1,79 @@
+---
+title: "git and GitHub"
+---
+
+<br>
+
+## Version control
+
+We all have worked on data before, done analyses, talked with our PI, changed the analyses, worked a bit more... and in the end we have something like this: 
+
+![Which one of these is the latest version?](figures/git/data_chaos.png){.class width=20%}
+
+**Version control**, the practice of tracking and managing changes to files, can help us not descend into chaos. With a version controlled project you always know which file, and even which part of the file, is the most recent, and you can even go back to older versions if you have to. 
+
+Version control can be used on the local system, where both the version database and the checked out file - the one that is actively being worked on - are on the local computer. Good, but the local computer can be corrupted and then the data is compromised.
+
+![[Local version control](https://git-scm.com/book/en/v2/Getting-Started-About-Version-Control)](figures/git/Local_version_control_diagram.png){.class width=50%}
+
+Version control can also be centralized, where the version database is on a central server, and the active file can be checked out from several different computers. This is useful when working from different systems, or when working with collaborators. However, when the central servers is compromised the historical version are lost. 
+
+![[Centralized version control](https://git-scm.com/book/en/v2/Getting-Started-About-Version-Control)](figures/git/Centralized_version_control.png){.class width=50%}
+
+At last, version control can be fully distributed, with all versions of the file being on the server and different computers. Each computer checks out the file from its own version database to work on them. The databases are then synchronized between the different computers and the server. One such distributed version control system is `git`. It can handle everything from small to very large projects and is simple to use. `GitHub`is a code hosting platform for version control and collaboration, built on git.
+
+![[Distributed version control](https://git-scm.com/book/en/v2/Getting-Started-About-Version-Control)](figures/git/git_distributed_version_control.png){.class width=50%}
+
+Distributed version control **facilitates collaboration** with others. Software like `git` automatically tracks differences in files, and flags conflicts between files. 
+
+Additionally, GitHub, the code hosting platform based on git that we are using in this course, can be used to **maintain uniformity** within a working group. The group can develop their own project template that people can use and populate for their own projects.
+
+
+## git and GitHub
+
+**Git** is a **version control software** that is fully distributed - meaning that each project folder contains the full history of the project. These project folders are also called `repositories` and can be on several computers, or servers. 
+
+**Github** is a **code hosting platform** that is **based on git**. Here you can store, track and publish code (and code only, do NOT use github for data!). On Github you can collaborate with colleagues and work on projects together. 
+
+::: {.callout-note}
+A **repository in git** is the .git/ folder inside of your directory. This repository tracks all changes made to files in your project and contains your project history. Usually we refer to the git repository as the **local repository**. 
+
+A **repository in GitHub** is where you can store your code, your files, together with their revision history. Repositories can be public or private, and might have several collaborators. Usually we refer to the Github repository as the **remote repository**. 
+:::
+
+Let's have a closer look at how git works:
+
+
+## git
+
+>Git has three main states that your files can reside in: modified, staged, and committed:
+
+>- Modified means that you have changed the file but have not committed it to your database yet.
+- Staged means that you have marked a modified file in its current version to go into your next commit snapshot.
+- Committed means that the data is safely stored in your local database.
+
+> [source: git documentation](https://git-scm.com/book/en/v2/Getting-Started-What-is-Git%3F)
+
+This leads to the three main sections of a Git project: the working directory, the staging area, and the Git directory (or repository).
+
+![[Working directory, staging area, and Git directory](https://git-scm.com/book/en/v2/Getting-Started-What-is-Git%3F)](figures/git/git_diagram.png){.class width=70%}
+
+And the basic commands of git: 
+
+![Basic git commands](figures/git/git_commands.png){.class width=50%}
+
+::: {.callout-note}
+These basic operations are all done on your local system. You have the entire history of the project on your local disk, and do not need an internet connection to work on your data with git. You can do all your commits on your local computer and later push them to a remote repostitory, like Github.
+:::
+
+::: {.callout-important}
+## To do for you
+
+Install [git](https://git-scm.com/downloads), and follow the Software Carpentries tutorial on [Version Control with Git](https://swcarpentry.github.io/git-novice/), chapters 1 to 13. 
+:::
+
+::: {.callout-note}
+Make sure you configure git with your GitHub account e-mail (either the one you signed up with, or the one provided by GitHub to hide your actual e-mail). 
+
+I am using vim as a text editor, so I have never changed the default text editor for git. In the tutorial they give you options to change if you are used to a different editor. 
+:::

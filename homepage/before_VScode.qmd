@@ -1,0 +1,33 @@
+---
+title: "Visual Studio Code"
+---
+
+During the pre-course assignements, and the course itself, we will be using Visual Studio Code (VScode). It is available for free and runs on all major platforms. Extensions make it very versatile, and we will be using it to edit and render text, to us version control, and to connect to and work on our course server. 
+
+::: {.callout-important}
+## To do for you
+
+Install VScode using the instructions [here](https://code.visualstudio.com/).
+:::
+
+Once you have installed VScode and open it, you will see the starting screen. Here is my starting screen: 
+![VScode starting screen](figures/vscode/VScode_start.png)
+
+Yours will look slightly different, especially in the activity bar all the way on the left, because I have already installed extensions when working with VScode. So don't worry about the exact look. 
+
+::: {.callout-important}
+## To do for you
+
+To get aquainted with some of the features of VScode, please [**watch this 7-minute video**](https://code.visualstudio.com/docs/introvideos/basics) from the Visual Studio homepage. Follow along the tutorial (as far as you can, he's not providing the last script he's showcasing).
+
+Read up more on the graphical user interface of VScode [here](https://code.visualstudio.com/api/ux-guidelines/overview). 
+:::
+ 
+
+::: {.callout-note}
+If you can't see the terminal on the lower part of the screen, you can open it by clicking on the button on the upper right of the screen. 
+
+![Click here to open the terminal](figures/vscode/VScode_open_terminal.png){.class width=40%}
+:::
+
+

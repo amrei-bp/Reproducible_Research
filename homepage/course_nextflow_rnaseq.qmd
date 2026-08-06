@@ -1,0 +1,255 @@
+---
+title: "Nextflow RNAseq pipeline"
+---
+
+## Simple RNA-Seq workflow (from Seqera training materials)
+
+To demonstrate a real-world biomedical scenario, we will implement a proof of concept RNA-Seq workflow which:
+
+1. Indexes a transcriptome file
+2. Performs quality controls
+3. Performs quantification
+4. Creates a MultiQC report
+
+This will be done using a series of seven scripts, each of which builds on the previous to create a complete workflow. You can find these in the tutorial folder (`script1.nf` - `script6.nf`). These scripts will make use of third-party tools that are known by bioinformaticians but that may be new to you so we'll briefly introduce them below.
+
+- [Salmon](https://combine-lab.github.io/salmon/) is a tool for quantifying molecules known as transcripts through a type of data called RNA-seq data.
+- [FastQC](https://www.bioinformatics.babraham.ac.uk/projects/fastqc/) is a tool to perform quality control for high throughput sequence data. You can think of it as a way to assess the quality of your data.
+- [MultiQC](https://multiqc.info/) searches a given directory for analysis logs and compiles a HTML report. It's a general use tool, perfect for summarizing the output from numerous bioinformatics tools.
+
+Though these tools may not be the ones you will use in your pipeline, they could just be replaced by any common tool of your area. That's the power of Nextflow!
+
+## Preparations
+
+If you haven't done so yet, copy the directory "nf-training" from the `common_data` directory into your personal directory. Change directory into it. 
+
+## Set the executor
+
+So far we have used the local executor for our scripts, which is a big no no on clusters since that uses the log-in node for the execution. The pipeline we are building up now is a bit more complicated and requires more computing power than string manipulation, so it is time to set `slurm` as the executor. This can be done in a file called `nextflow.config`. I have prepared that file for you: locate the file nextflow.config in your folder and replace its content with the following:
+
+```{.md}
+process{
+    executor = "slurm"
+    time = '2.h'  // Set default time limit for all processes
+    
+    // Other settings
+    cpus = 4
+}
+
+resume = true
+singularity.enabled = true
+
+executor {
+    account = 'your_project_account'
+}
+```
+
+- Here, we set the executor for every process to slurm.
+- We set resume to true, so it is automatically used for all our runs (which means we do not have to specify this in our nextflow run command anymore). 
+- We enable singularity and set some singularity run options.
+- Lastly, we specify the account name for the slurm execution. 
+
+This nextflow.config file is implicitly called when we execute nextflow from the folder it is in. We do not have to explicitely name it in the nextflow run command. 
+
+## Define the workflow parameters
+
+Parameters are inputs and options that can be changed when the workflow is run.
+
+The script script1.nf defines the workflow input parameters:
+
+```{.md}
+params.reads = "$projectDir/data/ggal/gut_{1,2}.fq"
+params.transcriptome_file = "$projectDir/data/ggal/transcriptome.fa"
+params.multiqc = "$projectDir/multiqc"
+
+println "reads: $params.reads"
+```
+
+Run it by using the following command:
+
+```{.bash}
+pixi run nextflow run script1.nf
+```
+
+::: {.callout-note}
+Note that we do not need to specify that we want to use the nextflow.config file. Since it is in the same directory it will be used automatically.
+:::
+
+::: {.callout-important}
+## To do for you
+Modify script1.nf by adding a fourth parameter named `outdir` and set it to a default path that will be used as the workflow output directory.
+:::
+
+## Create a transcriptome index file
+
+Nextflow allows the execution of any command or script by using a `process definition`.
+
+A `process` is defined by providing three main declarations: the process `input`, `output`, and the command `script`.
+
+To add a transcriptome INDEX processing step, add the following code blocks to your script1.nf. Alternatively, these code blocks have already been added to script2.nf.
+
+```{.md}
+process INDEX {
+    input:
+    path transcriptome
+
+    output:
+    path 'salmon_index'
+
+    script:
+    """
+    salmon index --threads $task.cpus -t $transcriptome -i salmon_index
+    """
+}
+```
+
+Additionally, add a `workflow scope` containing an input channel definition and the index process:
+
+```{.md}
+workflow {
+    index_ch = INDEX(file(params.transcriptome_file, checkIfExists: true))
+}
+````
+
+Here, the `params.transcriptome_file` parameter is used as the `input` for the INDEX `process`. The INDEX process (using the salmon tool) creates salmon_index, an indexed transcriptome that is passed as an `output` to the index_ch `channel`.
+
+Run with: 
+
+```{.bash}
+pixi run nextflow run script1.nf 
+```
+
+::: {.callout-caution}
+Why doesn't this work? What have we forgotten?
+:::
+
+### add Salmon to your environment
+
+```{.bash}
+pixi add salmon
+```
+
+### add Salmon in a container to the process
+
+Adding a container to the process and running the tool via the container is more reproducible than adding it to your environment. Use the `container` directive and add the URL to the container to the process scope: 
+
+
+```{.bash}
+container 'https://depot.galaxyproject.org/singularity/salmon:1.10.1--h7e5ed60_0'
+```
+
+::: {.callout-note}
+You can also specify a process specific output directory in the process block: 
+
+```{.md}
+publishDir "$params.outdir/salmon"
+```
+
+This command line would typically be located just below the container directive. 
+:::
+
+## Define run time environment
+
+Remember how Nextflow is big on execution abstraction? This is where we will put this concept into practice. In the nextflow.config add the following just before the closing squiggly bracket from the process definitions:
+
+```{.bash}
+    withName:'INDEX'{
+        time = 15.m
+        cpus = 2
+    }
+```
+
+With this we specify the alloted time and cpus for this specific process.
+
+To specify memory add mem = xx.GB - check with your cluster to see how much memory is available and how to specify it. In our case we don't need to because the memory implicit in the 2 cpus is enough for our purposes.
+
+```{.bash}
+pixi run nextflow run script1.nf 
+```
+
+Collect read files by pairs
+
+This step shows how to match read files into pairs, so they can be mapped by Salmon.
+
+Run script3.nf:
+
+```{.bash}
+pixi run nextflow run script3.nf
+```
+
+Now add
+
+```{.bash}
+read_pairs_ch.view()
+```
+
+to the bottom of the script, save it and run it again.
+
+It will print something similar to this:
+
+```{.md}
+[gut, [/.../data/ggal/gut_1.fq, /.../data/ggal/gut_2.fq]]
+```
+
+The above example shows how the read_pairs_ch channel emits `tuples` composed of two elements, where the first is the `read pair prefix` and the second is a `list` representing the actual files.
+
+## Expression quantification
+
+Look at the file "script4.nf". This script adds a gene expression QUANTIFICATION process and a call to it within the workflow scope. Quantification requires the index transcriptome and RNA-Seq read pair fastq files.
+
+In the workflow scope, note how the index_ch channel is assigned as output in the INDEX process.
+
+Next, note that the first input channel for the QUANTIFICATION process is the previously declared index_ch, which contains the path to the salmon_index.
+
+Also, note that the second input channel for the QUANTIFICATION process, is the read_pair_ch we just created. This being a tuple** composed of two elements (a value: "sample_id" and a list of paths to the fastq reads: "reads") in order to match the structure of the items emitted by the `fromFilePairs` channel factory.
+
+**tuple: a data structure consisting of multiple parts.
+
+```{.bash}
+pixi run nextflow run script4.nf
+```
+
+Execute the same script again with more read files, as shown below:
+
+```{.bash}
+pixi run nextflow run script4.nf --reads 'data/ggal/*_{1,2}.fq'
+```
+
+You will notice that the QUANTIFICATION process is executed multiple times.
+
+Nextflow parallelizes the execution of your workflow simply by providing multiple sets of input data to your script.
+
+
+::: {.callout-important}
+## To do for you
+Add the process specific runtime environment definition for QUANTIFICATION to nextflow.config.
+:::
+
+
+## Quality control
+
+Now we want to add another process, using our beloved FastQC to check the samples. The input is the same as the read pairs used in the QUANTIFICATION step.
+
+::: {.callout-important}
+## To do for you
+Sit together with your neighbour and first think 5 minutes what you need to do to implement this new process. 
+
+We will then discuss in class. 
+:::
+
+## MultiQC 
+
+This last step collects the outputs from the QUANTIFICATION and FASTQC processes to create a final report using MultiQC.
+
+Again, what do you need to consider when adding this process to the pipeline?
+
+::: {.callout-tip}
+
+We only want one task of MultiQC to be executed to produce one report. For this, it needs to wait for the report generating processes to stop. We can use the mix channel operator to combine the two channels followed by the collect operator, to return the complete channel contents as a single element.
+
+So the new line in the workflow scope looks like this: 
+
+> MULTIQC(quant_ch.mix(fastqc_ch).collect())
+:::
+
+

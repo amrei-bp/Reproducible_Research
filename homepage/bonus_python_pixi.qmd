@@ -1,0 +1,22 @@
+---
+title: "Using Python in Pixi"
+---
+
+<br> 
+You can also install Python packages into your Pixi environment. As an example we will use [FastQE](https://pypi.org/project/fastqe/), a Python based tool that translates the fastq quality scores into emojis. 
+
+## Prepare the environment
+
+```{.bash}
+pixi init fastqe -c conda-forge
+cd fastqe/
+pixi add python
+pixi add --pypi fastqe
+pixi add --pypi setuptools
+```
+
+## run FastQE on your sample(s)
+
+```{.bash}
+pixi run srun -A project_ID -t 02:00 fastqe --html  --output sample_name.html ../sample1.fastq
+```

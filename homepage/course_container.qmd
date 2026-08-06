@@ -1,0 +1,284 @@
+---
+title: "Containers"
+---
+
+<br>
+
+## Reproducibility in Bioinformatics
+
+In an ideal world I would be able to write a piece of software, or a develop some code to analyse data on my computer, and then send someone else this software or code and they could run it as well, getting the same results. 
+
+In reality, I would very likely run into at least one of the following problems: 
+
+1. It is not uncommon for people within the same team to use different operating systems (whether MacOS, Windows, or different flavours of Unix builds). Even if everyone is using a MacOS, there are still different versions that impact the way people are able to work with their machines.
+2. Almost every piece of software has some sort of dependency - other software - it needs to run. Some programs might "just" need a bash shell or basic python, while others need a variety of compilers and additional libraries to function. Often, these dependencies require further dependencies to be installed. It is also not uncommon for dependencies for Program 1 to  clash with the dependencies for Program 2, requiring the user to uninstall dependencies to be able to install others.
+3. In bioinformatics, tools are very often not maintained after the student that wrote the software graduated, the PI moved to a different university, or the funding simply ran out. This leads to a lot of really good software not really being supported by newer operating systems, usually due to dependencies not being easily available or, as before, clashing with newer versions. This makes installing a tool one of the biggest hurdles to overcome in bioinformatics.
+4. You often cannot install different versions of the same program on one computer due to conflicting names. This is particularly problematic when you want to rerun an analysis for a publication where you need to use the same software all the way through.
+
+Any of these points might lead to you not being able to run my code, or it running but giving different results. They make bioinformatics less reproducible as tools and code cannot be moved easily betweem systems (for example if you upgrade your computer or want to share your pipeline with a colleague). Fortunately, most of these problems can be overcome with containers.
+
+## Containers
+
+### What are containers?
+
+Containers are stand-alone pieces of software that require a container management tool to run. They are build and exchanged as container images that specify the contents of the container, such as the operating system, all dependencies, and software in an isolated environment. The container management tool then takes the images and build the container. These management tools can be run on all operating systems, and since the container has the operating system within it, it will run the same in all environments. Container images are easily portable and immutable, so they are stable over time.
+
+### Running Containers
+
+There are several programs that can be used to build and run containers. [Docker](https://www.docker.com), [Appptainer](https://apptainer.org), and [Podman](https://podman.io) are the most commonly used platforms to date. They all have their pros and cons. If you are using a Windows machine that only you are using, then Docker is likely the least complex tool to install. On multi-user systems like a server, Apptainer is the best tool for the job. For this tutorial and the rest of the course, we will use Apptainer commands. There are small syntax changes between bash and powershell commands, but they are very similar.
+
+::: {.callout-important}
+## To do for you
+
+Log in to the course server. 
+
+:::
+
+### Downloading Container Images
+
+There are several repositories for people to publish container images that they have specified. [Dockerhub](https://hub.docker.com) and [Seqera](https://seqera.io/containers/) are two commonly used platforms for downloading container images. You are able to use container images from dockerhub on Apptainer without any problems.
+
+
+#### dockerhub Tutorial
+
+On the dockerhub landing page, you have a search bar, and some login options. You do not need to create an account to access the containers on dockerhub.
+
+![dockerhub landing page](figures/container/docker1.png)
+
+For these tutorials, we'll search VCFtools, a commonly used software for VCF manipulation and querying. The results of the search give us several different containers with the same name.
+
+![Registry search](figures/container/docker2.png)
+
+You can see who made the container image, how many times it has been downloaded (or pulled), when it was updated (here updated means different versions of the image being uploaded), and how many people have starred it. It is usually a good rule of thumb to use the most popular images from users that have uploaded a lot of container images. The [biocontainers](https://hub.docker.com/u/biocontainers) and [pegi3s](https://hub.docker.com/u/pegi3s) profiles have builds for a lot of tools, and they are built really well! 
+
+If we click on the vcftools from [biocontainers](https://hub.docker.com/r/biocontainers/vcftools) we get to a typical dockerhub image landing page:
+
+![VCFtools page](figures/container/docker3.png)
+
+There is information on the frequency of the container image being pulled, as well as a pull command to download the image. This command is for docker, so we need to modify it for Apptainer.
+
+```{.bash}
+apptainer pull vcftools_0.1.16-1.sif docker://biocontainers/vcftools:v0.1.16-1-deb_cv1
+```
+
+::: {.callout-important}
+## Apptainer
+
+As you can see, Apptainer is installed on the course server. If it wasn't, could we still use it?
+
+:::
+
+This command has several parts to it:
+
+1. `apptainer` calls on the Apptainer software to run
+2. `pull` tells Apptainer which function to use. In this case, we want it to go fetch something from a repository
+3. `vcftools_0.1.16-1.sif` is the name of the container image on our local machine. We could call it `I_Love_Dogs` but that is not very informative at all. Your collaborator won't know what it means, and you certainly won't know what it means in 6 months from now! It is also good practice to put the version number in your image name in case you want to have several versions at the same time, and you need to tell them apart.
+4. `docker://` is the registry you are pulling from. There are several different registries, but we are only going to show 2 during this course. (You will see another one in the Seqera tutorial)
+5. `biocontainers/vcftools` is the profile/repository and container you are pulling
+
+::: {.callout-tip}
+File format extensions like .txt and .sif are really only important for us. However, it is good practice to append your files with appropriate extensions to ensure that you follow good data management practices
+:::
+
+If you are interested in a different version than the current version, there are other versions under the `tags` tab:
+
+![Container versions](figures/container/docker4.png)
+
+If you wanted to download another version of the container, you simply copy the command shown on the right side, and alter the syntax, for example
+
+```{.bash}
+apptainer pull vcftools0.1.14.sif docker://biocontainers/vcftools:v0.1.14_cv2
+```
+
+
+#### Seqera Tutorial
+
+The Seqera landing page is a bit different from the dockerhub landing page, and it works a bit differently from dockerhub. Dockerhub hosts container images that users have uploaded, while Seqera makes container images as you request them. They use [bioconda](https://bioconda.github.io), [conda-forge](https://conda-forge.org), and [pypi](https://pypi.org) libraries to build their containers images with [Wave](https://github.com/seqeralabs/wave). The advantage is that you can include several different softwares in your container image at once. The disadvantage is that you are limited to software hosted on the aforementioned repositories. Usually this isn't a problem, but sometimes you want to use something that isn't hosted there.
+
+![Seqera containers landing page](figures/container/seqera1.png)
+
+When you pull an image from Seqera and want to run it with Apptainer, you need to remember to change the container setting from Docker to Singularity, the older name of Apptainer. 
+
+![Selecting Singularity](figures/container/seqera2.png)
+
+Since Seqera builds containers on-demand, sometimes you have to wait for the container to finish compiling. You can see that it is still preparing the container image from the `fetching container` comment. Don't try to pull it when it is still building!
+
+![Waiting to build](figures/container/seqera3.png)
+
+When the container image is ready, you can copy the text and pull the image to your system:
+
+![Ready to download](figures/container/seqera4.png)
+
+```{.bash}
+apptainer pull vcftools_0.1.17.sif oras://community.wave.seqera.io/library/vcftools:0.1.17--b541aa8d9f9213f9
+```
+
+Here we use `oras://` instead of `docker://` as we are pulling from the [oras](https://oras.land) registry. We are also pulling a different version from Seqera, so the name of the container is different.
+
+
+### Running Containers
+Once you have the container image on your local machine, you want to be able to use it. Apptainer can be used to build the container from the image. Then you can either enter the container and run as if you had the exact same operating system as the person who built it, or you can run the software inside the container from outside of the container.
+
+#### running "from the outside"
+
+There are 2 different ways to use a container: `run` and `exec`. The `apptainer run` command launches the container and first runs the `%runscript` for the container if one is defined, and then runs your command (we will cover `%runscript` in the `Building Containers` section). The `apptainer exec` command will not run the `%runscript` even if one is defined. It is a small, fiddly detail that might be applicable if you use other people's containers. After calling Apptainer and the `run` or `exec` commands, you can use your software as you usually would
+
+```{.bash}
+apptainer exec vcftools_0.1.17.sif vcftools --version
+```
+
+This command runs your `vcftools_0.1.17.sif` container from the image, calls on the program `vcftools` that is within the container, and shows you the version. If you had installed VCFtools locally, you would have just used 
+
+```{.bash}
+vcftools --version
+```
+
+::: {.callout-important}
+Please remember that VCFtools is just an example. If you want to run any other tool everything after `apptainer run` or `apptainer exec` has to be substituted by the name of the specific container image and the run commands for that particular tool!
+:::
+
+
+#### running interactively "from the inside"
+
+You can also enter the container, and work interactively from within. For that you use the `apptainer shell` command:
+
+```{.bash}
+apptainer shell <name-of-container>
+```
+
+Inside the container, your prompt will change to `Singularity` (remember, that is the legacy name for Apptainer). Now you can use the tools inside the container. 
+
+However, when entering the container, the file system outside of it becomes inaccessible - with the exception of paths that are explicitely bound into it. There are some system defined bind paths that are automatically accessible within the container (such as your home directory), but you might have to manually set others with the ´-B´ flag. This will make the bound file path accessible from within the container and you can interact with the directories jsut as you normally would. 
+
+```{.bash}
+apptainer shell <name-of-container>
+apptainer shell -B outside/path:inside/path <name-of-container>
+```
+
+In the above, we bind in the outside/path (which could be ../data) and makes it accessible within the container as inside/path (which could be plain /data).
+
+::: {.callout-note}
+You can try out the binding from outside the container too: 
+
+```{.bash}
+apptainer exec -B ../data:/rawdata ../containers/fastqc:0.12.1.sif ls /rawdata
+```
+
+Will list the contents of `../data`, even though it's being called on as `rawdata`. 
+:::
+
+To exit the container, simply type and enter `exit`. 
+
+### Running containers with sbatch
+
+You can run Apptainer containers as part of a batch job by integrating them into a SLURM job submission script. Here is an example batch script. 
+
+Let's go back to our `FastQC` sbatch script and add the container: 
+
+```{.bash}
+#! /bin/bash -l
+#SBATCH -A project_ID
+#SBATCH -t 30:00
+#SBATCH -n 1
+
+apptainer exec container_image.sif fastqc -o . --noextract ../data/*fastq.gz
+```
+
+::: {.callout-important}
+## To do for you
+What has changed? And what do these changes do? Discuss with your neighbour. 
+:::
+
+
+### Building Containers
+If the software you would like to use is not packaged into a container by anyone else, you might want to build it yourself. For this, we are just going to show a very simple example. Building containers from scratch is a computationally intensive task.
+You build containers from a `definition` file with the extension `.def` 
+
+Here we are going to build a container with a cow telling us the date. Save this in a file called `lolcow.def`.
+
+```{.bash}
+Bootstrap: docker
+From: ubuntu:20.04
+
+%post
+    apt-get -y update
+    apt-get -y install cowsay lolcat fortune
+
+%environment
+    export LC_ALL=C
+    export PATH=/usr/games:$PATH
+
+%runscript
+    date | cowsay | lolcat    
+
+```
+
+There are several components to this definition file. 
+
+1. You can set the operating system you want in the container, in this case Ubuntu 20.04.
+2. `%post` section is where you update the OS from its base state, install dependencies and so on.
+3. `%environment` is where you export paths and modify the environment.
+4. `%runscript` is the script that will run when you use `apptainer run container.sif`. If you don't include a runscript, then nothing will happen when you try to run it without any commands. You could build this container without anything in the `%runscript` section, and use `apptainer run container.sif date | cowsay | lolcat` to get the same output.
+
+```{.bash}
+apptainer build lolcow.sif lolcow.def
+```
+
+You'll get a lot of output on the status of the build, ending in
+
+```{.bash}
+INFO:    Adding environment to container
+INFO:    Adding runscript
+INFO:    Creating SIF file...
+INFO:    Build complete: lolcow.sif
+```
+
+We can now run our new container with
+
+```{.bash}
+apptainer run lolcow.sif
+```
+
+![Boring cow](figures/container/lolcow1.png)
+
+::: {.callout-note}
+Try removing the %runscript, build it again, and see what happens.
+:::
+
+```{.bash}
+Bootstrap: docker
+From: ubuntu:20.04
+
+%post
+    apt-get -y update
+    apt-get -y install cowsay lolcat fortune
+
+%environment
+    export LC_ALL=C
+    export PATH=/usr/games:$PATH
+
+%runscript
+    fortune | cowsay | lolcat    
+
+```
+
+If we use the same definition file as before, but substitute `date` for `fortune` in the runscript and build the container, we now get a philosophical cow with a dark sense of humour:
+
+![Fun cow](figures/container/lolcow2.png)
+
+![Inspirational cow](figures/container/lolcow3.png)
+
+To show the difference between the `run` and `exec` commands, we can use the same container with `fortune` in the runscript and run:
+
+```{.bash}
+apptainer run lolcow.sif bash -c "date|cowsay"
+```
+
+and
+
+```{.bash}
+apptainer exec lolcow.sif bash -c "date|cowsay"
+```
+
+The `run` command gives us a philosophical cow while `exec` gives us our boring cow again.
+

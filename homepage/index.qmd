@@ -1,0 +1,58 @@
+---
+title: "Reproducible Research"
+---
+<br>
+The aim of this module is to share how to use bioinformatics tools in a **reproducible and scalable way**. We will use **environments**, **containers**, and **established pipelines** so that you can run these analyses on any operating system, as well as on systems that are not high performance computing clusters. And first and foremost: these tools and techniques can be used regardless of which type of bioinformatics you are ultimately working with. 
+
+The website will remain active after the course so that you have access to the material even after the course. 
+
+We will meet in person in Ultuna between **Monday, September 14th, and Friday, September 18th, 2026**. However, to get the most out of this course, we expect you to do some preparation in advance. This is to set-up and get aquainted with some of the tools we will be using. The week before the in-person meeting, there will be regular Zoom drop-in times where you can ask questions while working through the material. 
+
+::: {.callout-important}
+**You will not be able to participate properly without completing the pre-course material!** If possible **start today and do a bit every day**.
+:::
+
+I want to thank [Lizel Potgieter](https://github.com/lpotgieter) for her valuable contributions to the materials for this course! 
+
+## Course content
+
+### before the course:
+
+| Topic  | Content  |
+|--------|--------|
+| HPC access | [Create user accounts for the HPC resources](before_accounts.qmd) |
+| VScode  | [Settting up and getting aquainted with VScode](before_VScode.qmd) |
+| Server access  | [SSH connect to the course server](before_server.qmd) |
+| Command line  | [Use the command line to manipulate data](before_command_line.qmd) |
+| screen | [Manage persistent bash sessions](before_screen.qmd) |
+| Quarto | [Installing and using Quarto with VScode](before_quarto.qmd) |
+| git and GitHub | [Version control with git and GitHub](before_git_and_github.qmd) |
+
+: Before the course {.striped .hover}
+
+### during the course:
+
+| Day  | Session  |
+|--------|--------|
+| Monday  | [Welcome, course setup](course_intro.qmd)  |
+|   | [Data Management & Reproducible Research](course_data_management.qmd)  |
+|   | [Using git collaboratively](course_git.qmd)  |
+|   | [Create a blog with Quarto](course_blog.qmd) |
+|   | [Publish your blog with GitHub actions](course_publish_blog.qmd) |
+| Tuesday   | [Introduction to environments](course_environments.qmd)   |
+|   | [Quality control of sequencing data](course_qc.qmd) |
+|   | [Bonus: Python in Pixi](bonus_python_pixi.qmd) |
+|   | [Introduction to containers](course_container.qmd)  |
+|   | [Using containers on your data](course_qc_container.qmd) |
+| Wednesday  | [Introduction to Nextflow](course_nextflow.qmd) |
+|   | [Nextflow basics](course_nextflow_tutorial.qmd) |
+|   | [Nextflow RNAseq](course_nextflow_rnaseq.qmd) |
+| Thursday   | [nf-core](course_nf-core.qmd) |
+|   | [Test a nf-core pipeline](course_test_nf-core.qmd)|
+|   | [Set up a nf-core pipeline](course_nf-core_rnaseq.qmd)  |
+| Friday  | [Visualize your results: ggplot](course_ggplot.qmd) |
+|   | [Discussion: AI in Bioinformatics](course_AI.qmd)|
+|   | [clean-up & finishing](course_clean_up.qmd)|
+
+: During the course {.striped .hover}
+

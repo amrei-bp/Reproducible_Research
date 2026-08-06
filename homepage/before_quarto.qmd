@@ -1,0 +1,35 @@
+---
+title: "Quarto"
+---
+
+## Literate programming
+
+When analysing data, it is good practice to work as `reproducible`as possible. Part of that is not only developing and executing code (for example in a R session), but to save and comment the code. As always, this documentation step is crucial to understand the code, especially when sharing code with others, or getting back to it at a later point in time.
+
+`Literate programming` combines code and documentation in the same document: the documentation is in plain text, and the code is wrapped in so called `chunks`, that are executable from within the document. 
+
+These **notebooks** that allow for literate programming come in different flavors, for example `jupyter notebooks`and `marimo` for Python applications, `Rmarkdown` for R code. Its successor, `quarto` can be used to integrate a variety of coding languanges. In this course, we will introduce you to `quarto`.
+
+## Quarto
+
+> [An open-source scientific and technical publishing system.](https://quarto.org/)
+
+Meaning that you can use your favorite text editor (such as VScode (o; ) to write documents in plain text markdown. 
+
+Quarto `chunks`, or `code cells`, are executable from within the document and can be written in a variety of different languages - such as `python`, `R`, `Julia`, `bash`, `Observable`, and more. 
+
+Your document can then be rendered into a variety of different output formats: `html`, `pdf`, `MS Word`, `Markdown`, and more. 
+
+With this you can make `presentations`, `dashboards`, `homepages` (like this one), `reports`, `books`, `manuscripts`, and more. 
+
+::: {.callout-important}
+## To do for you
+
+Install [Quarto](https://quarto.org/docs/get-started/), and follow the [tutorial for VScode](https://quarto.org/docs/get-started/hello/vscode.html). 
+:::
+
+
+
+::: {.callout-note}
+Quarto has a very good documentation, that you can access on their homepage -> Guide, or by searching the web for "Quarto, feature you are looking for".
+:::

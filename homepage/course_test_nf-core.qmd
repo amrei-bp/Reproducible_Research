@@ -1,0 +1,116 @@
+---
+title: "nfcore: test pipeline"
+---
+
+
+## Introduction
+
+Now that you know about Linux, containers, pixi, and Nextflow, we get to start with another really cool part of our course! In this section, we will create a `pixi` environment containing `nf-core` and `nextflow`. Once we've done that, we will turn our attention to [nf-core](https://nf-co.re) to run up a pipeline with the build in test data. This is a good way to test the setup, and to familiarize yourself with the output of the pipeline. 
+
+## Setting Up Your Pixi Environment
+
+In our course directory execute these commands, one after the other.
+
+Let's inititalise an environment for this - feel free to change the name of the environment/ directory. 
+
+```{.bash}
+pixi init nextflow_test -c conda-forge -c bioconda
+```
+
+Change directory into the project you created, and list the files there:
+
+```{.bash}
+cd name_nextflow
+ls
+```
+
+Add nf-core and Nextflow:
+
+```{.bash}
+pixi add nextflow nf-core
+```
+
+::: {.callout-note collapse="true"}
+While `apptainer` is sticky loaded on this server, it won't always be the case for other servers. So, if you are running within a Linux environment (and not otherwise), you can add `apptainer` with the `add` command. 
+:::
+
+And just check that everything worked, check the version of nextflow, get the nf-core help, and run the nextflow `Hello World`:
+
+```{.bash}
+pixi run nextflow -version
+pixi run nf-core --help
+pixi run nextflow run hello
+```
+
+Your nextflow version should be something like this:
+
+```{.verbatim}
+N E X T F L O W
+version 25.04.7 build 5955
+created 08-09-2025 13:29 UTC (15:29 CEST)
+cite doi:10.1038/nbt.3820
+http://nextflow.io
+```
+
+## Configuration profile
+
+Since we are working on a server with a configuration profile established, but not available via nf-core, you need to download it to your working directory:
+
+```{.bash}
+wget https://raw.githubusercontent.com/hpc2n/intro-course/master/exercises/NEXTFLOW/INTERACTIVE/hpc2n.config
+```
+
+Here is the configuration profile on HPC2N from the above link. The most important things we need to pay attention to are the `max_memory`, `max_cpus`, and `max_time` settings. Your jobs won't be able to exceed these maximum values. 
+
+To use the config file with nextflow you need to add our compute project under `project`. Use single quotes, as seen in the other entries in the file. 
+
+```{.bash}
+// Config profile for HPC2N
+params {
+  config_profile_description = 'Cluster profile for HPC2N'
+  config_profile_contact = 'Pedro Ojeda @pojeda'
+  config_profile_url = 'https://www.hpc2n.umu.se/'
+  project = null
+  clusterOptions = null
+  max_memory = 128.GB
+  max_cpus = 28
+  max_time = 168.h
+  email = 'pedroojeda2011@gmail.com'
+}
+
+singularity {
+  enabled = true
+}
+
+process {
+  executor = 'slurm'
+  clusterOptions = { "-A $params.project ${params.clusterOptions ?: ''}" }
+}
+```
+
+
+## run the pipeline with the test profile
+
+As an example, I am running the [Sarek pipeline](https://nf-co.re/sarek/3.4.2/), wich is a variant calling pipeline:
+
+```{.bash}
+pixi run nextflow run nf-core/sarek -profile test --outdir sarek_test -c hpc2n.config
+```
+
+Let's have a look at the components of the above command: 
+
+- `pixi run`: we are using our pixi environment to run the following commands
+- `nextflow run`: run the following with nextflow
+- `nf-core/sarek`: name/ location of the pipeline
+- `-profile test`: use the test profile for this run - this uses the build in test data etc. On servers with a nf-core configuration file you would list the name of the profile here. 
+- `--outdir sarek_test`: name and location of the directory for the pipeline output
+- `-c hpc2n.config`: name and location of the configuration file for the server
+
+My test run finished within 3 and a half minutes: 
+
+![sarek run summary](figures/nf-core/sarek_done.png)
+
+::: {.callout-important}
+## To do for you
+Have a look at the output of the run. Do you understand what happened, and what the output is? Is this pipeline as suitable for your data as you thought?
+:::

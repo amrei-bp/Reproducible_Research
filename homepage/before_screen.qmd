@@ -1,0 +1,38 @@
+---
+title: "Manage persistent bash sessions"
+---
+<br> 
+
+If you work a lot in the console/terminal, especially when working on remote machines/servers via SSH, then you are likely sooner or later to get very annoyed when:
+
+- you started a program which prints out interesting stuff in your terminal, but taking forever to run, it is in effect denying you the option to do anything else in your terminal 😕
+- you are at home connected to a remote server via SSH, you're eagerly waiting for a phylogeny inference program that has been running for 6 hours to finish, then your Internet connection goes down (or your laptop battery runs dry), which terminates your SSH session which in turn terminates your running program, so you have to start again from scratch 😤
+- you are at the lab working on a powerful workstation preparing some data for a project meeting tomorrow, some long running workflow in your terminal will require a few minutes of user interaction at around 11pm in order for the results to be ready in the morning: if only you could access your active terminal from home rather than hiking back to the lab at night 😴
+- from a terminal on your laptop, you've been running via SSH some interactive program for a few hours on a remote server. You need to power down the laptop to bring it home with you, but that means shutting down your terminal and terminating everything that was running and starting everything from scratch when you re-open your laptop later 😬
+
+Screen (and similar programs) allows you to run persistent bash sessions, so that if any of the above happens your bash session on the remote server will just continue. All running processes will proceed in your absence, and you can later re-attach to your session and find things exactly how they would have been had you sat right there, starring at the screen for hours 😎! 
+
+This is very useful since your re-attached session will continue in the same directory and will have all the project relevant command history saved. 
+
+
+::: {.callout-important}
+## To do for you
+Watch an [8 min. video](https://www.youtube.com/watch?v=Mw6QvsChxo4) which demonstrates how screen works.
+
+And follow the instructions below:
+:::
+
+
+## Practice a screen tutorial
+
+Connect to the HPC2N login node, enter the screen command in your terminal and practice the following tutorial starting from ["2. Name Your Session"](https://www.geeksforgeeks.org/linux-unix/screen-command-in-linux-with-examples/).
+
+After the above practice, in your terminal window you can test out the power of screen:
+
+- within your screen session, run this infinite loop: `while true; do date; sleep 1; done`
+- close the terminal window running your above split screen session altogether (brutal closing, ie clicking the "close window" garbage can icon on the top right corner of the terminal window in VScode, or closing VScode and your connection to HPC2n completely).
+- then open a fresh terminal window, (be sure you are connected to HPC2N) and re-attach to your still alive and kicking screen session.
+- notice how the date/times have continued to be printed to the screen in the background.
+- press `CTRL-C` `to interrupt the loop, then CTRL-A ESC` to enter scrolling mode, then you can use the `PAGE-UP` and `PAGE-DOWN` keys to observe the activity that took place in screen even whilst you were detached from the screen !
+
+Thank-you to Gabriele Pozatti for this section!

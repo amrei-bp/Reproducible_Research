@@ -1,0 +1,51 @@
+---
+title: "Create a Quarto blog"
+---
+
+<br>
+For this course we will create a blog in Quarto and publish it with GitHub pages (in the next part). At the end of every day, I want you to take some time to review the day's topics and write (and publish) a blog entry for each topic. 
+
+This gives you time to review what we've done, and practice literate programming, presentation, and git. You can explore Quarto and it's possibilities, or add bits and pieces to topics you're already familiar with.  
+
+And **at the end of the course you will hand in the blog, and the corresponding repository**. But you will also have a resource you can go back to, for yourself, or maybe for teaching purposes.
+
+Last, but not least, you can use the blog to showcase skills you have mastered (especially if you add to it during your PhD). 
+
+## How to start a blog with Quarto
+
+In VScode, open the command palette: 
+
+```{.md}
+View -> Command Palette
+```
+
+After the prompt, `>`, type: 
+
+```{.md}
+Quarto: Create Project
+```
+
+Select  `Blog Project`, the location on your computer, and fill in the name. 
+
+## Explore the blog and change things
+
+- Render the blog and explore - where are the posts, what can you change?
+
+- Write your first blog post: How to make a quarto blog. 
+
+
+## Tips and tricks
+
+
+With [listings](https://quarto.org/docs/websites/website-listings.html), you can control which posts will be shown where. 
+
+There are a lot of options for you [executable code](https://quarto.org/docs/output-formats/html-code.html). 
+
+You can [change the color scheme](https://quarto.org/docs/output-formats/html-themes.html) of the blog.
+
+[Lightbox images](https://quarto.org/docs/output-formats/html-lightbox-figures.html) might be interesting. 
+
+Make use of the categories to sort blog posts into groups. 
+
+Check other Quarto homepages for cool features!
+

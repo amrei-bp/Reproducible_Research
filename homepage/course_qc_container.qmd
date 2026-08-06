@@ -1,0 +1,24 @@
+---
+title: "Quality control with containers"
+---
+
+Now, let's do some more quality control (because we already know how to do it, and can concentrate on the container part), and run the tools with containers, and not (only) with the Pixi environment. 
+
+
+::: {.callout-important}
+## To do for you
+Run FastQC and MultiQC on the data, using containers. Run MultiQC from within the container AND the outside. 
+
+:::
+
+::: {.callout-tip}
+Get together with a neighbour and think about setting up this "project". What do you need? 
+
+- Screen session?
+- Data directory with symbolic links?
+- Pixi environment?
+- Where to get the container?
+- ...
+
+Maybe use a different data set this time, to mix it up a little? Remember to make **symbolic links** to the data!
+:::

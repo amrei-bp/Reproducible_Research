@@ -1,0 +1,113 @@
+project:
+  type: website
+
+highlight-style: a11y
+
+website:
+  title: "Reproducible Research 2026"
+  navbar:
+    background: primary
+    tools:
+      - icon: github
+        menu:
+          - text: Source Code
+            href:  https://github.com/amrei-bp/Reproducible_Research
+          - text: Report a Bug
+            href:  https://github.com/amrei-bp/Reproducible_Research/issues
+    left:
+      - href: index.qmd
+        text: Home
+      - about.qmd
+  search: 
+    location: navbar
+    type: textbox
+
+  sidebar:
+    style: "docked"
+    search: true
+    logo: figures/logo/SLUBI_logo.png
+    contents:
+      - text: "Home"
+        href: index.qmd
+      - section: "Preparations"
+        contents:
+          - text: "Server accounts"
+            href: before_accounts.qmd
+          - text: "Visual Studio Code"
+            href: before_VScode.qmd
+          - text: "Server access"
+            href: before_server.qmd
+          - text: "Command line"
+            href: before_command_line.qmd
+          - text: "screen session"
+            href: before_screen.qmd
+          - text: "Quarto"
+            href: before_quarto.qmd
+          - text: "git and GitHub"
+            href: before_git_and_github.qmd
+
+
+      - section: "Why this course?"
+        contents:
+          - course_intro.qmd
+          - text: "Reproducible bioinformatics"
+            href: course_data_management.qmd
+
+      - section: "Version control & documentation"
+        contents:
+          - text: "git pull requests"
+            href: course_git.qmd
+          - text: "Quarto blog"
+            href: course_blog.qmd
+          - text: "GitHub actions"
+            href: course_publish_blog.qmd
+      - section: "Working with environments"
+        contents:
+          - text: "Pixi"
+            href: course_environments.qmd
+          - text: "QC with Pixi"
+            href: course_qc.qmd
+          - text: "Bonus: Python in Pixi"
+            href: bonus_python_pixi.qmd
+      - section: "Working with containers"
+        contents:
+          - text: "Apptainer"
+            href: course_container.qmd
+          - text: QC with Apptainer
+            href: course_qc_container.qmd
+      - section: "Workflow manager"
+        contents:
+          - text: Nextflow
+            href: course_nextflow.qmd
+          - text: Nextflow basics
+            href: course_nextflow_tutorial.qmd
+          - text: Nextflow RNAseq
+            href: course_nextflow_rnaseq.qmd
+      - section: "Pipelines"
+        contents:
+          - text: "nf-core"
+            href: course_nf-core.qmd
+          - text: "Test nf-core"
+            href: course_test_nf-core.qmd
+          - text: "Use nf-core"
+            href: course_nf-core_rnaseq.qmd
+      - section: "Miscellaneous"
+        contents:
+          - text: "ggplot"
+            href: course_ggplot.qmd
+          - text: "AI in bioinformatics"
+            href: course_AI.qmd
+
+
+format:
+  html:
+    theme: yeti         # change to yeti during the course
+    css: styles.css
+    toc: true
+    code-copy: true
+    highlight-style: github
+    code-overflow: wrap
+
+execute:
+  freeze: auto
+

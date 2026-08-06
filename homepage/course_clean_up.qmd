@@ -1,0 +1,14 @@
+---
+title: "clean-up & finishing off"
+---
+
+<br>
+Now you have time to finish up some of the things you did not have time for during the course. 
+
+- Is there another post you would like to write?
+- Some Quarto thing you saw in our material/ in a fellow students homepage you'd like to try out?
+- A tool you'd like to test with Pixi?
+
+Once you are finished, please fill in the end-of-course feedback questionnaire, and send me the URL of your blog and GitHub repository (via Canvas). 
+
+Thanks for attending this course, I am looking forward to your feedback!

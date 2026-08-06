@@ -1,0 +1,27 @@
+---
+title: "Visualize your data with ggplot"
+---
+
+
+After you have finished your downstream analyses (which we will not get into in this course), you will want to visualize your results. 
+
+[R](https://www.r-project.org/) has a powefull package, called [ggplot](https://ggplot2.tidyverse.org/) that is very versatile. We work with it a lot, so we will present it to you today. 
+
+::: {.callout-tip}
+Click the three horizontal bars in the lower left corner of the presentation, then `Tools`, then `Fullscreen` to see the presentation in full screen mode. Press escape to leave the full screen mode. 
+:::
+
+<div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
+  <iframe
+    src="ggplot_slides/course_ggplot_slides.html"
+    style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none;"
+    allowfullscreen>
+  </iframe>
+</div>
+
+
+::: {.callout-important}
+## To do for you
+
+Now that you have seen some of the capabilities of ggplot, try them out in this [tutorial from Roy Francis at NBIS](https://nbisweden.github.io/raukr-2023/labs/ggplot/).
+:::
