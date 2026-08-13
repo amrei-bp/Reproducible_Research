@@ -1,5 +1,6 @@
 ---
 title: "Manage persistent bash sessions"
+sidebar: false
 ---
 <br> 
 

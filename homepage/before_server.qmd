@@ -1,5 +1,6 @@
 ---
 title: "Connect to the server"
+sidebar: false
 ---
 
 <br>

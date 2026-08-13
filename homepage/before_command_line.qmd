@@ -1,5 +1,6 @@
 ---
 title: "Command line"
+sidebar: false
 ---
 
 Unix-like operating systems are built under the model of free and open-source development and distribution. They often come with a graphical user interface (GUI) and can be run from the command line (CLI) or terminal. The CLI is a text-based interface that works exactly the same way as you would use your mouse, but you use words.

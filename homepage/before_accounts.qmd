@@ -1,5 +1,6 @@
 ---
 title: "Create user accounts for the server"
+sidebar: false
 ---
 
 <br>

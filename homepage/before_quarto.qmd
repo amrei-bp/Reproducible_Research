@@ -1,5 +1,6 @@
 ---
 title: "Quarto"
+sidebar: false
 ---
 
 Here we install Quarto in VScode and use it to build and publish a blog. (If you did module 1, you have already seen Quarto; this puts it to practical use.)

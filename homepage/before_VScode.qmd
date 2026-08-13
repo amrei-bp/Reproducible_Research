@@ -1,5 +1,6 @@
 ---
 title: "Visual Studio Code"
+sidebar: false
 ---
 
 During the pre-course assignements, and the course itself, we will be using Visual Studio Code (VScode). It is available for free and runs on all major platforms. Extensions make it very versatile, and we will be using it to edit and render text, to us version control, and to connect to and work on our course server. 

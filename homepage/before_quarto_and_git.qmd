@@ -1,5 +1,6 @@
 ---
 title: "Quarto Homepage on Github"
+sidebar: false
 ---
 
 [Creating a website in Quarto](https://quarto.org/docs/websites/)
