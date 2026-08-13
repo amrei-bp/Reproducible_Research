@@ -1,0 +1,27 @@
+/*-- scss:defaults --*/
+$green:         #1e5631;   // main brand green
+$green-dark:    #163f24;   // borders / hover
+$green-darkest: #0e2a17;
+$green-tint:    #edf4ee;   // faint background wash
+
+$primary:          $green;
+$link-color:       $green-dark;
+$link-hover-color: $green-darkest;
+
+$code-color: #c1571c;      // orange inline code
+
+/*-- scss:rules --*/
+:root { --bs-code-color: #c1571c; }
+code {
+  background-color: #f4d8bf;
+  border: 1px solid #f6dcc7;
+}
+
+// depth: lift the navbar off the page
+.navbar { box-shadow: 0 2px 6px rgba(0,0,0,.12); }
+
+// tonal hierarchy: faint green wash behind the sidebar
+nav.sidebar.sidebar-navigation:not(.rollup) { background-color: #e8f5ed; }
+
+// clearer active/hover state in the sidebar
+.sidebar-navigation .active { color: #{$green}; font-weight: 500; }

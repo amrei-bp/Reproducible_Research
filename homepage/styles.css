@@ -4,5 +4,6 @@
 .sidebar .sidebar-item-section > .sidebar-item-container > .sidebar-item-text,
 .sidebar .sidebar-item-section > .sidebar-item-container > .sidebar-link {
   font-weight: 700;
-  color: var(--bs-primary);
+  /*color: var(--bs-primary); // when using a standard quarto theme */
+  color: #08331f;   /* dark emerald 
 }

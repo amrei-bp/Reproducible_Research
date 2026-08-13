@@ -101,7 +101,7 @@ website:
 
 format:
   html:
-    theme: yeti         # change to yeti during the course
+    theme: [yeti, theme_colors.scss]         # change to yeti during the course
     css: styles.css
     toc: true
     code-copy: true
