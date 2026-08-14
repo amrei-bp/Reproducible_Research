@@ -17,7 +17,11 @@ As you can see, you can run Pixi on all major operating systems, and you can inc
 ::: {.callout-important}
 ## To do for you
 
-Log in to the course server and follow along:
+Log in to the course server and execute this in the terminal:
+
+```{.bash}
+wget -qO- https://pixi.sh/install.sh | sh
+```
 :::
 
 ### Installation
@@ -25,7 +29,7 @@ Log in to the course server and follow along:
 Installing Pixi is really easy and described thoroughly [here](https://pixi.sh/latest/installation/) with separate installation guides for Windows and Mac/Linux. 
 
 ::: {.callout-tip}
-To source your shell, you need to source the startup files, in Linux it's the `~/.bashrc` file, in Mac it's the `~/.zshrc` file.
+To source your shell, you need to source the startup files, in Linux it's the `source ~/.bashrc` file, in Mac it's the `source ~/.zshrc` file.
 :::
 
 
@@ -45,11 +49,13 @@ Pixi will create a folder named `name_pixi_training` with a a file `pixi.toml`. 
 Here is the code for changing directories, listing files, and viewing the contents of a file:
 
 ```{.bash}
-cd name_sida_training
+cd name_pixi_training
 ls
 less pixi.toml
 ```
 To exit the `less` view, press `q` for quit.
+
+Or use the file explorer of VScode. (o;
 :::
 
 ### pixi.toml
@@ -66,7 +72,7 @@ Click on the numbers in the list below to highlight the corresponding code.
 [workspace]                                 # <1>
 channels = ["conda-forge", "bioconda"]      # <2>
 name = "amrei_pixi_training"                # <3>
-platforms = ["osx-arm64"]                   # <4>
+platforms = ["linux-64"]                   # <4>
 version = "0.1.0"
 
 [tasks]                                     # <5>
@@ -85,7 +91,7 @@ version = "0.1.0"
 ::: {.callout-note}
 Your current platform will be automatically detected and added to the environment. If you want to add different platforms, you add them with the `-p linux-64` flag. In this example, you are adding Linux64. See the Pixi docs for the full list of supported platforms. 
 
-If you are adding a platform that doesn't natively run on your OS (e.g. adding Linux when running on Windows) be sure to add the OS you are running your system on as well!
+If you are adding a platform that doesn't natively run on your OS (e.g. adding Linux when running on Windows) be sure to keep/add the OS you are running your system on!
 :::
 
 Once you have used the environment, or added a dependency/tool to it, you will find yet another file, called `pixi.lock`.
@@ -131,13 +137,13 @@ Here is the pixi.toml we've seen earlier after I have added Quarto to my environ
 [workspace]
 channels = ["conda-forge", "bioconda"]
 name = "amrei_pixi_training"
-platforms = ["osx-arm64"]
+platforms = ["linux-64"]
 version = "0.1.0"
 
 [tasks]
 
 [dependencies]
-quarto = ">=1.7.32,<2"
+quarto = ">=1.9.38,<2"
 ```
 
 
@@ -163,7 +169,7 @@ And just to see that we have not installed Quarto on the server itself, try out 
 `quarto: command not found`
 
 
-## pixi shell
+## pixi shell (does not work on hpc2n)
 
 Alternatively, you can create and "enter" the environment with 
 
