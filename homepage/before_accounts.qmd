@@ -46,8 +46,8 @@ When you have a SUPR account you can join our course project on HPC2N:
 Log in to [SUPR](https://supr.naiss.se/). 
 
 - Click “Projects” in the left side column.
-- Under “Requesting Membership in Projects”, put in my name, since I am the PI of the project you wish to join. Click “Search for Project”.
-- Click “Request” on the MedBioInfo project.
+- Under “Requesting Membership in Projects”, search for Binzer-Panchal, since I am the PI of the project you wish to join. Click “Search for Project”.
+- Click “Request” on the "Reproducible Research in Bioinformatics and Computational Biology" project.
 - When I have accepted your membership in the project, go to SUPR again to apply for an account at HPC2N. You will receive an email when your application for membership in a project has been accepted.
 :::
 
