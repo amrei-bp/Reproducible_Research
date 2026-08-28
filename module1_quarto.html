@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Publish your blog – Reproducible Research 2026</title>
+<title>Quarto – Reproducible Research 2026</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -163,7 +163,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./course_git.html">Version control &amp; documentation</a></li><li class="breadcrumb-item"><a href="./course_publish_blog.html">GitHub actions</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./module1_git.html">Module 1 content</a></li><li class="breadcrumb-item"><a href="./module1_quarto.html">Intro to Quarto</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -294,7 +294,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./course_publish_blog.html" class="sidebar-item-text sidebar-link active">
+  <a href="./course_publish_blog.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">GitHub actions</span></a>
   </div>
 </li>
@@ -462,7 +462,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./module1_quarto.html" class="sidebar-item-text sidebar-link">
+  <a href="./module1_quarto.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">Intro to Quarto</span></a>
   </div>
 </li>
@@ -478,19 +478,26 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#tracking-your-blog-with-git" id="toc-tracking-your-blog-with-git" class="nav-link active" data-scroll-target="#tracking-your-blog-with-git">Tracking your blog with git</a></li>
-  <li><a href="#add-the-blog-to-github" id="toc-add-the-blog-to-github" class="nav-link" data-scroll-target="#add-the-blog-to-github">add the blog to GitHub</a></li>
-  <li><a href="#publish-via-github-actions" id="toc-publish-via-github-actions" class="nav-link" data-scroll-target="#publish-via-github-actions">publish via GitHub actions</a></li>
-  <li><a href="#tips-and-tricks" id="toc-tips-and-tricks" class="nav-link" data-scroll-target="#tips-and-tricks">Tips and tricks</a></li>
+  <li><a href="#the-problem" id="toc-the-problem" class="nav-link active" data-scroll-target="#the-problem">The problem</a></li>
+  <li><a href="#what-quarto-is" id="toc-what-quarto-is" class="nav-link" data-scroll-target="#what-quarto-is">What Quarto is</a></li>
+  <li><a href="#the-three-parts-of-a-quarto-document" id="toc-the-three-parts-of-a-quarto-document" class="nav-link" data-scroll-target="#the-three-parts-of-a-quarto-document">The three parts of a Quarto document</a></li>
+  <li><a href="#markdown-in-one-minute" id="toc-markdown-in-one-minute" class="nav-link" data-scroll-target="#markdown-in-one-minute">Markdown in one minute</a></li>
+  <li><a href="#code-cells" id="toc-code-cells" class="nav-link" data-scroll-target="#code-cells">Code cells</a></li>
+  <li><a href="#try-it-out" id="toc-try-it-out" class="nav-link" data-scroll-target="#try-it-out">Try it out</a></li>
+  <li><a href="#rendering-and-formats" id="toc-rendering-and-formats" class="nav-link" data-scroll-target="#rendering-and-formats">Rendering and formats</a></li>
+  <li><a href="#hands-on-your-first-report" id="toc-hands-on-your-first-report" class="nav-link" data-scroll-target="#hands-on-your-first-report">Hands-on: your first report</a></li>
+  <li><a href="#recap-your-quarto-cheat-sheet" id="toc-recap-your-quarto-cheat-sheet" class="nav-link" data-scroll-target="#recap-your-quarto-cheat-sheet">Recap: your Quarto cheat sheet</a></li>
+  <li><a href="#how-does-this-help-us" id="toc-how-does-this-help-us" class="nav-link" data-scroll-target="#how-does-this-help-us">How does this help us?</a></li>
   </ul>
 </nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./course_git.html">Version control &amp; documentation</a></li><li class="breadcrumb-item"><a href="./course_publish_blog.html">GitHub actions</a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./module1_git.html">Module 1 content</a></li><li class="breadcrumb-item"><a href="./module1_quarto.html">Intro to Quarto</a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title">Publish your blog</h1>
+<h1 class="title">Quarto</h1>
+<p class="subtitle lead">One document for your code, your words, and your results</p>
 </div>
 
 
@@ -507,48 +514,234 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<p>To publish your blog we need to first start tracking it with git:</p>
-<section id="tracking-your-blog-with-git" class="level2">
-<h2 class="anchored" data-anchor-id="tracking-your-blog-with-git">Tracking your blog with git</h2>
-<p>In the terminal, make sure you are in the directory of your blog, then type:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode md code-with-copy"><code class="sourceCode markdown"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>git init</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>This will initialize your blog directory as a git repository.</p>
-<blockquote class="blockquote">
-<p>Initialized empty Git repository in path/to/directory</p>
-</blockquote>
-<p>Now, if you check with</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode md code-with-copy"><code class="sourceCode markdown"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>git status</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>you will see that the repository is indeed empty. You will also see some untracked files.</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="figures/blog/empty_repo.png" class="img-fluid figure-img"></p>
-<figcaption>Terminal after checking the git status</figcaption>
-</figure>
+<div class="objectives">
+<p>By the end of this session you will be able to:</p>
+<ul>
+<li>Say what Quarto is and why combining code and text helps reproducibility</li>
+<li>Read the three parts of a Quarto document</li>
+<li>Write Markdown text and a code cell that produces output</li>
+<li>Render the same source to HTML, PDF, or slides</li>
+<li>Describe how to publish a document to the web</li>
+</ul>
 </div>
-<p>Add all the files to the repository and commit the changes to git.</p>
+<section id="the-problem" class="level2">
+<h2 class="anchored" data-anchor-id="the-problem">The problem</h2>
+<p>You finish an analysis, copy the key numbers and a figure into a Word document, and write up what they mean. A week later a sample turns out to be faulty and has to be removed. Now every number and every figure in your write up is wrong, and you have to find each one, rerun the analysis, and paste the new version in by hand, hoping you do not miss any. This is slow, and how mistakes slip into reports.</p>
+<p>Quarto removes this problem. You keep the code, the text, and the results in one document. When the data changes, you rebuild the document and every number and figure updates itself from the code.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>You are looking at Quarto right now
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>This whole site, including the quizzes below, is built with Quarto. By the end of this session you will understand how a page like this is made.</p>
+</div>
+</div>
 </section>
-<section id="add-the-blog-to-github" class="level2">
-<h2 class="anchored" data-anchor-id="add-the-blog-to-github">add the blog to GitHub</h2>
-<p>Now we need to add the local repository to GitHub. Log into GitHub on the homepage. Then add a new repository, give it a name and make it public. <strong>Do not add anything to it, not .gitignore, README, license etc. </strong></p>
-<p>Once initialized, GitHub will give you several suggestions of what to do with your new repository. Follow the instructions of the option: <code>...or push an existing repository from the command line</code></p>
-<p>Back in VScode, check in the terminal that you are in the correct directory (the one of your blog).</p>
-<p>You can then add the remote origin etc with the commands given on GitHub:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode md code-with-copy"><code class="sourceCode markdown"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>git remote add origin <span class="dt">&lt;</span><span class="kw">specifics</span><span class="ot"> of your repository</span><span class="dt">&gt;</span></span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>git branch -M main</span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>git push -u origin main</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>Check on Github if the content of your blog has been added. You might have to refresh your page.</p>
+<section id="what-quarto-is" class="level2">
+<h2 class="anchored" data-anchor-id="what-quarto-is">What Quarto is</h2>
+<p><strong>Quarto</strong> is a tool that turns a plain text document containing both writing and code into a finished output, such as a web page, a PDF, or a set of slides. The big idea is that the words, the code, and the results that the code produces all live in one place. Because the results are generated by the code each time, they never fall out of step with the text.</p>
+<p>The same source can become different outputs. Write once, then produce a web page for colleagues, a PDF for a supervisor, and slides for a talk, all from the one file.</p>
 </section>
-<section id="publish-via-github-actions" class="level2">
-<h2 class="anchored" data-anchor-id="publish-via-github-actions">publish via GitHub actions</h2>
-<p>Now that you have a local git repository that is synced to GitHub you can publish your blog using <a href="https://docs.github.com/en/pages">GitHub Pages</a>, a website hosting service.</p>
-<p>The default URL of your blog will be a combination of your GitHub user name and the name of the repository. If you have your own domain you can also use that at a later point in time.</p>
-<p>The steps for publishing your blog with GitHub Actions are <a href="https://quarto.org/docs/publishing/github-pages.html#github-action">here</a>. Follow the instructions until the section <code>Executing code</code>.</p>
-<p>Now, the publish command will be triggered automatically every time you push changes to the remote repository.</p>
+<section id="the-three-parts-of-a-quarto-document" class="level2">
+<h2 class="anchored" data-anchor-id="the-three-parts-of-a-quarto-document">The three parts of a Quarto document</h2>
+<p>A Quarto document is a plain text file with the extension <code>.qmd</code>. It has three kinds of content:</p>
+<ol type="1">
+<li>The <strong>front matter</strong> at the very top, a small settings block written between two lines of <code>---</code>. It uses a simple format called YAML.</li>
+<li><strong>Markdown</strong> text, which is your normal writing with light formatting.</li>
+<li><strong>Code cells</strong>, blocks of code that Quarto runs, placing their output into the document.</li>
+</ol>
+<p>Here is a tiny but complete example:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> "My analysis"</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="an">format:</span><span class="co"> html</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="fu">## Results</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>The average score in our samples is:</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>scores <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">5.1</span>, <span class="fl">4.9</span>, <span class="fl">6.0</span>, <span class="fl">5.8</span>)</span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(scores)</span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>The front matter sets the title and says to produce HTML. The <code>## Results</code> line is a Markdown heading. The code cell computes the mean, and Quarto drops that number into the finished page.</p>
 </section>
-<section id="tips-and-tricks" class="level2">
-<h2 class="anchored" data-anchor-id="tips-and-tricks">Tips and tricks</h2>
-<p>When working on the blog, use git (adding, committing, pushing) often. Try to keep commits to one topic - maybe one blog entry per time. This way it is easier to label the commits and backtrack what has happened in the repository.</p>
-<p>Do not add large files to the repository. GitHub is a code hosting platform, not a data hosting platform. If you have data in your local directory you can exlude it from the repository with the .gitignore file.</p>
+<section id="markdown-in-one-minute" class="level2">
+<h2 class="anchored" data-anchor-id="markdown-in-one-minute">Markdown in one minute</h2>
+<p><strong>Markdown</strong> is a way to format text using a few plain symbols, so the source stays readable. The common pieces:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu"># A big heading</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">## A smaller heading</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>Text can be **bold** or *italic*.</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>a bullet list</span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>another item</span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>A <span class="co">[</span><span class="ot">link</span><span class="co">](https://quarto.org)</span> and some <span class="in">`inline code`</span>.</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>That is most of what you need. Quarto turns these symbols into proper headings, lists, and links in the output.</p>
+</section>
+<section id="code-cells" class="level2">
+<h2 class="anchored" data-anchor-id="code-cells">Code cells</h2>
+<p>A <strong>code cell</strong> is a block of code fenced with triple backticks and a language in braces, such as <code>{python}</code> or <code>{r}</code>. Quarto runs the code and inserts the result, whether that is a number, a table, or a figure.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readr)</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"samples.csv"</span>)</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>data <span class="sc">|&gt;</span> <span class="fu">summarise</span>(<span class="at">mean_score =</span> <span class="fu">mean</span>(score))</span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Because the output comes from the code, it always matches the current data. If <code>samples.csv</code> changes, the next render shows the new mean automatically.</p>
+<p>Each cell can take <strong>options</strong>, written on lines starting with <code>#|</code>. A common one is <code>echo</code>, which controls whether the code itself is shown:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: false</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(data<span class="sc">$</span>score)</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>With <code>#| echo: false</code> the reader sees only the result, not the code that made it. This is handy for a report where the audience wants the figure, not the script.</p>
+</section>
+<section id="try-it-out" class="level2">
+<h2 class="anchored" data-anchor-id="try-it-out">Try it out</h2>
+<p>Here is the same idea, running in RStudio. The code below computes an average. Copy the chunk below into a .qmd file in your RStudio to see the result, then edit the data and run it again to watch the result update. This is exactly what happens when you re-render a Quarto document with new data.</p>
+<p>To run a chunk in RStudio, click the green <strong>▶ Run Current Chunk</strong> arrow at its top-right, or place your cursor in it and press <code>Ctrl/Cmd + Shift + Enter</code>.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>measurements <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">5.1</span>, <span class="fl">4.9</span>, <span class="fl">6.0</span>, <span class="fl">5.8</span>, <span class="fl">5.2</span>)</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>avg <span class="ot">&lt;-</span> <span class="fu">mean</span>(measurements)</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"number of samples:"</span>, <span class="fu">length</span>(measurements), <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"mean:"</span>, <span class="fu">round</span>(avg, <span class="dv">2</span>), <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Now your turn. <strong>Add the value <code>7.4</code></strong> to the vector above, then run the chunk again. Notice that both the count and the mean change on their own, with nothing else edited by hand.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Solution (click to reveal)
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-2" class="callout-2-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="in">```r</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>measurements <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">5.1</span>, <span class="fl">4.9</span>, <span class="fl">6.0</span>, <span class="fl">5.8</span>, <span class="fl">5.2</span>, <span class="fl">7.4</span>)</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>avg <span class="ot">&lt;-</span> <span class="fu">mean</span>(measurements)</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"number of samples:"</span>, <span class="fu">length</span>(measurements), <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"mean:"</span>, <span class="fu">round</span>(avg, <span class="dv">2</span>), <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</div>
+</div>
+</section>
+<section id="rendering-and-formats" class="level2">
+<h2 class="anchored" data-anchor-id="rendering-and-formats">Rendering and formats</h2>
+<p>To <strong>render</strong> a document means turning the <code>.qmd</code> source into its finished output (specified in the front matter). You do this from the command line:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="ex">quarto</span> render report.qmd      <span class="co"># produces report.html</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="ex">quarto</span> preview report.qmd     <span class="co"># opens a live preview that updates as you edit</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>To change the output type, you change one line in the front matter:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="sourceCode yaml code-with-copy"><code class="sourceCode yaml"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">format</span><span class="kw">:</span><span class="at"> html</span><span class="co">        # a web page</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="fu">format</span><span class="kw">:</span><span class="at"> pdf</span><span class="co">         # a PDF document</span></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="fu">format</span><span class="kw">:</span><span class="at"> revealjs</span><span class="co">    # a slide deck</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>The content stays the same, only the kind of output changes.</p>
+</section>
+<section id="hands-on-your-first-report" class="level2">
+<h2 class="anchored" data-anchor-id="hands-on-your-first-report">Hands-on: your first report</h2>
+<p>Do this on your own machine, where Quarto is installed.</p>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Important</span>To do for you
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>CHALLENGE: create a file report.qmd with a title, a heading, one sentence, and a code cell that prints 2 + 2, then render it to an HTML page.</p>
+</div>
+</div>
+<p>Try it before opening the solution.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Solution (click to reveal)
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-4" class="callout-4-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="ex">---</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="ex">title:</span> <span class="st">"My first report"</span></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="ex">format:</span> html</span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="ex">---</span></span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a><span class="co">## Results</span></span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a><span class="ex">This</span> number was produced by code, not typed by hand:</span>
+<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a><span class="kw">```</span><span class="ex">{python}</span></span>
+<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a><span class="ex">2</span> + 2</span>
+<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a><span class="kw">```</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Open <code>report.html</code> in a browser and you will see the heading, your sentence, and the number <code>4</code> produced by the code cell.</p>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Code cells need a language available
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>To run a <code>{r}</code> cell, Quarto needs R installed. Working from RStudio this might seem trivial, but you can use Quarto with other languages, such as Python, rust etc., and on other platforms (e.g.&nbsp;Visual Studio Code, text editor…).</p>
+</div>
+</div>
+</section>
+<section id="recap-your-quarto-cheat-sheet" class="level2">
+<h2 class="anchored" data-anchor-id="recap-your-quarto-cheat-sheet">Recap: your Quarto cheat sheet</h2>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Item</th>
+<th>What it does</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>--- ... ---</code></td>
+<td>the front matter (settings) at the top of a <code>.qmd</code></td>
+</tr>
+<tr class="even">
+<td><code>format: html</code></td>
+<td>choose the output type (also <code>pdf</code>, <code>revealjs</code>)</td>
+</tr>
+<tr class="odd">
+<td>a <code>{python}</code> or <code>{r}</code> cell</td>
+<td>run code and insert its output</td>
+</tr>
+<tr class="even">
+<td><code>#| echo: false</code></td>
+<td>hide the code, keep the output</td>
+</tr>
+<tr class="odd">
+<td><code>#| eval: false</code></td>
+<td>show the code but do not run it</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="how-does-this-help-us" class="level2">
+<h2 class="anchored" data-anchor-id="how-does-this-help-us">How does this help us?</h2>
+<p>Remember redoing every number and figure by hand after one sample changed? You can now keep the code, the text, and the results in one Quarto document, so re-rendering refreshes everything from the code. You can write in Markdown, run code cells, produce HTML, PDF, or slides from the same source, and publish to the web, as this site does.</p>
 
 
 </section>
