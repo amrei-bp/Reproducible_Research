@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Visualize your data with ggplot – Reproducible Research 2026</title>
+<title>Version control – Reproducible Research 2026</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -128,7 +128,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./course_ggplot.html">Miscellaneous</a></li><li class="breadcrumb-item"><a href="./course_ggplot.html">ggplot</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./module1_git.html">Module 1 content</a></li><li class="breadcrumb-item"><a href="./module1_git.html">Git and GitHub</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -386,7 +386,7 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-8" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./course_ggplot.html" class="sidebar-item-text sidebar-link active">
+  <a href="./course_ggplot.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">ggplot</span></a>
   </div>
 </li>
@@ -409,7 +409,7 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-9" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./module1_git.html" class="sidebar-item-text sidebar-link">
+  <a href="./module1_git.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">Git and GitHub</span></a>
   </div>
 </li>
@@ -420,15 +420,26 @@ ul.task-list li input[type="checkbox"] {
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#git" id="toc-git" class="nav-link active" data-scroll-target="#git">git</a></li>
+  <li><a href="#github" id="toc-github" class="nav-link" data-scroll-target="#github">GitHub</a>
+  <ul class="collapse">
+  <li><a href="#working-with-github" id="toc-working-with-github" class="nav-link" data-scroll-target="#working-with-github">Working with GitHub</a></li>
+  <li><a href="#collaborating-on-github" id="toc-collaborating-on-github" class="nav-link" data-scroll-target="#collaborating-on-github">Collaborating on GitHub</a></li>
+  </ul></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./course_ggplot.html">Miscellaneous</a></li><li class="breadcrumb-item"><a href="./course_ggplot.html">ggplot</a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./module1_git.html">Module 1 content</a></li><li class="breadcrumb-item"><a href="./module1_git.html">Git and GitHub</a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title">Visualize your data with ggplot</h1>
+<h1 class="title">Version control</h1>
 </div>
 
 
@@ -445,39 +456,129 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<p>After you have finished your downstream analyses (which we will not get into in this course), you will want to visualize your results.</p>
-<p><a href="https://www.r-project.org/">R</a> has a powefull package, called <a href="https://ggplot2.tidyverse.org/">ggplot</a> that is very versatile. We work with it a lot, so we will present it to you today.</p>
-<div class="callout callout-style-default callout-tip callout-titled">
+<p>We all have worked on data before, done analyses, talked with our PI, changed the analyses, worked a bit more… and in the end we have something like this:</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="figures/git/data_chaos.png" class="class img-fluid figure-img" style="width:20.0%"></p>
+<figcaption>Which one of these is the latest version?</figcaption>
+</figure>
+</div>
+<p><strong>Version control</strong>, the practice of tracking and managing changes to files, can help us not descend into chaos. With a version controlled project you always know which file, and even which part of the file, is the most recent, and you can even go back to older versions if you have to.</p>
+<p>Version control can be used on the local system, where both the version database and the checked out file - the one that is actively being worked on - are on the local computer. Good, but the local computer can be corrupted and then the data is compromised.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="figures/git/Local_version_control_diagram.png" class="class img-fluid figure-img" style="width:50.0%"></p>
+<figcaption><a href="https://git-scm.com/book/en/v2/Getting-Started-About-Version-Control">Local version control</a></figcaption>
+</figure>
+</div>
+<p>Version control can also be centralized, where the version database is on a central server, and the active file can be checked out from several different computers. This is useful when working from different systems, or when working with collaborators. However, when the central servers is compromised the historical version are lost.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="figures/git/Centralized_version_control.png" class="class img-fluid figure-img" style="width:50.0%"></p>
+<figcaption><a href="https://git-scm.com/book/en/v2/Getting-Started-About-Version-Control">Centralized version control</a></figcaption>
+</figure>
+</div>
+<p>At last, version control can be fully distributed, with all versions of the file being on the server and different computers. Each computer checks out the file from its own version database to work on them. The databases are then synchronized between the different computers and the server. One such distributed version control system is <code>git</code>. It can handle everything from small to very large projects and is simple to use. <code>GitHub</code>is a code hosting platform for version control and collaboration, built on git.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="figures/git/git_distributed_version_control.png" class="class img-fluid figure-img" style="width:50.0%"></p>
+<figcaption><a href="https://git-scm.com/book/en/v2/Getting-Started-About-Version-Control">Distributed version control</a></figcaption>
+</figure>
+</div>
+<p>Distributed version control <strong>facilitates collaboration</strong> with others. Software like <code>git</code> automatically tracks differences in files, and flags conflicts between files.</p>
+<p>Additionally, GitHub, the code hosting platform based on git that we are using in this course, can be used to <strong>maintain uniformity</strong> within a working group. The group can develop their own project template that people can use and populate for their own projects.</p>
+<section id="git" class="level2">
+<h2 class="anchored" data-anchor-id="git">git</h2>
+<p><img src="figures/git/Git-Logo-2Color.png" alt="www.github.com" style="float:left; width:120px; margin:0 1em 1em 0;"> <strong>Git</strong> is a <strong>version control software</strong> that is fully distributed - meaning that each project folder contains the full history of the project. These folders are also called <code>repositories</code> and can be on several computers, or servers.</p>
+<div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Tip
+Note
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Click the three horizontal bars in the lower left corner of the presentation, then <code>Tools</code>, then <code>Fullscreen</code> to see the presentation in full screen mode. Press escape to leave the full screen mode.</p>
+<p>A <strong>repository in git</strong> is the .git/ folder inside of your directory. This repository tracks all changes made to files in your project and contains your project history. Usually we refer to the git repository as the <strong>local repository</strong>.</p>
 </div>
 </div>
-<div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
-<p><iframe src="ggplot_slides/course_ggplot_slides.html" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none;" allowfullscreen=""> </iframe></p>
+<p>Let’s have a closer look at how it works:</p>
+<blockquote class="blockquote">
+<p>Git has three main states that your files can reside in: modified, staged, and committed:</p>
+</blockquote>
+<blockquote class="blockquote">
+<ul>
+<li>Modified means that you have changed the file but have not committed it to your database yet.</li>
+<li>Staged means that you have marked a modified file in its current version to go into your next commit snapshot.</li>
+<li>Committed means that the data is safely stored in your local database.</li>
+</ul>
+</blockquote>
+<blockquote class="blockquote">
+<p><a href="https://git-scm.com/book/en/v2/Getting-Started-What-is-Git%3F">source: git documentation</a></p>
+</blockquote>
+<p>This leads to the three main sections of a Git project: the working directory, the staging area, and the Git directory (or repository).</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="figures/git/git_diagram.png" class="class img-fluid figure-img" style="width:70.0%"></p>
+<figcaption><a href="https://git-scm.com/book/en/v2/Getting-Started-What-is-Git%3F">Working directory, staging area, and Git directory</a></figcaption>
+</figure>
 </div>
-<div class="callout callout-style-default callout-important callout-titled">
+<p>And the basic commands of git:</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="figures/git/git_commands.png" class="class img-fluid figure-img" style="width:50.0%"></p>
+<figcaption>Basic git commands</figcaption>
+</figure>
+</div>
+<p>The majority of your version control work will happen in your local repository. You have the entire history of the project on your local disk, and do not need an internet connection to work on your data with git.</p>
+<p>However, if you want to <strong>have a backup</strong> of your code, <strong>share it</strong> or <strong>collaborate with others</strong>, you might want to add GitHub into the mix:</p>
+</section>
+<section id="github" class="level1">
+<h1>GitHub</h1>
+<p><img src="figures/git/github-mark.png" alt="www.github.com" style="float:left; width:120px; margin:0 1em 1em 0;"> <br> <strong>Github</strong> is a <strong>code hosting platform</strong> that is <strong>based on git</strong>. Here you can store, track and publish code (and code only, do NOT use github for data!). On Github you can collaborate with colleagues and work on projects together.</p>
+<p><br></p>
+<div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Important</span>To do for you
+Note
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Now that you have seen some of the capabilities of ggplot, try them out in this <a href="https://nbisweden.github.io/raukr-2023/labs/ggplot/">tutorial from Roy Francis at NBIS</a>.</p>
+<p>A <strong>repository in GitHub</strong> is where you can store your code, your files, together with their revision history. Repositories can be public or private, and might have several collaborators. Usually we refer to the Github repository as the <strong>remote repository</strong>.</p>
 </div>
+</div>
+<section id="working-with-github" class="level2">
+<h2 class="anchored" data-anchor-id="working-with-github">Working with GitHub</h2>
+<p>If you have a repository on GitHub you can <strong>clone</strong> its contents to you local server. That clones both the working copy, and the .git repository.</p>
+<p>You can then work locally on your project, make changes, stage and commit them. Then, you can <strong>push</strong> them to the remote repository on GitHub, syncing the local and the remote repository. From there your collaborator can then <strong>pull</strong> them again.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="figures/git/git-tower_basic-remote-workflow.png" class="img-fluid figure-img" style="width:75.0%"></p>
+<figcaption>https://www.git-tower.com/learn/git/ebook/en/command-line/remote-repositories/introduction</figcaption>
+</figure>
+</div>
+</section>
+<section id="collaborating-on-github" class="level2">
+<h2 class="anchored" data-anchor-id="collaborating-on-github">Collaborating on GitHub</h2>
+<p>With the setting above you can share code with someone, and this works well when publishing code. This works well when you own the GitHub repository or have write access to it.</p>
+<p>In collaborative and open-source settings, however, you often want to contribute to a repository you do not control. This is where <strong>forking</strong> comes in.</p>
+<p>Forking a repository means creating your own copy of an existing GitHub repository under your own GitHub account. Your fork is a remote repository that you control, but it still remembers where it came from.</p>
+<p>You then clone your fork to your local computer and work as usual: add, commit, push, and pull. When you are ready to share your changes, you can propose them back to the original repository by opening a <strong>pull request</strong>: a request to merge your changes into the original project.</p>
+<p>In this way, forking allows collaboration without giving everyone direct write access to the same repository. It also allows for more formal collaboration, with quality checked code etc.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="figures/git/git-github-workflow_amrei.png" class="img-fluid figure-img"></p>
+<figcaption>https://www.linode.com/docs/guides/how-to-install-git-and-clone-a-github-repository/</figcaption>
+</figure>
 </div>
 
 
+</section>
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
