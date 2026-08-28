@@ -97,6 +97,10 @@ website:
             href: course_ggplot.qmd
           - text: "AI in bioinformatics"
             href: course_AI.qmd
+      - section: "Module 1 content"
+        contents: 
+          - text: "Git and GitHub"
+            href: module1_git.qmd
 
 
 format:
