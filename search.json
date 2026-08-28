@@ -639,147 +639,75 @@
     ]
   },
   {
-    "objectID": "course_nextflow.html",
-    "href": "course_nextflow.html",
-    "title": "Nextflow",
+    "objectID": "module1_git_rstudio_exercise.html",
+    "href": "module1_git_rstudio_exercise.html",
+    "title": "Git in R Studio",
     "section": "",
-    "text": "When developing your code in bioinformatics, you will likely use different tool for different parts of your analyses. Traditionally, you would have about one script per tool, all of which you deploy by hand, one after the other. Together, this is called a workflowor pipeline.\nManual deployment of pipelines can be tedious, especially if you have analyses with many steps, or many samples of different sizes that might need a varying amount of computational power. Luckily for you, other bioinformaticians and software developers have developed something to make your life much easier:",
+    "text": "Now we have changed files and committed those changes on Github, and now we would like to add the files you have already worked on to them.\nThen, your can work on our code locally on our computer (just as you are used to) and to use git/Github to track our work in the future.\nWe will follow the Data carpentries tutorial here.",
     "crumbs": [
       "Home",
-      "Workflow manager",
-      "Nextflow"
+      "Module 1 content",
+      "Exercise: Git in RStudio"
     ]
   },
   {
-    "objectID": "course_nextflow.html#workflow-managers",
-    "href": "course_nextflow.html#workflow-managers",
-    "title": "Nextflow",
-    "section": "Workflow managers",
-    "text": "Workflow managers\n\nWorkflow managers provide a framework for the creation, execution, and monitoring of pipeline. &lt;…&gt; They simplify pipeline development, optimize resource usage, handle software installation and versions, and run on different compute platforms, enabling workflow portability and sharing. Wratten et al. (2021) Nature Methods\n\nWith workflow managers you can develop an automated pipeline from your scripts that can then be run on a variety of systems. Once it is developed, execute a single command to start the pipeline. The manager then coordinates the deployment of the scripts in the appropriate sequence, monitors the jobs, handles the file transfers between scripts, gathers the output, and handles re-execution of failed jobs for you. Workflow managed pipelines can run containers, which eliminates software installation and version conflicts.\nThat means that by design the pipelines are:\n\nportable\nmore time efficient (no more downtime between pipeline steps)\nmore resource efficient (mostly, but this might vary depending how skilled a developer you yourself are)\neasier to install (especially when combined with containers, or environment managers)\nmore reproducible\n\nThere are in principle two different flavors of workflow managers: snakemake, and nextflow. In this course we will be introducing you to nexflow.",
+    "objectID": "module1_git_rstudio_exercise.html#the-git-tab-in-rstudio",
+    "href": "module1_git_rstudio_exercise.html#the-git-tab-in-rstudio",
+    "title": "Git in R Studio",
+    "section": "The Git tab in RStudio",
+    "text": "The Git tab in RStudio\nWhen a project is connected to a Git repository, RStudio automatically adds a new Git tab to the interface. It is located in the top-right pane of RStudio.\nThe Git tab allows you to:\n\nsee which files are tracked by Git,\ncheck whether files have changed,\nview the commit history,\ncommit and push changes later on.\n\nFor now, we will focus on exploring the existing history.",
     "crumbs": [
       "Home",
-      "Workflow manager",
-      "Nextflow"
+      "Module 1 content",
+      "Exercise: Git in RStudio"
     ]
   },
   {
-    "objectID": "course_nextflow.html#nextflow",
-    "href": "course_nextflow.html#nextflow",
-    "title": "Nextflow",
-    "section": "Nextflow",
-    "text": "Nextflow\nIn nextflow, your scripts are turned into processes, connected by channels that contain the data - input, output etc. The order of the processes, and their interaction with each other, is specfied in the workflow scope.\n\n\n\nsource: Software carpentries\n\n\n\n\n\n\n\n\nNote\n\n\n\nIn this course, we will not write our own processes, or pipeline. However, if you are interested, there are a lot of very good training materials available online.\n\n\nThe executable part of the processes, the so called script, can be written in any language, so in theory you could always choose the language that is best suited for the job (in practice you might be limited to the languages you know). However, the modularity of the processes allows for easy re-use of existing scripts and processes.\nWhen moving the pipeline from one system to another, the script stays the same and does not change, the same containers are used. The only thing that changes are the parameters that pertain to the environment and available resources. In other words, with nextflow, the functional logic, the processes, are separated from the executive (how the workflow runs). This makes the nextflow pipelines highly interoperable and portable. They can be run on various platforms, such as HPC clusters, local computers, cloud systems etc..\nThe pipelines can be integrated with version control tools, such as git or bitbucket, and containers technologies, such as apptainer or docker. This makes the pipeline very reproducible.\nThe nextflow pipelines are extremely scalable, can be developed on a few samples and easily be run on hundreds or thousands of samples. When possible, processes are run in parallel automatically.\nNexflow performs automatic checks on the processes and their in- and output. It can automatically resume execution at a point of failure without having to re-compute successfully completed parts.\nNextflow is open source.\nHere is a more visual summary of some of the points above:\n\n\n\nsource: Maxime U Garcia, Seqera labs",
+    "objectID": "module1_git_rstudio_exercise.html#viewing-the-commit-history",
+    "href": "module1_git_rstudio_exercise.html#viewing-the-commit-history",
+    "title": "Git in R Studio",
+    "section": "Viewing the commit history",
+    "text": "Viewing the commit history\n\nClick on the Git tab.\nClick the button that looks like a clock.\n\nA window will open showing the commit history of the repository. Each entry represents one saved change and includes:\n\na short description of the change (the commit message),\nthe author,\nthe date and time.\n\nIf you click on a commit, you can see which files were changed and how.\n\n\n\n\n\n\nImportant\n\n\n\nThe commit history you see here is the same history you saw earlier on GitHub, the local project in RStudio and the remote repository on GitHub are connected.",
     "crumbs": [
       "Home",
-      "Workflow manager",
-      "Nextflow"
+      "Module 1 content",
+      "Exercise: Git in RStudio"
     ]
   },
   {
-    "objectID": "before_quarto.html",
-    "href": "before_quarto.html",
-    "title": "Quarto",
-    "section": "",
-    "text": "Here we install Quarto in VScode and use it to build and publish a blog. (If you did module 1, you have already seen Quarto; this puts it to practical use.)",
+    "objectID": "module1_git_rstudio_exercise.html#working-with-git-in-rstudio",
+    "href": "module1_git_rstudio_exercise.html#working-with-git-in-rstudio",
+    "title": "Git in R Studio",
+    "section": "Working with Git in RStudio",
+    "text": "Working with Git in RStudio\nFrom this point on, your typical workflow will be:\n\nmake changes locally,\ncommit them in RStudio,\npush them to GitHub.\n\nWe will practice these steps next.",
     "crumbs": [
       "Home",
-      "Preparations",
-      "Quarto"
+      "Module 1 content",
+      "Exercise: Git in RStudio"
     ]
   },
   {
-    "objectID": "before_quarto.html#literate-programming",
-    "href": "before_quarto.html#literate-programming",
-    "title": "Quarto",
-    "section": "Literate programming",
-    "text": "Literate programming\nWhen analysing data, it is good practice to work as reproducibleas possible. Part of that is not only developing and executing code (for example in a R session), but to save and comment the code. As always, this documentation step is crucial to understand the code, especially when sharing code with others, or getting back to it at a later point in time.\nLiterate programming combines code and documentation in the same document: the documentation is in plain text, and the code is wrapped in so called chunks, that are executable from within the document.\nThese notebooks that allow for literate programming come in different flavors, for example jupyter notebooksand marimo for Python applications, Rmarkdown for R code. Its successor, quarto can be used to integrate a variety of coding languanges. In this course, we will introduce you to quarto.",
+    "objectID": "module1_git_rstudio_exercise.html#add-files-via-rstudio",
+    "href": "module1_git_rstudio_exercise.html#add-files-via-rstudio",
+    "title": "Git in R Studio",
+    "section": "Add files via RStudio",
+    "text": "Add files via RStudio\n\nIn RStudio, go to the Files tab (lower right pane).\nClick Blank File.\nChoose the type of document you want to create (for example, R Script or Quarto).\nGive the file a meaningful name and create it by clicking OK.\n\nThe new file will now appear in your project and can be tracked by Git.",
     "crumbs": [
       "Home",
-      "Preparations",
-      "Quarto"
+      "Module 1 content",
+      "Exercise: Git in RStudio"
     ]
   },
   {
-    "objectID": "before_quarto.html#quarto",
-    "href": "before_quarto.html#quarto",
-    "title": "Quarto",
-    "section": "Quarto",
-    "text": "Quarto\n\nAn open-source scientific and technical publishing system.\n\nMeaning that you can use your favorite text editor (such as VScode (o; ) to write documents in plain text markdown.\nQuarto chunks, or code cells, are executable from within the document and can be written in a variety of different languages - such as python, R, Julia, bash, Observable, and more.\nYour document can then be rendered into a variety of different output formats: html, pdf, MS Word, Markdown, and more.\nWith this you can make presentations, dashboards, homepages (like this one), reports, books, manuscripts, and more.\n\n\n\n\n\n\nImportantTo do for you\n\n\n\nInstall Quarto, and follow the tutorial for VScode.\n\n\n\n\n\n\n\n\nNote\n\n\n\nQuarto has a very good documentation, that you can access on their homepage -&gt; Guide, or by searching the web for “Quarto, feature you are looking for”.",
+    "objectID": "module1_git_rstudio_exercise.html#add-files-via-copy-and-paste",
+    "href": "module1_git_rstudio_exercise.html#add-files-via-copy-and-paste",
+    "title": "Git in R Studio",
+    "section": "Add files via copy and paste",
+    "text": "Add files via copy and paste\nIf you already have files you want to include:\n\nCopy the file(s) into your RStudio project directory.\nSwitch back to RStudio.\n\nThe files will appear automatically in the Files tab.",
     "crumbs": [
       "Home",
-      "Preparations",
-      "Quarto"
-    ]
-  },
-  {
-    "objectID": "course_intro.html#hello-and-welcome-to-the-advanced-module-of-reproducible-research-in-bioinformatics-and-computational-biology",
-    "href": "course_intro.html#hello-and-welcome-to-the-advanced-module-of-reproducible-research-in-bioinformatics-and-computational-biology",
-    "title": "Personal course homepage",
-    "section": "Hello and welcome to the advanced module of Reproducible Research in Bioinformatics and Computational Biology!",
-    "text": "Hello and welcome to the advanced module of Reproducible Research in Bioinformatics and Computational Biology!\nToday we will talk about the why’s and how’s of this module, and you will set up your own course homepage. This homepage will be your personal learning space throughout the module. Each evening, you’ll write a short blog post to reflect on what you’ve learned during the day. Some days, you might write several posts if you have a lot to share. These daily reflections will help you keep track of your progress, deepen your understanding, and build a clear record of your learning, as well as a habit of documentation.",
-    "crumbs": [
-      "Home",
-      "Why this course?",
-      "Personal course homepage"
-    ]
-  },
-  {
-    "objectID": "course_intro.html#your-homepage-and-github",
-    "href": "course_intro.html#your-homepage-and-github",
-    "title": "Personal course homepage",
-    "section": "Your Homepage and GitHub",
-    "text": "Your Homepage and GitHub\nYour Quarto homepage will be version-controlled using Git and GitHub. By the end of the module, you will share both the URL of your GitHub repository and the URL of your published homepage. This way I can review your work, follow your progress, and see how your site has developed over time.",
-    "crumbs": [
-      "Home",
-      "Why this course?",
-      "Personal course homepage"
-    ]
-  },
-  {
-    "objectID": "course_intro.html#good-git-practices",
-    "href": "course_intro.html#good-git-practices",
-    "title": "Personal course homepage",
-    "section": "Good Git Practices",
-    "text": "Good Git Practices\nThroughout the module, I expect you to follow good Git practices. This means writing clear and informative commit messages, keeping each commit focused on one topic or change, and committing regularly rather than saving everything for the end. These habits are an essential part of professional software development and will make your project much easier to follow and maintain.",
-    "crumbs": [
-      "Home",
-      "Why this course?",
-      "Personal course homepage"
-    ]
-  },
-  {
-    "objectID": "course_intro.html#writing-your-daily-blog",
-    "href": "course_intro.html#writing-your-daily-blog",
-    "title": "Personal course homepage",
-    "section": "Writing Your Daily Blog",
-    "text": "Writing Your Daily Blog\nYour daily posts do not have to be long or perfect. The goal is to build a habit of documentation and communication. Use simple language, write honestly about what you’ve learned, and don’t be afraid to include code, images, or links to illustrate your thoughts. Over time, these posts will form a valuable record of your growth and achievements during the course - and maybe later?",
-    "crumbs": [
-      "Home",
-      "Why this course?",
-      "Personal course homepage"
-    ]
-  },
-  {
-    "objectID": "before_screen.html",
-    "href": "before_screen.html",
-    "title": "Manage persistent bash sessions",
-    "section": "",
-    "text": "If you work a lot in the console/terminal, especially when working on remote machines/servers via SSH, then you are likely sooner or later to get very annoyed when:\nScreen (and similar programs) allows you to run persistent bash sessions, so that if any of the above happens your bash session on the remote server will just continue. All running processes will proceed in your absence, and you can later re-attach to your session and find things exactly how they would have been had you sat right there, starring at the screen for hours 😎!\nThis is very useful since your re-attached session will continue in the same directory and will have all the project relevant command history saved.",
-    "crumbs": [
-      "Home",
-      "Preparations",
-      "screen session"
-    ]
-  },
-  {
-    "objectID": "before_screen.html#practice-a-screen-tutorial",
-    "href": "before_screen.html#practice-a-screen-tutorial",
-    "title": "Manage persistent bash sessions",
-    "section": "Practice a screen tutorial",
-    "text": "Practice a screen tutorial\nConnect to the HPC2N login node, enter the screen command in your terminal and practice the following tutorial starting from “2. Name Your Session”.\nAfter the above practice, in your terminal window you can test out the power of screen:\n\nwithin your screen session, run this infinite loop: while true; do date; sleep 1; done\nclose the terminal window running your above split screen session altogether (brutal closing, ie clicking the “close window” garbage can icon on the top right corner of the terminal window in VScode, or closing VScode and your connection to HPC2n completely).\nthen open a fresh terminal window, (be sure you are connected to HPC2N) and re-attach to your still alive and kicking screen session.\nnotice how the date/times have continued to be printed to the screen in the background.\npress CTRL-C to interrupt the loop, then CTRL-A ESC to enter scrolling mode, then you can use the PAGE-UP and PAGE-DOWN keys to observe the activity that took place in screen even whilst you were detached from the screen !\n\nThank-you to Gabriele Pozatti for this section!",
-    "crumbs": [
-      "Home",
-      "Preparations",
-      "screen session"
+      "Module 1 content",
+      "Exercise: Git in RStudio"
     ]
   },
   {
@@ -900,6 +828,150 @@
       "Home",
       "Workflow manager",
       "Nextflow RNAseq"
+    ]
+  },
+  {
+    "objectID": "before_screen.html",
+    "href": "before_screen.html",
+    "title": "Manage persistent bash sessions",
+    "section": "",
+    "text": "If you work a lot in the console/terminal, especially when working on remote machines/servers via SSH, then you are likely sooner or later to get very annoyed when:\nScreen (and similar programs) allows you to run persistent bash sessions, so that if any of the above happens your bash session on the remote server will just continue. All running processes will proceed in your absence, and you can later re-attach to your session and find things exactly how they would have been had you sat right there, starring at the screen for hours 😎!\nThis is very useful since your re-attached session will continue in the same directory and will have all the project relevant command history saved.",
+    "crumbs": [
+      "Home",
+      "Preparations",
+      "screen session"
+    ]
+  },
+  {
+    "objectID": "before_screen.html#practice-a-screen-tutorial",
+    "href": "before_screen.html#practice-a-screen-tutorial",
+    "title": "Manage persistent bash sessions",
+    "section": "Practice a screen tutorial",
+    "text": "Practice a screen tutorial\nConnect to the HPC2N login node, enter the screen command in your terminal and practice the following tutorial starting from “2. Name Your Session”.\nAfter the above practice, in your terminal window you can test out the power of screen:\n\nwithin your screen session, run this infinite loop: while true; do date; sleep 1; done\nclose the terminal window running your above split screen session altogether (brutal closing, ie clicking the “close window” garbage can icon on the top right corner of the terminal window in VScode, or closing VScode and your connection to HPC2n completely).\nthen open a fresh terminal window, (be sure you are connected to HPC2N) and re-attach to your still alive and kicking screen session.\nnotice how the date/times have continued to be printed to the screen in the background.\npress CTRL-C to interrupt the loop, then CTRL-A ESC to enter scrolling mode, then you can use the PAGE-UP and PAGE-DOWN keys to observe the activity that took place in screen even whilst you were detached from the screen !\n\nThank-you to Gabriele Pozatti for this section!",
+    "crumbs": [
+      "Home",
+      "Preparations",
+      "screen session"
+    ]
+  },
+  {
+    "objectID": "course_intro.html#hello-and-welcome-to-the-advanced-module-of-reproducible-research-in-bioinformatics-and-computational-biology",
+    "href": "course_intro.html#hello-and-welcome-to-the-advanced-module-of-reproducible-research-in-bioinformatics-and-computational-biology",
+    "title": "Personal course homepage",
+    "section": "Hello and welcome to the advanced module of Reproducible Research in Bioinformatics and Computational Biology!",
+    "text": "Hello and welcome to the advanced module of Reproducible Research in Bioinformatics and Computational Biology!\nToday we will talk about the why’s and how’s of this module, and you will set up your own course homepage. This homepage will be your personal learning space throughout the module. Each evening, you’ll write a short blog post to reflect on what you’ve learned during the day. Some days, you might write several posts if you have a lot to share. These daily reflections will help you keep track of your progress, deepen your understanding, and build a clear record of your learning, as well as a habit of documentation.",
+    "crumbs": [
+      "Home",
+      "Why this course?",
+      "Personal course homepage"
+    ]
+  },
+  {
+    "objectID": "course_intro.html#your-homepage-and-github",
+    "href": "course_intro.html#your-homepage-and-github",
+    "title": "Personal course homepage",
+    "section": "Your Homepage and GitHub",
+    "text": "Your Homepage and GitHub\nYour Quarto homepage will be version-controlled using Git and GitHub. By the end of the module, you will share both the URL of your GitHub repository and the URL of your published homepage. This way I can review your work, follow your progress, and see how your site has developed over time.",
+    "crumbs": [
+      "Home",
+      "Why this course?",
+      "Personal course homepage"
+    ]
+  },
+  {
+    "objectID": "course_intro.html#good-git-practices",
+    "href": "course_intro.html#good-git-practices",
+    "title": "Personal course homepage",
+    "section": "Good Git Practices",
+    "text": "Good Git Practices\nThroughout the module, I expect you to follow good Git practices. This means writing clear and informative commit messages, keeping each commit focused on one topic or change, and committing regularly rather than saving everything for the end. These habits are an essential part of professional software development and will make your project much easier to follow and maintain.",
+    "crumbs": [
+      "Home",
+      "Why this course?",
+      "Personal course homepage"
+    ]
+  },
+  {
+    "objectID": "course_intro.html#writing-your-daily-blog",
+    "href": "course_intro.html#writing-your-daily-blog",
+    "title": "Personal course homepage",
+    "section": "Writing Your Daily Blog",
+    "text": "Writing Your Daily Blog\nYour daily posts do not have to be long or perfect. The goal is to build a habit of documentation and communication. Use simple language, write honestly about what you’ve learned, and don’t be afraid to include code, images, or links to illustrate your thoughts. Over time, these posts will form a valuable record of your growth and achievements during the course - and maybe later?",
+    "crumbs": [
+      "Home",
+      "Why this course?",
+      "Personal course homepage"
+    ]
+  },
+  {
+    "objectID": "before_quarto.html",
+    "href": "before_quarto.html",
+    "title": "Quarto",
+    "section": "",
+    "text": "Here we install Quarto in VScode and use it to build and publish a blog. (If you did module 1, you have already seen Quarto; this puts it to practical use.)",
+    "crumbs": [
+      "Home",
+      "Preparations",
+      "Quarto"
+    ]
+  },
+  {
+    "objectID": "before_quarto.html#literate-programming",
+    "href": "before_quarto.html#literate-programming",
+    "title": "Quarto",
+    "section": "Literate programming",
+    "text": "Literate programming\nWhen analysing data, it is good practice to work as reproducibleas possible. Part of that is not only developing and executing code (for example in a R session), but to save and comment the code. As always, this documentation step is crucial to understand the code, especially when sharing code with others, or getting back to it at a later point in time.\nLiterate programming combines code and documentation in the same document: the documentation is in plain text, and the code is wrapped in so called chunks, that are executable from within the document.\nThese notebooks that allow for literate programming come in different flavors, for example jupyter notebooksand marimo for Python applications, Rmarkdown for R code. Its successor, quarto can be used to integrate a variety of coding languanges. In this course, we will introduce you to quarto.",
+    "crumbs": [
+      "Home",
+      "Preparations",
+      "Quarto"
+    ]
+  },
+  {
+    "objectID": "before_quarto.html#quarto",
+    "href": "before_quarto.html#quarto",
+    "title": "Quarto",
+    "section": "Quarto",
+    "text": "Quarto\n\nAn open-source scientific and technical publishing system.\n\nMeaning that you can use your favorite text editor (such as VScode (o; ) to write documents in plain text markdown.\nQuarto chunks, or code cells, are executable from within the document and can be written in a variety of different languages - such as python, R, Julia, bash, Observable, and more.\nYour document can then be rendered into a variety of different output formats: html, pdf, MS Word, Markdown, and more.\nWith this you can make presentations, dashboards, homepages (like this one), reports, books, manuscripts, and more.\n\n\n\n\n\n\nImportantTo do for you\n\n\n\nInstall Quarto, and follow the tutorial for VScode.\n\n\n\n\n\n\n\n\nNote\n\n\n\nQuarto has a very good documentation, that you can access on their homepage -&gt; Guide, or by searching the web for “Quarto, feature you are looking for”.",
+    "crumbs": [
+      "Home",
+      "Preparations",
+      "Quarto"
+    ]
+  },
+  {
+    "objectID": "course_nextflow.html",
+    "href": "course_nextflow.html",
+    "title": "Nextflow",
+    "section": "",
+    "text": "When developing your code in bioinformatics, you will likely use different tool for different parts of your analyses. Traditionally, you would have about one script per tool, all of which you deploy by hand, one after the other. Together, this is called a workflowor pipeline.\nManual deployment of pipelines can be tedious, especially if you have analyses with many steps, or many samples of different sizes that might need a varying amount of computational power. Luckily for you, other bioinformaticians and software developers have developed something to make your life much easier:",
+    "crumbs": [
+      "Home",
+      "Workflow manager",
+      "Nextflow"
+    ]
+  },
+  {
+    "objectID": "course_nextflow.html#workflow-managers",
+    "href": "course_nextflow.html#workflow-managers",
+    "title": "Nextflow",
+    "section": "Workflow managers",
+    "text": "Workflow managers\n\nWorkflow managers provide a framework for the creation, execution, and monitoring of pipeline. &lt;…&gt; They simplify pipeline development, optimize resource usage, handle software installation and versions, and run on different compute platforms, enabling workflow portability and sharing. Wratten et al. (2021) Nature Methods\n\nWith workflow managers you can develop an automated pipeline from your scripts that can then be run on a variety of systems. Once it is developed, execute a single command to start the pipeline. The manager then coordinates the deployment of the scripts in the appropriate sequence, monitors the jobs, handles the file transfers between scripts, gathers the output, and handles re-execution of failed jobs for you. Workflow managed pipelines can run containers, which eliminates software installation and version conflicts.\nThat means that by design the pipelines are:\n\nportable\nmore time efficient (no more downtime between pipeline steps)\nmore resource efficient (mostly, but this might vary depending how skilled a developer you yourself are)\neasier to install (especially when combined with containers, or environment managers)\nmore reproducible\n\nThere are in principle two different flavors of workflow managers: snakemake, and nextflow. In this course we will be introducing you to nexflow.",
+    "crumbs": [
+      "Home",
+      "Workflow manager",
+      "Nextflow"
+    ]
+  },
+  {
+    "objectID": "course_nextflow.html#nextflow",
+    "href": "course_nextflow.html#nextflow",
+    "title": "Nextflow",
+    "section": "Nextflow",
+    "text": "Nextflow\nIn nextflow, your scripts are turned into processes, connected by channels that contain the data - input, output etc. The order of the processes, and their interaction with each other, is specfied in the workflow scope.\n\n\n\nsource: Software carpentries\n\n\n\n\n\n\n\n\nNote\n\n\n\nIn this course, we will not write our own processes, or pipeline. However, if you are interested, there are a lot of very good training materials available online.\n\n\nThe executable part of the processes, the so called script, can be written in any language, so in theory you could always choose the language that is best suited for the job (in practice you might be limited to the languages you know). However, the modularity of the processes allows for easy re-use of existing scripts and processes.\nWhen moving the pipeline from one system to another, the script stays the same and does not change, the same containers are used. The only thing that changes are the parameters that pertain to the environment and available resources. In other words, with nextflow, the functional logic, the processes, are separated from the executive (how the workflow runs). This makes the nextflow pipelines highly interoperable and portable. They can be run on various platforms, such as HPC clusters, local computers, cloud systems etc..\nThe pipelines can be integrated with version control tools, such as git or bitbucket, and containers technologies, such as apptainer or docker. This makes the pipeline very reproducible.\nThe nextflow pipelines are extremely scalable, can be developed on a few samples and easily be run on hundreds or thousands of samples. When possible, processes are run in parallel automatically.\nNexflow performs automatic checks on the processes and their in- and output. It can automatically resume execution at a point of failure without having to re-compute successfully completed parts.\nNextflow is open source.\nHere is a more visual summary of some of the points above:\n\n\n\nsource: Maxime U Garcia, Seqera labs",
+    "crumbs": [
+      "Home",
+      "Workflow manager",
+      "Nextflow"
     ]
   },
   {

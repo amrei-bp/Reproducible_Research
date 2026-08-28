@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Python notebook: Marimo – Reproducible Research 2026</title>
+<title>Git in R Studio – Reproducible Research 2026</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -128,7 +128,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Python notebook: Marimo</li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./module1_git.html">Module 1 content</a></li><li class="breadcrumb-item"><a href="./module1_git_rstudio_exercise.html">Exercise: Git in RStudio</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -421,7 +421,7 @@ ul.task-list li input[type="checkbox"] {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./module1_git_rstudio_exercise.html" class="sidebar-item-text sidebar-link">
+  <a href="./module1_git_rstudio_exercise.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">Exercise: Git in RStudio</span></a>
   </div>
 </li>
@@ -432,15 +432,43 @@ ul.task-list li input[type="checkbox"] {
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#basic-git-workflow" id="toc-basic-git-workflow" class="nav-link active" data-scroll-target="#basic-git-workflow">Basic git workflow</a></li>
+  <li><a href="#in-this-tutorial" id="toc-in-this-tutorial" class="nav-link" data-scroll-target="#in-this-tutorial">In this tutorial</a></li>
+  <li><a href="#clone-the-repository-to-rstudio" id="toc-clone-the-repository-to-rstudio" class="nav-link" data-scroll-target="#clone-the-repository-to-rstudio">Clone the repository to RStudio</a>
+  <ul class="collapse">
+  <li><a href="#the-git-tab-in-rstudio" id="toc-the-git-tab-in-rstudio" class="nav-link" data-scroll-target="#the-git-tab-in-rstudio">The Git tab in RStudio</a></li>
+  <li><a href="#viewing-the-commit-history" id="toc-viewing-the-commit-history" class="nav-link" data-scroll-target="#viewing-the-commit-history">Viewing the commit history</a></li>
+  <li><a href="#working-with-git-in-rstudio" id="toc-working-with-git-in-rstudio" class="nav-link" data-scroll-target="#working-with-git-in-rstudio">Working with Git in RStudio</a></li>
+  </ul></li>
+  <li><a href="#add-files-to-the-repository" id="toc-add-files-to-the-repository" class="nav-link" data-scroll-target="#add-files-to-the-repository">Add files to the repository</a>
+  <ul class="collapse">
+  <li><a href="#add-files-via-rstudio" id="toc-add-files-via-rstudio" class="nav-link" data-scroll-target="#add-files-via-rstudio">Add files via RStudio</a></li>
+  <li><a href="#add-files-via-copy-and-paste" id="toc-add-files-via-copy-and-paste" class="nav-link" data-scroll-target="#add-files-via-copy-and-paste">Add files via copy and paste</a></li>
+  </ul></li>
+  <li><a href="#make-changes" id="toc-make-changes" class="nav-link" data-scroll-target="#make-changes">Make changes</a></li>
+  <li><a href="#stage-the-changes" id="toc-stage-the-changes" class="nav-link" data-scroll-target="#stage-the-changes">Stage the changes</a></li>
+  <li><a href="#commit-your-changes" id="toc-commit-your-changes" class="nav-link" data-scroll-target="#commit-your-changes">Commit your changes</a></li>
+  <li><a href="#ignoring-files-with-.gitignore" id="toc-ignoring-files-with-.gitignore" class="nav-link" data-scroll-target="#ignoring-files-with-.gitignore">Ignoring files with .gitignore</a></li>
+  <li><a href="#push" id="toc-push" class="nav-link" data-scroll-target="#push">Push</a></li>
+  <li><a href="#notes-on-the-exercise" id="toc-notes-on-the-exercise" class="nav-link" data-scroll-target="#notes-on-the-exercise">Notes on the exercise</a></li>
+  <li><a href="#extra-forking-a-repository" id="toc-extra-forking-a-repository" class="nav-link" data-scroll-target="#extra-forking-a-repository">Extra: Forking a repository</a></li>
+  <li><a href="#extra-pull-requests" id="toc-extra-pull-requests" class="nav-link" data-scroll-target="#extra-pull-requests">Extra: Pull requests</a></li>
+  <li><a href="#extra-syncing-after-a-pull-request" id="toc-extra-syncing-after-a-pull-request" class="nav-link" data-scroll-target="#extra-syncing-after-a-pull-request">Extra: Syncing after a pull request</a></li>
+  <li><a href="#reminder-overview-of-the-full-workflow" id="toc-reminder-overview-of-the-full-workflow" class="nav-link" data-scroll-target="#reminder-overview-of-the-full-workflow">Reminder: Overview of the full workflow</a></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default">
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./module1_git.html">Module 1 content</a></li><li class="breadcrumb-item"><a href="./module1_git_rstudio_exercise.html">Exercise: Git in RStudio</a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title">Python notebook: Marimo</h1>
+<h1 class="title">Git in R Studio</h1>
 </div>
 
 
@@ -457,10 +485,260 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<p><br> <a href="https://docs.marimo.io/">Marimo</a> is not only a nice algae, but also an open-source Python notebook. If you are used to running Jupyter notebooks most of Marimo will be familiar for you. However, Marimo has some nice features, such as automatically flagging stale cells, or running dependent cells when upstream input has changed.</p>
-<p>To test it: - <a href="https://docs.marimo.io/">Install marimo</a> - In VScode, install the Marimo extension.</p>
+<p>Now we have changed files and committed those changes on Github, and now we would like to add the files you have already worked on to them.</p>
+<p>Then, your can work on our code locally on our computer (just as you are used to) and to use git/Github to track our work in the future.</p>
+<p>We will follow the Data carpentries tutorial <a href="https://datacarpentry.org/rr-version-control/03-git-in-rstudio/">here</a>.</p>
+<section id="basic-git-workflow" class="level1">
+<h1>Basic git workflow</h1>
+<p>Remember the basic git workflow?</p>
+<p><img src="figures/git/git_diagram.png" alt="alt text" width="500"></p>
+</section>
+<section id="in-this-tutorial" class="level1">
+<h1>In this tutorial</h1>
+<p>We already created our git repository on Github.</p>
+<p>Now we will:</p>
+<ul>
+<li>clone the contents of the remote repository to our local computer</li>
+<li>change, stage and commit</li>
+<li>push changes to the remote repository</li>
+</ul>
+<p>So, let’s try this out!</p>
+</section>
+<section id="clone-the-repository-to-rstudio" class="level1">
+<h1>Clone the repository to RStudio</h1>
+<p>Now you have a repository in your github account, but you want to work locally on your computer. You need to clone the repository to your local environment.</p>
+<ul>
+<li>On GitHub, click on the green <code>Code</code> button on the repository page.</li>
+<li>On the <code>local</code> tab select <code>ssh</code>.</li>
+<li>Click the <code>Copy to clipboard</code> icon to the right of the repository URL (looks like two slightly overlapping pages).</li>
+<li>Open RStudio on your computer.</li>
+<li>Click <code>File</code> → <code>New Project</code> → <code>Version Control</code> → <code>Git</code>.</li>
+<li><strong>Paste the repository URL</strong> into the appropriate field and <strong>browse to the desired directory</strong> for your R project.</li>
+<li>Click <code>Create Project</code>.</li>
+</ul>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Tip
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Leave the directory name field empty, the project will then have the same name as your GitHub directory.</p>
+</div>
+</div>
+<p>Now you have the contents of your repository locally in RStudio. This means:</p>
+<ul>
+<li>the files are on your computer,</li>
+<li>Git is tracking changes, and</li>
+<li>the repository is still linked to the remote version on GitHub.</li>
+</ul>
+<p>From this point on, you can work with your files as usual, but RStudio also provides built-in tools to interact with Git directly from the interface.</p>
+<section id="the-git-tab-in-rstudio" class="level2">
+<h2 class="anchored" data-anchor-id="the-git-tab-in-rstudio">The Git tab in RStudio</h2>
+<p>When a project is connected to a Git repository, RStudio automatically adds a new <strong>Git tab</strong> to the interface. It is located in the top-right pane of RStudio.</p>
+<p>The Git tab allows you to:</p>
+<ul>
+<li>see which files are tracked by Git,</li>
+<li>check whether files have changed,</li>
+<li>view the commit history,</li>
+<li>commit and push changes later on.</li>
+</ul>
+<p>For now, we will focus on exploring the existing history.</p>
+</section>
+<section id="viewing-the-commit-history" class="level2">
+<h2 class="anchored" data-anchor-id="viewing-the-commit-history">Viewing the commit history</h2>
+<ol type="1">
+<li>Click on the Git tab.</li>
+<li>Click the button that looks like a clock.</li>
+</ol>
+<p>A window will open showing the commit history of the repository. Each entry represents one saved change and includes:</p>
+<ul>
+<li>a short description of the change (the commit message),</li>
+<li>the author,</li>
+<li>the date and time.</li>
+</ul>
+<p>If you click on a commit, you can see which files were changed and how.</p>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Important
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>The commit history you see here is the same history you saw earlier on GitHub, the local project in RStudio and the remote repository on GitHub are connected.</p>
+</div>
+</div>
+</section>
+<section id="working-with-git-in-rstudio" class="level2">
+<h2 class="anchored" data-anchor-id="working-with-git-in-rstudio">Working with Git in RStudio</h2>
+<p>From this point on, your typical workflow will be:</p>
+<ul>
+<li>make changes locally,</li>
+<li>commit them in RStudio,</li>
+<li>push them to GitHub.</li>
+</ul>
+<p>We will practice these steps next.</p>
+</section>
+</section>
+<section id="add-files-to-the-repository" class="level1">
+<h1>Add files to the repository</h1>
+<p>There are several ways to add files to a Git repository. Below are two common options.</p>
+<section id="add-files-via-rstudio" class="level2">
+<h2 class="anchored" data-anchor-id="add-files-via-rstudio">Add files via RStudio</h2>
+<ol type="1">
+<li>In RStudio, go to the <code>Files</code> tab (lower right pane).</li>
+<li>Click <code>Blank File</code>.</li>
+<li>Choose the type of document you want to create (for example, R Script or Quarto).</li>
+<li>Give the file a meaningful name and create it by clicking OK.</li>
+</ol>
+<p>The new file will now appear in your project and can be tracked by Git.</p>
+</section>
+<section id="add-files-via-copy-and-paste" class="level2">
+<h2 class="anchored" data-anchor-id="add-files-via-copy-and-paste">Add files via copy and paste</h2>
+<p>If you already have files you want to include:</p>
+<ol type="1">
+<li>Copy the file(s) into your RStudio project directory.</li>
+<li>Switch back to RStudio.</li>
+</ol>
+<p>The files will appear automatically in the <code>Files</code> tab.</p>
+</section>
+</section>
+<section id="make-changes" class="level1">
+<h1>Make changes</h1>
+<p>You can now edit your files as usual. For example, add code, comments, or text to one of the files in your project.</p>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Important
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>At this point, the changes only exist locally on your computer.</p>
+</div>
+</div>
+</section>
+<section id="stage-the-changes" class="level1">
+<h1>Stage the changes</h1>
+<p>Before committing changes, Git needs to know which changes you want to include.</p>
+<ol type="1">
+<li>Navigate to the Git tab in RStudio.</li>
+<li>You will see a list of files that have been changed.</li>
+<li>Stage the files you want to commit by checking the boxes next to them.</li>
+</ol>
+<p>Staging allows you to group related changes into a single commit.</p>
+</section>
+<section id="commit-your-changes" class="level1">
+<h1>Commit your changes</h1>
+<p>Once your changes are staged:</p>
+<ul>
+<li>Click Commit in the Git tab.</li>
+<li>A new window will open showing the staged changes (the diff).</li>
+<li>Review the changes.</li>
+<li>Enter a clear and informative commit message (for example: “Add initial analysis script”).</li>
+<li>Click Commit.</li>
+</ul>
+<p>The changes are now saved in your local Git history.</p>
+</section>
+<section id="ignoring-files-with-.gitignore" class="level1">
+<h1>Ignoring files with .gitignore</h1>
+<p>Not all files in your project should be tracked by Git. Some files should be ignored, for example:</p>
+<ul>
+<li>files containing sensitive information (especially in public repositories),</li>
+<li>raw or large data files (GitHub is not a data storage platform),</li>
+<li>intermediate or automatically generated files.</li>
+</ul>
+<p>Git uses the <code>.gitignore</code> file to decide which files to ignore.</p>
+<p>Here, we will generate a .Rproj file, that we do not want to track on git. You can tell git to ignore those files by adding them to the .gitignore file:</p>
+<ul>
+<li>add <code>*.Rproj</code> to the <code>.gitignore</code> file and save it.</li>
+</ul>
+<p>The ignored files will disappear from the <code>Git</code> tab in RStudio.</p>
+</section>
+<section id="push" class="level1">
+<h1>Push</h1>
+<p>Now you have the changes saved and tracked on your local computer. But you want to on github too!</p>
+<ul>
+<li>click in the <strong>green upward arrow button</strong> to push your changes to your GitHub repository.</li>
+<li>Enter your GitHub login information if prompted.</li>
+</ul>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>When using git push always means pushing commits from your local respository (your computer) to a remote repository (GitHub).</p>
+</div>
+</div>
+<p>You can now find these changes on the repository on GitHub.</p>
+</section>
+<section id="notes-on-the-exercise" class="level1">
+<h1>Notes on the exercise</h1>
+<p>So far, you have committed changes in two different ways:</p>
+<ul>
+<li>directly on GitHub (editing the README),</li>
+<li>locally using RStudio.</li>
+</ul>
+<p>It is also possible to use Git from the command line in the Terminal. If you want to explore this further, there are many resources online, for example <a href="https://uppsala.instructure.com/courses/96483/pages/git-1-introduction?module_item_id=1027800">here</a>.</p>
+</section>
+<section id="extra-forking-a-repository" class="level1">
+<h1>Extra: Forking a repository</h1>
+<p>Sometimes you want to work on code that you do not own or collaborate on an existing project. In this case, you do not work directly on the original repository. Instead, you fork it.</p>
+<p>A fork is your own copy of a repository on GitHub.By default, it shares code and visibility settings with the original “upstream” repository.</p>
+<p>To fork a repository:</p>
+<ul>
+<li>navigate to the repository you want to fork</li>
+<li>Click on <code>Fork</code> (on the top right corner)</li>
+<li>Click on <code>Create Fork</code></li>
+</ul>
+<p>You now have your own copy of the repository in your GitHub account, which you can clone and work on locally.</p>
+</section>
+<section id="extra-pull-requests" class="level1">
+<h1>Extra: Pull requests</h1>
+<p>Once you have worked on your version of the code and are ready to show it to your collaborators on Github you can make a <strong>pull request</strong>.</p>
+<p>A pull request asks the owner of the original repository to review and possibly merge your changes.</p>
+<ul>
+<li>On GitHub, navigate to the <code>Pull request</code> tab at the top.</li>
+<li>Click <code>New pull request</code></li>
+<li>At the top, select
+<ul>
+<li>the source repository and branch (your fork),</li>
+<li>the target repository and branch (the original repository).</li>
+</ul></li>
+<li><code>Create pull request</code> and describe what you have been doing.</li>
+<li>Wait for feedback.</li>
+</ul>
+<p>The owner of the upstream repository will now get a message that a pull request has been made. They review the changes, might write comments for you to respond to, or might merge your changes to the branch.</p>
+</section>
+<section id="extra-syncing-after-a-pull-request" class="level1">
+<h1>Extra: Syncing after a pull request</h1>
+<p>If your pull request is merged, the original repository may now contain new changes.</p>
+<p>To stay up to date:</p>
+<ul>
+<li>sync your fork with the upstream repository on GitHub,</li>
+<li>pull the updates to your local repository.</li>
+</ul>
+</section>
+<section id="reminder-overview-of-the-full-workflow" class="level1">
+<h1>Reminder: Overview of the full workflow</h1>
+<p>Below is an overview of how local repositories, GitHub, forks, and pull requests fit together:</p>
+<p><img src="figures/git/git-github-workflow_amrei.png" alt="alt text" width="500"></p>
 
 
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
