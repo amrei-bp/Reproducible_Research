@@ -1,0 +1,106 @@
+---
+title: "Git in GitHub"
+---
+
+In the following exercise, you will create a GitHub repository to track your code and document your work.  
+The repository will serve as a central place to store files, keep track of changes, and share your work.
+
+We will assume that you have already worked locally on your project, and are now ready to publish the data. 
+
+We will go through the steps together. Please make sure you are logged in to your GitHub account before continuing.
+
+---
+
+## In this tutorial you will
+
+- create a new repository on GitHub
+- edit files directly on GitHub
+- commit changes with meaningful messages
+- explore the commit history of a repository
+
+---
+
+## Create a new repository
+
+1. Go to <https://github.com>.
+2. Click the green **New** icon in the top-right corner under the top banner of the homepage.
+
+You will now see the repository creation page. You will be the default owner of this new repository. Fill in the following information:
+
+- **Repository name**  
+Choose a short and descriptive name for your project. GitHub automatically checks if the name is available (it will be if you do not already have a repository with that name, regardless of if others have one), and will indicate availability with a green checkmark. 
+
+- **Description**  
+Add a brief description of what the repository is for.
+
+- **Visibility**  
+Select **Public**. This means that everybody can see and download (clone) the repository and its contents, but they cannot change them without your permission. Perfect for sharing data!
+
+- **Initialize this repository**  
+  - Check **Add a README file**  
+  - Add a **.gitignore** and choose the **R** template  
+  - Add a **license**
+
+::: {.callout-tip}
+Think briefly about your project and what kind of code it will contain.  
+If you are unsure which license to choose, the website  
+[Choose an open source license](https://choosealicense.com/) provides a helpful overview.
+:::
+
+4. Click **Create repository**.
+
+---
+
+## Edit the README
+
+After the repository has been created, you will see the `README.md` file.
+
+1. Click the **Edit** (pencil) icon.
+2. Add some basic information about your project (for example, what it does or what it is for).
+
+The README uses **Markdown**, which you have worked with before.  
+A short guide to Markdown formatting on GitHub is available here:
+
+<https://docs.github.com/en/get-started/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax>
+
+::: {.callout-tip}
+You can preview how the rendered text will look like before committing the changes to the repository. Click on the **Preview** button. 
+:::
+---
+
+## Save your changes (commit)
+
+On GitHub, if you edit files and save them you automatically commit them to the git history. 
+
+To save the changes to the README:
+
+1. Click the green **Commit changes**.
+2. Enter a short **commit message** describing what you changed (for example, “Add initial README”). Nowadays the Copilot will help you with this.
+3. Select **Commit directly to the *main* branch**
+4. Confirm the commit by clicking the green  **Commit changes** button. 
+
+Commit messages help you understand what changed and when, and make it easier to find changes later.
+
+---
+
+## View the commit history
+
+GitHub keeps a record of all commits in a repository.
+
+- Click the button with the **clock symbol** that says **History** to open the commit history.
+- Each entry shows the commit message, author, and a unique identifier.
+- Clicking on a commit shows the exact changes made.
+
+Your new repository will only contain a few commits, but older repositories show a more detailed history.  
+As an example, you can explore the  
+[SLUBI 3bees workshop series](https://github.com/SLUBioinformaticsInfrastructure/Three_Bees_Workshop_Series) repository.
+
+---
+
+## Further resources
+
+If you want a guided introduction to GitHub basics, you can follow this tutorial:
+
+<https://github.com/skills/introduction-to-github>
+
+It covers repositories, commits, branches, and pull requests. Some of these topics will be useful later as you work more with Git and GitHub.

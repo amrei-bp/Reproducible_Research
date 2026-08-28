@@ -101,6 +101,8 @@ website:
         contents: 
           - text: "Git and GitHub"
             href: module1_git.qmd
+          - text: "Exercise: Git on GitHub"
+            href: module1_github_exercise.qmd
 
 
 format:
