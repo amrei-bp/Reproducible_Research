@@ -259,114 +259,648 @@
     ]
   },
   {
-    "objectID": "course_nf-core_rnaseq.html",
-    "href": "course_nf-core_rnaseq.html",
-    "title": "nf-core RNAseq pipeline",
+    "objectID": "module1_github_exercise.html",
+    "href": "module1_github_exercise.html",
+    "title": "Git in GitHub",
     "section": "",
-    "text": "Great, now we have tested that nextflow and nf-core are set up correctly. Now we want to use the pipeline on our own data. For the sake of the tutorial, I will use the RNAseq data some of you have worked earlier on.\nAs a little reminder: the data is located in:\nTo practice we will go through some of the steps you have done before:",
+    "text": "In the following exercise, you will create a GitHub repository to track your code and document your work.\nThe repository will serve as a central place to store files, keep track of changes, and share your work.\nWe will assume that you have already worked locally on your project, and are now ready to publish the data.\nWe will go through the steps together. Please make sure you are logged in to your GitHub account before continuing.",
     "crumbs": [
       "Home",
-      "Pipelines",
-      "Use nf-core"
+      "Module 1 content",
+      "Exercise: Git on GitHub"
     ]
   },
   {
-    "objectID": "course_nf-core_rnaseq.html#create-the-pixi-environment",
-    "href": "course_nf-core_rnaseq.html#create-the-pixi-environment",
-    "title": "nf-core RNAseq pipeline",
-    "section": "Create the Pixi environment",
-    "text": "Create the Pixi environment\nWhile initializing, make a new directory for this analysis - think about naming it something with meaning.\nWhat dependencies do you need for nextflow and nf-core?",
+    "objectID": "module1_github_exercise.html#in-this-tutorial-you-will",
+    "href": "module1_github_exercise.html#in-this-tutorial-you-will",
+    "title": "Git in GitHub",
+    "section": "In this tutorial you will",
+    "text": "In this tutorial you will\n\ncreate a new repository on GitHub\nedit files directly on GitHub\ncommit changes with meaningful messages\nexplore the commit history of a repository",
     "crumbs": [
       "Home",
-      "Pipelines",
-      "Use nf-core"
+      "Module 1 content",
+      "Exercise: Git on GitHub"
     ]
   },
   {
-    "objectID": "course_nf-core_rnaseq.html#link-your-data-into-the-directory",
-    "href": "course_nf-core_rnaseq.html#link-your-data-into-the-directory",
-    "title": "nf-core RNAseq pipeline",
-    "section": "Link your data into the directory",
-    "text": "Link your data into the directory\nMake a subdirectory, data, change into it and create a symlink to the data:\nUse ln -s SOURCE TARGET. Since you are in the directory datathe TARGET is simply ..\nChange back to the parent directory.\n\n\n\n\n\n\nNote\n\n\n\nThis is how my project directory looks like afterwards:\n.\n├── data\n│   ├── SRR5223504_1.fastq.gz -&gt; ../../common_data/RNAseq/SRR5223504_1.fastq.gz\n│   ├── SRR5223504_2.fastq.gz -&gt; ../../common_data/RNAseq/SRR5223504_2.fastq.gz\n│   ├── SRR5223517_1.fastq.gz -&gt; ../../common_data/RNAseq/SRR5223517_1.fastq.gz\n│   ├── SRR5223517_2.fastq.gz -&gt; ../../common_data/RNAseq/SRR5223517_2.fastq.gz\n│   ├── SRR5223546_1.fastq.gz -&gt; ../../common_data/RNAseq/SRR5223546_1.fastq.gz\n│   ├── SRR5223546_2.fastq.gz -&gt; ../../common_data/RNAseq/SRR5223546_2.fastq.gz\n│   ├── SRR5223559_1.fastq.gz -&gt; ../../common_data/RNAseq/SRR5223559_1.fastq.gz\n│   └── SRR5223559_2.fastq.gz -&gt; ../../common_data/RNAseq/SRR5223559_2.fastq.gz\n├── pixi.lock\n└── pixi.toml",
+    "objectID": "module1_github_exercise.html#create-a-new-repository",
+    "href": "module1_github_exercise.html#create-a-new-repository",
+    "title": "Git in GitHub",
+    "section": "Create a new repository",
+    "text": "Create a new repository\n\nGo to https://github.com.\nClick the green New icon in the top-right corner under the top banner of the homepage.\n\nYou will now see the repository creation page. You will be the default owner of this new repository. Fill in the following information:\n\nRepository name\nChoose a short and descriptive name for your project. GitHub automatically checks if the name is available (it will be if you do not already have a repository with that name, regardless of if others have one), and will indicate availability with a green checkmark.\nDescription\nAdd a brief description of what the repository is for.\nVisibility\nSelect Public. This means that everybody can see and download (clone) the repository and its contents, but they cannot change them without your permission. Perfect for sharing data!\nInitialize this repository\n\nCheck Add a README file\n\nAdd a .gitignore and choose the R template\n\nAdd a license\n\n\n\n\n\n\n\n\nTip\n\n\n\nThink briefly about your project and what kind of code it will contain.\nIf you are unsure which license to choose, the website\nChoose an open source license provides a helpful overview.\n\n\n\nClick Create repository.",
     "crumbs": [
       "Home",
-      "Pipelines",
-      "Use nf-core"
+      "Module 1 content",
+      "Exercise: Git on GitHub"
     ]
   },
   {
-    "objectID": "course_nf-core_rnaseq.html#nf-core-launch",
-    "href": "course_nf-core_rnaseq.html#nf-core-launch",
-    "title": "nf-core RNAseq pipeline",
-    "section": "nf-core launch",
-    "text": "nf-core launch\nNf-core helps you set up the pipelines with the nf-core launcher. To access that, click on the launch version 3.19.0 button on the nf-core/rnaseq homepage. (This was the version available in the launcher at the time of writing this session. The version number will change in the future). We are then redirected to a page where we can fill in all of our information about input files, as well as selecting or deselecting certain parts of the pipeline. We will share the things here that you need to input each time, and go through some finer details based on the discussion with you.\n\nSetting working and results directories\n\n\n\n\n\n\nImportant\n\n\n\nWe recommend that you use absolute paths rather than relative paths for setting up your runs.\n\n\nDuring the first part, you need to set a working and result directory. If you are using a server that has a profile established, you can put the name of the server there. In our case, we will use the server configuration file locally.\nSet resume to True, otherwise you don’t need to change anything here.\n\n\n\nSetting work and output directories\n\n\nNext, the pipeline asks for the input CSV. Exact requirements for how that input file should look like can be found under the tab Usage on the pipeline homepage. This input CSV is unique to each analysis.\n\n\n\nSetting results and input CSV\n\n\n\n\n\n\n\n\nImportantTo do for you\n\n\n\nCreate the necessary input file and add the path to it in the launcher.\nSet the outdir to the name and path to a directory you want the output to be saved to.\n\n\n\n\nSetting all other inputs that are required\nIn this section, you set variables that are related to your reference genome. If you are using something listed on iGenomes, you can input that name. If you are working with your own reference genome, or something not listed, you need to input the absolute path of the reference genomes you have downloaded.\n\n\n\nReference genome options\n\n\nDepending on your strategy, you might need to input a corresponding gff as well. It really depends on the kind of analysis you are hoping to perform.\nIn our case, we have human samples, so in theory we can use the iGenomes reference. However, the transcriptome and GTF files in iGenomes are out of date, so nf-core recommends downloading and using the more up-to-date version.\n\n\n\n\n\n\nImportantTo do for you\n\n\n\nLet’s do that.\nThen, add the names and path to the downloaded reference (if located in a different directory) files in the launcher.\n\n\nOther than the options above, you don’t need to change anything to run the pipeline. However, for your project you might want to change some of the default parameters. For this evercise we will keep the rest as is.\n\n\nGetting your JSON file\nOnce everything is filled in, click on Launch and you will be redirected to another page containing your JSON file that has information on your run.\nCopy the JSON file a bit lower on the screen and saving it as nf-params.json in your folder on HPC2N.\nAdd the save_reference line as recommended by nf-core (because we are using their downloaded human genome).\n\n\nConfiguration profile\nAs before, you need the HPC2N configuration file, with the correct project ID.\nAdd your e-mail under email and you will receive a message with a summary of the run.",
+    "objectID": "module1_github_exercise.html#edit-the-readme",
+    "href": "module1_github_exercise.html#edit-the-readme",
+    "title": "Git in GitHub",
+    "section": "Edit the README",
+    "text": "Edit the README\nAfter the repository has been created, you will see the README.md file.\n\nClick the Edit (pencil) icon.\nAdd some basic information about your project (for example, what it does or what it is for).\n\nThe README uses Markdown, which you have worked with before.\nA short guide to Markdown formatting on GitHub is available here:\nhttps://docs.github.com/en/get-started/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax\n\n\n\n\n\n\nTip\n\n\n\nYou can preview how the rendered text will look like before committing the changes to the repository. Click on the Preview button.",
     "crumbs": [
       "Home",
-      "Pipelines",
-      "Use nf-core"
+      "Module 1 content",
+      "Exercise: Git on GitHub"
     ]
   },
   {
-    "objectID": "course_nf-core_rnaseq.html#starting-the-run",
-    "href": "course_nf-core_rnaseq.html#starting-the-run",
-    "title": "nf-core RNAseq pipeline",
-    "section": "Starting The Run",
-    "text": "Starting The Run\nThe launcher gives us the command to run the pipeline:\nnextflow run nf-core/rnaseq -r 3.19.0 -resume -params-file nf-params.json\nWe need to change this slightly, to add that we are running it via Pixi, and to add the server specific configuration file:\n\nsubmit directly via pixi\nNow you can run the pipeline with the following command (you might have to change it a bit to add pathways to files that are not in your current working directory):\npixi run nextflow run nf-core/rnaseq -r 3.19.0 -resume -params-file nf-params.json -c hpc2n.config\nThere are several layers to this command:\nFirst we invoke Pixi and tell it to run the following commands.\nThen we say which program we want to run, namely Nextflow.\nThe following commands are Nextflow/ nf-core commands:\n\nwe want to run the nf-core/rnaseq pipeline, version 3.19.0\nwe want to use the parameter file called nf-params.json\nwe want to use the hpc configuration file called hpc2n.config\n\n\n\nsubmit via sbatch\nAlternatively, you can run nextflow via pixi using a batch script and slurm: copy the following text to file called name_submit_rnaseq.sh where name is your name.\n#!/bin/bash -l\n#SBATCH -A our_proj_allocation\n#SBATCH -n 5\n#SBATCH -t 24:00:00\n\n/your_home_directory/.pixi/bin/pixi run nextflow run nf-core/rnaseq -r 3.19.0 -params-file /your_path/nf-params.json -c server.config\nAnd then submit it to slurm with\nsbatch name_submit_rnaseq.sh\nYou can check the progress of your job with squeue -u your_username\nAnd now we wait until the run is done! - My run took a little more than five hours for all four samples.\n\n\n\n\n\n\nTip\n\n\n\nNextflow is notoriously bad at cleaning after itself. You can check previous runs with pixi run nextflow log. And then clean up with for example pixi run nextflow clean -f -before &lt;run_name&gt;. Here is an explanation of the command.",
+    "objectID": "module1_github_exercise.html#save-your-changes-commit",
+    "href": "module1_github_exercise.html#save-your-changes-commit",
+    "title": "Git in GitHub",
+    "section": "Save your changes (commit)",
+    "text": "Save your changes (commit)\nOn GitHub, if you edit files and save them you automatically commit them to the git history.\nTo save the changes to the README:\n\nClick the green Commit changes.\nEnter a short commit message describing what you changed (for example, “Add initial README”). Nowadays the Copilot will help you with this.\nSelect Commit directly to the main branch\nConfirm the commit by clicking the green Commit changes button.\n\nCommit messages help you understand what changed and when, and make it easier to find changes later.",
     "crumbs": [
       "Home",
-      "Pipelines",
-      "Use nf-core"
+      "Module 1 content",
+      "Exercise: Git on GitHub"
     ]
   },
   {
-    "objectID": "course_qc_container.html",
-    "href": "course_qc_container.html",
-    "title": "Quality control with containers",
+    "objectID": "module1_github_exercise.html#view-the-commit-history",
+    "href": "module1_github_exercise.html#view-the-commit-history",
+    "title": "Git in GitHub",
+    "section": "View the commit history",
+    "text": "View the commit history\nGitHub keeps a record of all commits in a repository.\n\nClick the button with the clock symbol that says History to open the commit history.\nEach entry shows the commit message, author, and a unique identifier.\nClicking on a commit shows the exact changes made.\n\nYour new repository will only contain a few commits, but older repositories show a more detailed history.\nAs an example, you can explore the\nSLUBI 3bees workshop series repository.",
+    "crumbs": [
+      "Home",
+      "Module 1 content",
+      "Exercise: Git on GitHub"
+    ]
+  },
+  {
+    "objectID": "module1_github_exercise.html#further-resources",
+    "href": "module1_github_exercise.html#further-resources",
+    "title": "Git in GitHub",
+    "section": "Further resources",
+    "text": "Further resources\nIf you want a guided introduction to GitHub basics, you can follow this tutorial:\nhttps://github.com/skills/introduction-to-github\nIt covers repositories, commits, branches, and pull requests. Some of these topics will be useful later as you work more with Git and GitHub.",
+    "crumbs": [
+      "Home",
+      "Module 1 content",
+      "Exercise: Git on GitHub"
+    ]
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Reproducible Research",
     "section": "",
-    "text": "Now, let’s do some more quality control (because we already know how to do it, and can concentrate on the container part), and run the tools with containers, and not (only) with the Pixi environment.\n\n\n\n\n\n\nImportantTo do for you\n\n\n\nRun FastQC and MultiQC on the data, using containers. Run MultiQC from within the container AND the outside.\n\n\n\n\n\n\n\n\nTip\n\n\n\nGet together with a neighbour and think about setting up this “project”. What do you need?\n\nScreen session?\nData directory with symbolic links?\nPixi environment?\nWhere to get the container?\n…\n\nMaybe use a different data set this time, to mix it up a little? Remember to make symbolic links to the data!",
+    "text": "This website contains the material for the advanced module of Reproducible Research in Bioinformatics and Computational Biology (course P000187, 4.5 credits) — a collaboration between SLU’s GS-VMAS Graduate School and MedBioInfo.\nThe full course runs 31 August – 18 September 2026 in three parts: a one-week online introductory module, a week for an individual assignment, and this one-week advanced module, taught on location in Ultuna for both cohorts (14–18 September 2026).\nThe aim of this module is to share how to use bioinformatics tools in a reproducible and scalable way. We will use environments, containers, and established pipelines so that you can run these analyses on any operating system, as well as on systems that are not high performance computing clusters. And first and foremost: these tools and techniques can be used regardless of which type of bioinformatics you are ultimately working with.\nThe website will remain active after the course so that you have access to the material even after the course.\nTo get the most out of this course, we expect you to do some preparation in advance. This is to set-up and get aquainted with some of the tools we will be using. The week before the in-person meeting, there will be regular Zoom drop-in times where you can ask questions while working through the material.\nI want to thank Lizel Potgieter for her valuable contributions to the materials for this course!",
     "crumbs": [
-      "Home",
-      "Working with containers",
-      "QC with Apptainer"
+      "Home"
     ]
   },
   {
-    "objectID": "before_quarto_and_git.html",
-    "href": "before_quarto_and_git.html",
-    "title": "Quarto Homepage on Github",
-    "section": "",
-    "text": "Creating a website in Quarto\nPublish the quarto homepage on GitHub via GitHub Actions."
-  },
-  {
-    "objectID": "course_nf-core.html",
-    "href": "course_nf-core.html",
-    "title": "nfcore introduction",
-    "section": "",
-    "text": "source: nf-core\nNf-core is a very active community around nextflow. Volunteers develop nextflow pipelines around a variety of bioinformatic data.\nHere are some flagship pipelines that have been developed by the nf-core community (we will have a look at the entire list on the nf-core homepage in a bit):\nAll nf-core pipelines are open source and the source code is available on github. The pipelines are developed by volunteers, who can have a very varied background.\nHowever, nf-core does not only develop pipelines.\nThe community also develops:\nThere is a weekly online helpdesk, and even a podcast.",
+    "objectID": "index.html#module-content",
+    "href": "index.html#module-content",
+    "title": "Reproducible Research",
+    "section": "Module content",
+    "text": "Module content\n\nbefore this module:\n\nBefore the course\n\n\nTopic\nContent\n\n\n\n\nHPC access\nCreate user accounts for the HPC resources\n\n\nVScode\nSettting up and getting aquainted with VScode\n\n\nServer access\nSSH connect to the course server\n\n\nCommand line\nUse the command line to manipulate data\n\n\nscreen\nManage persistent bash sessions\n\n\nQuarto\nInstalling and using Quarto with VScode\n\n\ngit and GitHub\nVersion control with git and GitHub\n\n\n\n\n\nduring this module:\n\nDuring the course\n\n\nDay\nSession\n\n\n\n\nMonday\nWelcome, course setup\n\n\n\nData Management & Reproducible Research\n\n\n\nUsing git collaboratively\n\n\n\nCreate a blog with Quarto\n\n\n\nPublish your blog with GitHub actions\n\n\nTuesday\nIntroduction to environments\n\n\n\nQuality control of sequencing data\n\n\n\nBonus: Python in Pixi\n\n\n\nIntroduction to containers\n\n\n\nUsing containers on your data\n\n\nWednesday\nIntroduction to Nextflow\n\n\n\nNextflow basics\n\n\n\nNextflow RNAseq\n\n\nThursday\nnf-core\n\n\n\nTest a nf-core pipeline\n\n\n\nSet up a nf-core pipeline\n\n\nFriday\nVisualize your results: ggplot\n\n\n\nDiscussion: AI in Bioinformatics\n\n\n\nclean-up & finishing",
     "crumbs": [
-      "Home",
-      "Pipelines",
-      "nf-core"
+      "Home"
     ]
   },
   {
-    "objectID": "course_nf-core.html#finding-and-evaluating-a-pipeline",
-    "href": "course_nf-core.html#finding-and-evaluating-a-pipeline",
-    "title": "nfcore introduction",
-    "section": "Finding and evaluating a pipeline",
-    "text": "Finding and evaluating a pipeline\nFrom the nf-core homepage, we can search for pipelines. We are going to demo the rnaseq pipeline. You can see that there is a lot going on in this pipeline! We will chat more about these things in class rather than including screenshots of everything.\n\n\n\nrnaseq landing page\n\n\nUnder the Usage, you will find a lot of information that describes the pipeline, including input information, the samplesheet.csv (which we will have to set up with our data later).\nUnder the Parameters tab you will find information on all of the things that we will set up in the next step.\nUnder the Output tab, you will find information on the expected output generated from the pipeline. This is useful to help you interpret what the pipeline produces.\n\n\n\n\n\n\nImportantTo do for you\n\n\n\nLook through the available pipelines and see if there is one that is interesting for you and your project.\nIn the next part we will set up a nf-core pipeline with the test profile, so then you can test the pipeline that is most interesting for you.",
+    "objectID": "course_data_management.html#data-life-cycle",
+    "href": "course_data_management.html#data-life-cycle",
+    "title": "Data Management for Reproducible Research",
+    "section": "Data Life Cycle",
+    "text": "Data Life Cycle\nWhen working with any type of data, it makes sense to sit down before the project starts to think through the different life stages of the data in your project. This will help counteract some of the problems that can arise when projects grow more organically, and will help consistency within the research group, ease collaboration, and mostly your future self that will understand what past-self has been up to in the project.\n\n\n\n\n\n\nNote\n\n\n\nMore and more funding agencies expect a Data Management Plan at some point of a project application. In there, you need to document that you have thought of, and planned for, the life cycle of your data.\n\n\n\n\n\nThe Research Data Management toolkit for Life Sciences",
     "crumbs": [
       "Home",
-      "Pipelines",
-      "nf-core"
+      "Why this course?",
+      "Reproducible bioinformatics"
     ]
   },
   {
-    "objectID": "about.html",
-    "href": "about.html",
-    "title": "About",
+    "objectID": "course_data_management.html#fair-principles",
+    "href": "course_data_management.html#fair-principles",
+    "title": "Data Management for Reproducible Research",
+    "section": "FAIR principles",
+    "text": "FAIR principles\nIn the past, research data was often generated with one question in mind. Often, they would afterwards land in some drawer and be forgoten about. Nowadays researchers acknowledge that data can also be re-used, or combined with other data, to answer different questions.\nThe FAIR principles promote efficient data discovery and reuse by providing guidelines to make digital resources:\n\n\n\nWilkinson et al. (2016)\n\n\nFAIR principles, in turn, rely on good data management practices in all phases of research:\n\nResearch documentation\nData organisation\nInformation security\nEthics and legislation",
+    "crumbs": [
+      "Home",
+      "Why this course?",
+      "Reproducible bioinformatics"
+    ]
+  },
+  {
+    "objectID": "course_data_management.html#reproducible-research",
+    "href": "course_data_management.html#reproducible-research",
+    "title": "Data Management for Reproducible Research",
+    "section": "Reproducible research",
+    "text": "Reproducible research\nLucky for us, once we implement good data management practices, we will also increase the reproducibility of our analyses. Extensive documentation will increase faith in the outcome of analyses, and will help people (again, future-you) understand what has been done.\nLast, but not least, reproducible research practices make project hand-overs smoother, when the next person already understands the structure of the project, and can rely on good documentation.",
+    "crumbs": [
+      "Home",
+      "Why this course?",
+      "Reproducible bioinformatics"
+    ]
+  },
+  {
+    "objectID": "course_data_management.html#what-data-do-we-work-with",
+    "href": "course_data_management.html#what-data-do-we-work-with",
+    "title": "Data Management for Reproducible Research",
+    "section": "What data do we work with?",
+    "text": "What data do we work with?\n\nBioinformatics is an interdisciplinary field of science that develops methods and software tools for understanding biological data, especially when the data sets are large and complex. (Wikipedia)\n\nThis data can come from a variety of different biological processes:\n\n\n\nsource: Lizel Potgieter\n\n\nEarly on, sequencing data was not readily available, but due to decreasing costs and increased computational power biological data is now being produced in ever increasing quantities:\n\n\n\nGrowth of the Sequence Read Archive, SRA, from 2012 to 2021\n\n\nAt the same time, new technologies are being developed, and new tools that might or might not be maintained or benchmarked against existing tools. It’s the wild west out there!\n\n\n\nOverview of modern sequencing technologies and where they apply to biological processes",
+    "crumbs": [
+      "Home",
+      "Why this course?",
+      "Reproducible bioinformatics"
+    ]
+  },
+  {
+    "objectID": "course_data_management.html#working-with-data",
+    "href": "course_data_management.html#working-with-data",
+    "title": "Data Management for Reproducible Research",
+    "section": "Working with data",
+    "text": "Working with data\nOften, with a new project, one sits down with the data, tries out things and see if they worked. A lot of bioinformatics is not being afraid to try things, and reading the documentation.\nThis traditional way of working with bioinformatics data can have merits and lead to new discoveries. However, in this course we would like to introduce you to a more structured way to make sense of your data.\nLet’s have a look at a typical PhD student’s research project:\n\nThey might analyse their data, and get some results.\nAfter talking with their supervisor they might get a few other samples from a collaborator, or need to drop them from the analyses due to quality concerns.\nThey run the analyses again and get a different set of results.\nThere might be a few iterations of this process, and then the reviewers require some additional analyses…\n\nIn the “end” we have something like this:\n\n\n\nWhich one of these is the latest version?\n\n\n\n\n\n\n\n\nTipBest practices file organization\n\n\n\n\nThere is a folder for the raw data, which does not get altered.\nCode is kept separate from data.\nUse a version control system (at least for code) – e.g. git.\nThere should be a README in every directory, describing the purpose of the directory and its contents.\nUse file naming schemes that makes it easy to find files and understand what they are (for humans and machines) and document them.\nUse non-proprietary formats – .csv rather than .xlsx",
+    "crumbs": [
+      "Home",
+      "Why this course?",
+      "Reproducible bioinformatics"
+    ]
+  },
+  {
+    "objectID": "course_data_management.html#literate-programming",
+    "href": "course_data_management.html#literate-programming",
+    "title": "Data Management for Reproducible Research",
+    "section": "Literate programming",
+    "text": "Literate programming\nOur hypothetical PhD student, even if taking into account the best practice tips from above, is still likely to run the same analyses over and over whenever the input data changes. Sometimes, this might be months, or even years, after the original analysis was performed.\nLuckily, they can save their code snippets (with intuitive file names) and re-use the code from back then. This is often done with R-scripts, but can just as well be applied to bash scripts, python scripts etc.\nIn the past years, the development went even further and one can even combine code and documentation in the same document. The code is wrapped in so called chunks, or code cells, that are executable from within the document.\n\nDebugging is twice as hard as writing the code in the first place. Therefore, if you write the code as cleverly as possible, you are, by definition, not smart enough to debug it. Brian Kernighan\n\nBefore the course you have already worked with one such notebook - Quarto. We will continue to work with it during this course.\n\n\n\n\n\n\nTip\n\n\n\n\nDocument your methods and workflows.\nDocument where and when you downloaded data.\nDocument the versions of the software that you ran.",
+    "crumbs": [
+      "Home",
+      "Why this course?",
+      "Reproducible bioinformatics"
+    ]
+  },
+  {
+    "objectID": "course_data_management.html#version-control",
+    "href": "course_data_management.html#version-control",
+    "title": "Data Management for Reproducible Research",
+    "section": "Version control",
+    "text": "Version control\nNow that our student has reproducible documents, with reasonable names, that can execute their analyses reliably over and over again, what happens if they modify their analyses? Will they end up again with different result files and their project sink down in chaos?\nNo, because there is version control, the practice of tracking and managing changes to files.\nAgain, before the course you worked through the basics of git, and how to use it with GitHub collaboratively. We will continue using git during the course as well.",
+    "crumbs": [
+      "Home",
+      "Why this course?",
+      "Reproducible bioinformatics"
+    ]
+  },
+  {
+    "objectID": "course_data_management.html#environment-managers",
+    "href": "course_data_management.html#environment-managers",
+    "title": "Data Management for Reproducible Research",
+    "section": "Environment managers",
+    "text": "Environment managers\nUsing git, our PhD student can now share their reproducible code with their colloaborators, or between systems. They can rest assured that the different versions of the notebook are tracked and can be checked out when necessary. But what about the bioinformatic tools? Can they also be shared easily?\nDifferent computers can run on different operating systems, or can have different versions of databases installed. This can lead to conflicts between tools, or software versions and can impact code usability, or reproducibility.\nFortunately, smart people have developed environment managers such as conda, bioconda, or pixi. These tools find and install packages, so that the same package versions are being run between different computers. However, the code might still give different results on different operating systems.\nDuring this course we will be building our own environments with Pixi - you’ll see how great it is not having to manually install tools anymore!",
+    "crumbs": [
+      "Home",
+      "Why this course?",
+      "Reproducible bioinformatics"
+    ]
+  },
+  {
+    "objectID": "course_data_management.html#containers-in-bioinformatics",
+    "href": "course_data_management.html#containers-in-bioinformatics",
+    "title": "Data Management for Reproducible Research",
+    "section": "Containers in bioinformatics",
+    "text": "Containers in bioinformatics\nBut what if our PhD student needs to run their code on different operating systems?\nThey can use containers, that contain everything needed to run the application, even the operating system. Containers are being exchanged as container images, which makes them lightweight. Containers do not change over time, so the results will be the same today and in a few years. Everyone gets the same container that works in the same way.\nIn this course, you will have guessed it, we will learn about containers, where to get them and how to use them.",
+    "crumbs": [
+      "Home",
+      "Why this course?",
+      "Reproducible bioinformatics"
+    ]
+  },
+  {
+    "objectID": "course_data_management.html#workflow-manager",
+    "href": "course_data_management.html#workflow-manager",
+    "title": "Data Management for Reproducible Research",
+    "section": "Workflow manager",
+    "text": "Workflow manager\nNow our PhD student can use containers, or environments, to provide a uniform environment for their version controlled, wonderfully documented and reproducible code. Fantastic! But they still have to deploy, or at least monitor, their scripts manually.\nFortunately there are workflow managers that can integrate all of the above, submit your jobs for you, and even monitor and re-submit scripts after failure. They will automatically submit jobs for you, decreasing downtime and increasing efficiency.\n\n\n\n\n\n\nTip\n\n\n\nHumans tend to do mistakes, especially when it comes to tedious or repetitive tasks. If you automate data handling, formatting etc. you are less likely to make mistakes like typos, or changing colors in images.\n\n\nIn this course, we will also cover a workflow manager, Nextflow and learn how to make our own workflow, and how to run already developed workflows.",
+    "crumbs": [
+      "Home",
+      "Why this course?",
+      "Reproducible bioinformatics"
+    ]
+  },
+  {
+    "objectID": "course_data_management.html#goal-of-the-course",
+    "href": "course_data_management.html#goal-of-the-course",
+    "title": "Data Management for Reproducible Research",
+    "section": "Goal of the course",
+    "text": "Goal of the course\nWith this, we want to give you tools that will help you plan and carry out your research. These tools will make your work more efficient and more reproducible. No matter what kind of data you use, you will take something useful from this course.\n\n\n\nOverview of modern sequencing technologies and where they apply to biological processes",
+    "crumbs": [
+      "Home",
+      "Why this course?",
+      "Reproducible bioinformatics"
+    ]
+  },
+  {
+    "objectID": "bonus_python_pixi.html",
+    "href": "bonus_python_pixi.html",
+    "title": "Using Python in Pixi",
     "section": "",
-    "text": "This advanced module of P000187, Reproducible Research in Bioinformatics and Computational Biology, is hosted by the Swedish Agricultural University’s Bioinformatics Infrastructure (SLUBI).\nIn this module we hope to advance your knowledge on how to use reproducible bioinformatics pipelines, report results in a streamlined manner, and implement the system in your own research.\nFeedback is appreciated!\n(This is a Quarto website. To learn more about Quarto websites visit https://quarto.org/docs/websites.)"
+    "text": "You can also install Python packages into your Pixi environment. As an example we will use FastQE, a Python based tool that translates the fastq quality scores into emojis.",
+    "crumbs": [
+      "Home",
+      "Working with environments",
+      "Bonus: Python in Pixi"
+    ]
+  },
+  {
+    "objectID": "bonus_python_pixi.html#prepare-the-environment",
+    "href": "bonus_python_pixi.html#prepare-the-environment",
+    "title": "Using Python in Pixi",
+    "section": "Prepare the environment",
+    "text": "Prepare the environment\npixi init fastqe -c conda-forge\ncd fastqe/\npixi add python\npixi add --pypi fastqe\npixi add --pypi setuptools",
+    "crumbs": [
+      "Home",
+      "Working with environments",
+      "Bonus: Python in Pixi"
+    ]
+  },
+  {
+    "objectID": "bonus_python_pixi.html#run-fastqe-on-your-samples",
+    "href": "bonus_python_pixi.html#run-fastqe-on-your-samples",
+    "title": "Using Python in Pixi",
+    "section": "run FastQE on your sample(s)",
+    "text": "run FastQE on your sample(s)\npixi run srun -A project_ID -t 02:00 fastqe --html  --output sample_name.html ../sample1.fastq",
+    "crumbs": [
+      "Home",
+      "Working with environments",
+      "Bonus: Python in Pixi"
+    ]
+  },
+  {
+    "objectID": "module1_git.html",
+    "href": "module1_git.html",
+    "title": "Version control",
+    "section": "",
+    "text": "We all have worked on data before, done analyses, talked with our PI, changed the analyses, worked a bit more… and in the end we have something like this:\nVersion control, the practice of tracking and managing changes to files, can help us not descend into chaos. With a version controlled project you always know which file, and even which part of the file, is the most recent, and you can even go back to older versions if you have to.\nVersion control can be used on the local system, where both the version database and the checked out file - the one that is actively being worked on - are on the local computer. Good, but the local computer can be corrupted and then the data is compromised.\nVersion control can also be centralized, where the version database is on a central server, and the active file can be checked out from several different computers. This is useful when working from different systems, or when working with collaborators. However, when the central servers is compromised the historical version are lost.\nAt last, version control can be fully distributed, with all versions of the file being on the server and different computers. Each computer checks out the file from its own version database to work on them. The databases are then synchronized between the different computers and the server. One such distributed version control system is git. It can handle everything from small to very large projects and is simple to use. GitHubis a code hosting platform for version control and collaboration, built on git.\nDistributed version control facilitates collaboration with others. Software like git automatically tracks differences in files, and flags conflicts between files.\nAdditionally, GitHub, the code hosting platform based on git that we are using in this course, can be used to maintain uniformity within a working group. The group can develop their own project template that people can use and populate for their own projects.",
+    "crumbs": [
+      "Home",
+      "Module 1 content",
+      "Git and GitHub"
+    ]
+  },
+  {
+    "objectID": "module1_git.html#git",
+    "href": "module1_git.html#git",
+    "title": "Version control",
+    "section": "git",
+    "text": "git\n Git is a version control software that is fully distributed - meaning that each project folder contains the full history of the project. These folders are also called repositories and can be on several computers, or servers.\n\n\n\n\n\n\nNote\n\n\n\nA repository in git is the .git/ folder inside of your directory. This repository tracks all changes made to files in your project and contains your project history. Usually we refer to the git repository as the local repository.\n\n\nLet’s have a closer look at how it works:\n\nGit has three main states that your files can reside in: modified, staged, and committed:\n\n\n\nModified means that you have changed the file but have not committed it to your database yet.\nStaged means that you have marked a modified file in its current version to go into your next commit snapshot.\nCommitted means that the data is safely stored in your local database.\n\n\n\nsource: git documentation\n\nThis leads to the three main sections of a Git project: the working directory, the staging area, and the Git directory (or repository).\n\n\n\nWorking directory, staging area, and Git directory\n\n\nAnd the basic commands of git:\n\n\n\nBasic git commands\n\n\nThe majority of your version control work will happen in your local repository. You have the entire history of the project on your local disk, and do not need an internet connection to work on your data with git.\nHowever, if you want to have a backup of your code, share it or collaborate with others, you might want to add GitHub into the mix:",
+    "crumbs": [
+      "Home",
+      "Module 1 content",
+      "Git and GitHub"
+    ]
+  },
+  {
+    "objectID": "module1_git.html#working-with-github",
+    "href": "module1_git.html#working-with-github",
+    "title": "Version control",
+    "section": "Working with GitHub",
+    "text": "Working with GitHub\nIf you have a repository on GitHub you can clone its contents to you local server. That clones both the working copy, and the .git repository.\nYou can then work locally on your project, make changes, stage and commit them. Then, you can push them to the remote repository on GitHub, syncing the local and the remote repository. From there your collaborator can then pull them again.\n\n\n\nhttps://www.git-tower.com/learn/git/ebook/en/command-line/remote-repositories/introduction",
+    "crumbs": [
+      "Home",
+      "Module 1 content",
+      "Git and GitHub"
+    ]
+  },
+  {
+    "objectID": "module1_git.html#collaborating-on-github",
+    "href": "module1_git.html#collaborating-on-github",
+    "title": "Version control",
+    "section": "Collaborating on GitHub",
+    "text": "Collaborating on GitHub\nWith the setting above you can share code with someone, and this works well when publishing code. This works well when you own the GitHub repository or have write access to it.\nIn collaborative and open-source settings, however, you often want to contribute to a repository you do not control. This is where forking comes in.\nForking a repository means creating your own copy of an existing GitHub repository under your own GitHub account. Your fork is a remote repository that you control, but it still remembers where it came from.\nYou then clone your fork to your local computer and work as usual: add, commit, push, and pull. When you are ready to share your changes, you can propose them back to the original repository by opening a pull request: a request to merge your changes into the original project.\nIn this way, forking allows collaboration without giving everyone direct write access to the same repository. It also allows for more formal collaboration, with quality checked code etc.\n\n\n\nhttps://www.linode.com/docs/guides/how-to-install-git-and-clone-a-github-repository/",
+    "crumbs": [
+      "Home",
+      "Module 1 content",
+      "Git and GitHub"
+    ]
+  },
+  {
+    "objectID": "before_accounts.html",
+    "href": "before_accounts.html",
+    "title": "Create user accounts for the server",
+    "section": "",
+    "text": "The following procedure takes a few days to get through because of clearance delays, so please start straight away, since every thing else in the course depends on it :)\nWe will run parts of this course on a HighPerformance Computing cluster, HPC2N. The cluster is a local resource in Umeå, and to use it you need a user account both at the National Academic Infrastructure for Super­computing in Sweden (NAISS), and at HPC2N.",
+    "crumbs": [
+      "Home",
+      "Preparations",
+      "Server accounts"
+    ]
+  },
+  {
+    "objectID": "before_accounts.html#create-a-user-account-at-suprnaiss",
+    "href": "before_accounts.html#create-a-user-account-at-suprnaiss",
+    "title": "Create user accounts for the server",
+    "section": "Create a user account at SUPR/NAISS",
+    "text": "Create a user account at SUPR/NAISS\n\n\n\n\n\n\nImportantTo do for you\n\n\n\nFill out & submit account request form. Read carefully and follow the provided instructions.\n\n\n\n\n\n\n\n\nTip\n\n\n\n\nUse Register with Federated Identity if you are enrolled in a Swedish university.\nIf you are not enrolled in a Swedish university or if the previous option doesn’t work for you, use instead Register without Federated Identity.\n\n\n\n\nAccept NAISS user agreement\nJust after creating the SUPR account, on the page you are taken to, there will be a section titled “User Agreement” at the very top. Just under it is the button named “Accept NAISS User Agreement”.\n\n\n\n\n\n\nImportantTo do for you\n\n\n\nClick it.\n\n\nAlternately, if you do this at a later point. Login to SUPR. At the very top it will say “NAISS User Agreement Pending”.\n\n\n\n\n\n\nTip\n\n\n\n\nUse With SWAMID if you are enrolled in a Swedish university - this option is much faster!\nIf you are not enrolled in a Swedish university use instead Alternative: Offline via Paper Form. Here you will have to print out, sign and send in the form. This may take up to a week. \n\n\n\nWhen you have a SUPR account you can join our course project on HPC2N:",
+    "crumbs": [
+      "Home",
+      "Preparations",
+      "Server accounts"
+    ]
+  },
+  {
+    "objectID": "before_accounts.html#join-the-course-project-at-hpc2n",
+    "href": "before_accounts.html#join-the-course-project-at-hpc2n",
+    "title": "Create user accounts for the server",
+    "section": "Join the course project at HPC2N",
+    "text": "Join the course project at HPC2N\n\n\n\n\n\n\nImportantTo do for you\n\n\n\nLog in to SUPR.\n\nClick “Projects” in the left side column.\nUnder “Requesting Membership in Projects”, search for Binzer-Panchal, since I am the PI of the project you wish to join. Click “Search for Project”.\nClick “Request” on the “Reproducible Research in Bioinformatics and Computational Biology” project.\nWhen I have accepted your membership in the project, go to SUPR again to apply for an account at HPC2N. You will receive an email when your application for membership in a project has been accepted.",
+    "crumbs": [
+      "Home",
+      "Preparations",
+      "Server accounts"
+    ]
+  },
+  {
+    "objectID": "before_accounts.html#create-a-user-account-at-hpc2n",
+    "href": "before_accounts.html#create-a-user-account-at-hpc2n",
+    "title": "Create user accounts for the server",
+    "section": "Create a user account at HPC2N",
+    "text": "Create a user account at HPC2N\nNote: you must be a member of a project before you do this!\n\n\n\n\n\n\nImportantTo do for you\n\n\n\n\nLogin to SUPR.\nClick “Accounts” in the left side column.\nYou can request an account at HPC2N now. Look under the heading “Account Requests”.\nClick “Request account”.\nYour information will then be sent to HPC2N, and you will be taken back to a webpage where you can choose your username.\nUser accounts are usually created once a week. You will get an email from HPC2N when your account has been created.",
+    "crumbs": [
+      "Home",
+      "Preparations",
+      "Server accounts"
+    ]
+  },
+  {
+    "objectID": "before_accounts.html#questions",
+    "href": "before_accounts.html#questions",
+    "title": "Create user accounts for the server",
+    "section": "Questions?",
+    "text": "Questions?\nContact me via Canvas!",
+    "crumbs": [
+      "Home",
+      "Preparations",
+      "Server accounts"
+    ]
+  },
+  {
+    "objectID": "course_nextflow.html",
+    "href": "course_nextflow.html",
+    "title": "Nextflow",
+    "section": "",
+    "text": "When developing your code in bioinformatics, you will likely use different tool for different parts of your analyses. Traditionally, you would have about one script per tool, all of which you deploy by hand, one after the other. Together, this is called a workflowor pipeline.\nManual deployment of pipelines can be tedious, especially if you have analyses with many steps, or many samples of different sizes that might need a varying amount of computational power. Luckily for you, other bioinformaticians and software developers have developed something to make your life much easier:",
+    "crumbs": [
+      "Home",
+      "Workflow manager",
+      "Nextflow"
+    ]
+  },
+  {
+    "objectID": "course_nextflow.html#workflow-managers",
+    "href": "course_nextflow.html#workflow-managers",
+    "title": "Nextflow",
+    "section": "Workflow managers",
+    "text": "Workflow managers\n\nWorkflow managers provide a framework for the creation, execution, and monitoring of pipeline. &lt;…&gt; They simplify pipeline development, optimize resource usage, handle software installation and versions, and run on different compute platforms, enabling workflow portability and sharing. Wratten et al. (2021) Nature Methods\n\nWith workflow managers you can develop an automated pipeline from your scripts that can then be run on a variety of systems. Once it is developed, execute a single command to start the pipeline. The manager then coordinates the deployment of the scripts in the appropriate sequence, monitors the jobs, handles the file transfers between scripts, gathers the output, and handles re-execution of failed jobs for you. Workflow managed pipelines can run containers, which eliminates software installation and version conflicts.\nThat means that by design the pipelines are:\n\nportable\nmore time efficient (no more downtime between pipeline steps)\nmore resource efficient (mostly, but this might vary depending how skilled a developer you yourself are)\neasier to install (especially when combined with containers, or environment managers)\nmore reproducible\n\nThere are in principle two different flavors of workflow managers: snakemake, and nextflow. In this course we will be introducing you to nexflow.",
+    "crumbs": [
+      "Home",
+      "Workflow manager",
+      "Nextflow"
+    ]
+  },
+  {
+    "objectID": "course_nextflow.html#nextflow",
+    "href": "course_nextflow.html#nextflow",
+    "title": "Nextflow",
+    "section": "Nextflow",
+    "text": "Nextflow\nIn nextflow, your scripts are turned into processes, connected by channels that contain the data - input, output etc. The order of the processes, and their interaction with each other, is specfied in the workflow scope.\n\n\n\nsource: Software carpentries\n\n\n\n\n\n\n\n\nNote\n\n\n\nIn this course, we will not write our own processes, or pipeline. However, if you are interested, there are a lot of very good training materials available online.\n\n\nThe executable part of the processes, the so called script, can be written in any language, so in theory you could always choose the language that is best suited for the job (in practice you might be limited to the languages you know). However, the modularity of the processes allows for easy re-use of existing scripts and processes.\nWhen moving the pipeline from one system to another, the script stays the same and does not change, the same containers are used. The only thing that changes are the parameters that pertain to the environment and available resources. In other words, with nextflow, the functional logic, the processes, are separated from the executive (how the workflow runs). This makes the nextflow pipelines highly interoperable and portable. They can be run on various platforms, such as HPC clusters, local computers, cloud systems etc..\nThe pipelines can be integrated with version control tools, such as git or bitbucket, and containers technologies, such as apptainer or docker. This makes the pipeline very reproducible.\nThe nextflow pipelines are extremely scalable, can be developed on a few samples and easily be run on hundreds or thousands of samples. When possible, processes are run in parallel automatically.\nNexflow performs automatic checks on the processes and their in- and output. It can automatically resume execution at a point of failure without having to re-compute successfully completed parts.\nNextflow is open source.\nHere is a more visual summary of some of the points above:\n\n\n\nsource: Maxime U Garcia, Seqera labs",
+    "crumbs": [
+      "Home",
+      "Workflow manager",
+      "Nextflow"
+    ]
+  },
+  {
+    "objectID": "before_quarto.html",
+    "href": "before_quarto.html",
+    "title": "Quarto",
+    "section": "",
+    "text": "Here we install Quarto in VScode and use it to build and publish a blog. (If you did module 1, you have already seen Quarto; this puts it to practical use.)",
+    "crumbs": [
+      "Home",
+      "Preparations",
+      "Quarto"
+    ]
+  },
+  {
+    "objectID": "before_quarto.html#literate-programming",
+    "href": "before_quarto.html#literate-programming",
+    "title": "Quarto",
+    "section": "Literate programming",
+    "text": "Literate programming\nWhen analysing data, it is good practice to work as reproducibleas possible. Part of that is not only developing and executing code (for example in a R session), but to save and comment the code. As always, this documentation step is crucial to understand the code, especially when sharing code with others, or getting back to it at a later point in time.\nLiterate programming combines code and documentation in the same document: the documentation is in plain text, and the code is wrapped in so called chunks, that are executable from within the document.\nThese notebooks that allow for literate programming come in different flavors, for example jupyter notebooksand marimo for Python applications, Rmarkdown for R code. Its successor, quarto can be used to integrate a variety of coding languanges. In this course, we will introduce you to quarto.",
+    "crumbs": [
+      "Home",
+      "Preparations",
+      "Quarto"
+    ]
+  },
+  {
+    "objectID": "before_quarto.html#quarto",
+    "href": "before_quarto.html#quarto",
+    "title": "Quarto",
+    "section": "Quarto",
+    "text": "Quarto\n\nAn open-source scientific and technical publishing system.\n\nMeaning that you can use your favorite text editor (such as VScode (o; ) to write documents in plain text markdown.\nQuarto chunks, or code cells, are executable from within the document and can be written in a variety of different languages - such as python, R, Julia, bash, Observable, and more.\nYour document can then be rendered into a variety of different output formats: html, pdf, MS Word, Markdown, and more.\nWith this you can make presentations, dashboards, homepages (like this one), reports, books, manuscripts, and more.\n\n\n\n\n\n\nImportantTo do for you\n\n\n\nInstall Quarto, and follow the tutorial for VScode.\n\n\n\n\n\n\n\n\nNote\n\n\n\nQuarto has a very good documentation, that you can access on their homepage -&gt; Guide, or by searching the web for “Quarto, feature you are looking for”.",
+    "crumbs": [
+      "Home",
+      "Preparations",
+      "Quarto"
+    ]
+  },
+  {
+    "objectID": "course_intro.html#hello-and-welcome-to-the-advanced-module-of-reproducible-research-in-bioinformatics-and-computational-biology",
+    "href": "course_intro.html#hello-and-welcome-to-the-advanced-module-of-reproducible-research-in-bioinformatics-and-computational-biology",
+    "title": "Personal course homepage",
+    "section": "Hello and welcome to the advanced module of Reproducible Research in Bioinformatics and Computational Biology!",
+    "text": "Hello and welcome to the advanced module of Reproducible Research in Bioinformatics and Computational Biology!\nToday we will talk about the why’s and how’s of this module, and you will set up your own course homepage. This homepage will be your personal learning space throughout the module. Each evening, you’ll write a short blog post to reflect on what you’ve learned during the day. Some days, you might write several posts if you have a lot to share. These daily reflections will help you keep track of your progress, deepen your understanding, and build a clear record of your learning, as well as a habit of documentation.",
+    "crumbs": [
+      "Home",
+      "Why this course?",
+      "Personal course homepage"
+    ]
+  },
+  {
+    "objectID": "course_intro.html#your-homepage-and-github",
+    "href": "course_intro.html#your-homepage-and-github",
+    "title": "Personal course homepage",
+    "section": "Your Homepage and GitHub",
+    "text": "Your Homepage and GitHub\nYour Quarto homepage will be version-controlled using Git and GitHub. By the end of the module, you will share both the URL of your GitHub repository and the URL of your published homepage. This way I can review your work, follow your progress, and see how your site has developed over time.",
+    "crumbs": [
+      "Home",
+      "Why this course?",
+      "Personal course homepage"
+    ]
+  },
+  {
+    "objectID": "course_intro.html#good-git-practices",
+    "href": "course_intro.html#good-git-practices",
+    "title": "Personal course homepage",
+    "section": "Good Git Practices",
+    "text": "Good Git Practices\nThroughout the module, I expect you to follow good Git practices. This means writing clear and informative commit messages, keeping each commit focused on one topic or change, and committing regularly rather than saving everything for the end. These habits are an essential part of professional software development and will make your project much easier to follow and maintain.",
+    "crumbs": [
+      "Home",
+      "Why this course?",
+      "Personal course homepage"
+    ]
+  },
+  {
+    "objectID": "course_intro.html#writing-your-daily-blog",
+    "href": "course_intro.html#writing-your-daily-blog",
+    "title": "Personal course homepage",
+    "section": "Writing Your Daily Blog",
+    "text": "Writing Your Daily Blog\nYour daily posts do not have to be long or perfect. The goal is to build a habit of documentation and communication. Use simple language, write honestly about what you’ve learned, and don’t be afraid to include code, images, or links to illustrate your thoughts. Over time, these posts will form a valuable record of your growth and achievements during the course - and maybe later?",
+    "crumbs": [
+      "Home",
+      "Why this course?",
+      "Personal course homepage"
+    ]
+  },
+  {
+    "objectID": "before_screen.html",
+    "href": "before_screen.html",
+    "title": "Manage persistent bash sessions",
+    "section": "",
+    "text": "If you work a lot in the console/terminal, especially when working on remote machines/servers via SSH, then you are likely sooner or later to get very annoyed when:\nScreen (and similar programs) allows you to run persistent bash sessions, so that if any of the above happens your bash session on the remote server will just continue. All running processes will proceed in your absence, and you can later re-attach to your session and find things exactly how they would have been had you sat right there, starring at the screen for hours 😎!\nThis is very useful since your re-attached session will continue in the same directory and will have all the project relevant command history saved.",
+    "crumbs": [
+      "Home",
+      "Preparations",
+      "screen session"
+    ]
+  },
+  {
+    "objectID": "before_screen.html#practice-a-screen-tutorial",
+    "href": "before_screen.html#practice-a-screen-tutorial",
+    "title": "Manage persistent bash sessions",
+    "section": "Practice a screen tutorial",
+    "text": "Practice a screen tutorial\nConnect to the HPC2N login node, enter the screen command in your terminal and practice the following tutorial starting from “2. Name Your Session”.\nAfter the above practice, in your terminal window you can test out the power of screen:\n\nwithin your screen session, run this infinite loop: while true; do date; sleep 1; done\nclose the terminal window running your above split screen session altogether (brutal closing, ie clicking the “close window” garbage can icon on the top right corner of the terminal window in VScode, or closing VScode and your connection to HPC2n completely).\nthen open a fresh terminal window, (be sure you are connected to HPC2N) and re-attach to your still alive and kicking screen session.\nnotice how the date/times have continued to be printed to the screen in the background.\npress CTRL-C to interrupt the loop, then CTRL-A ESC to enter scrolling mode, then you can use the PAGE-UP and PAGE-DOWN keys to observe the activity that took place in screen even whilst you were detached from the screen !\n\nThank-you to Gabriele Pozatti for this section!",
+    "crumbs": [
+      "Home",
+      "Preparations",
+      "screen session"
+    ]
+  },
+  {
+    "objectID": "course_nextflow_rnaseq.html",
+    "href": "course_nextflow_rnaseq.html",
+    "title": "Nextflow RNAseq pipeline",
+    "section": "",
+    "text": "To demonstrate a real-world biomedical scenario, we will implement a proof of concept RNA-Seq workflow which:\n\nIndexes a transcriptome file\nPerforms quality controls\nPerforms quantification\nCreates a MultiQC report\n\nThis will be done using a series of seven scripts, each of which builds on the previous to create a complete workflow. You can find these in the tutorial folder (script1.nf - script6.nf). These scripts will make use of third-party tools that are known by bioinformaticians but that may be new to you so we’ll briefly introduce them below.\n\nSalmon is a tool for quantifying molecules known as transcripts through a type of data called RNA-seq data.\nFastQC is a tool to perform quality control for high throughput sequence data. You can think of it as a way to assess the quality of your data.\nMultiQC searches a given directory for analysis logs and compiles a HTML report. It’s a general use tool, perfect for summarizing the output from numerous bioinformatics tools.\n\nThough these tools may not be the ones you will use in your pipeline, they could just be replaced by any common tool of your area. That’s the power of Nextflow!",
+    "crumbs": [
+      "Home",
+      "Workflow manager",
+      "Nextflow RNAseq"
+    ]
+  },
+  {
+    "objectID": "course_nextflow_rnaseq.html#simple-rna-seq-workflow-from-seqera-training-materials",
+    "href": "course_nextflow_rnaseq.html#simple-rna-seq-workflow-from-seqera-training-materials",
+    "title": "Nextflow RNAseq pipeline",
+    "section": "",
+    "text": "To demonstrate a real-world biomedical scenario, we will implement a proof of concept RNA-Seq workflow which:\n\nIndexes a transcriptome file\nPerforms quality controls\nPerforms quantification\nCreates a MultiQC report\n\nThis will be done using a series of seven scripts, each of which builds on the previous to create a complete workflow. You can find these in the tutorial folder (script1.nf - script6.nf). These scripts will make use of third-party tools that are known by bioinformaticians but that may be new to you so we’ll briefly introduce them below.\n\nSalmon is a tool for quantifying molecules known as transcripts through a type of data called RNA-seq data.\nFastQC is a tool to perform quality control for high throughput sequence data. You can think of it as a way to assess the quality of your data.\nMultiQC searches a given directory for analysis logs and compiles a HTML report. It’s a general use tool, perfect for summarizing the output from numerous bioinformatics tools.\n\nThough these tools may not be the ones you will use in your pipeline, they could just be replaced by any common tool of your area. That’s the power of Nextflow!",
+    "crumbs": [
+      "Home",
+      "Workflow manager",
+      "Nextflow RNAseq"
+    ]
+  },
+  {
+    "objectID": "course_nextflow_rnaseq.html#preparations",
+    "href": "course_nextflow_rnaseq.html#preparations",
+    "title": "Nextflow RNAseq pipeline",
+    "section": "Preparations",
+    "text": "Preparations\nIf you haven’t done so yet, copy the directory “nf-training” from the common_data directory into your personal directory. Change directory into it.",
+    "crumbs": [
+      "Home",
+      "Workflow manager",
+      "Nextflow RNAseq"
+    ]
+  },
+  {
+    "objectID": "course_nextflow_rnaseq.html#set-the-executor",
+    "href": "course_nextflow_rnaseq.html#set-the-executor",
+    "title": "Nextflow RNAseq pipeline",
+    "section": "Set the executor",
+    "text": "Set the executor\nSo far we have used the local executor for our scripts, which is a big no no on clusters since that uses the log-in node for the execution. The pipeline we are building up now is a bit more complicated and requires more computing power than string manipulation, so it is time to set slurm as the executor. This can be done in a file called nextflow.config. I have prepared that file for you: locate the file nextflow.config in your folder and replace its content with the following:\nprocess{\n    executor = \"slurm\"\n    time = '2.h'  // Set default time limit for all processes\n    \n    // Other settings\n    cpus = 4\n}\n\nresume = true\nsingularity.enabled = true\n\nexecutor {\n    account = 'your_project_account'\n}\n\nHere, we set the executor for every process to slurm.\nWe set resume to true, so it is automatically used for all our runs (which means we do not have to specify this in our nextflow run command anymore).\nWe enable singularity and set some singularity run options.\nLastly, we specify the account name for the slurm execution.\n\nThis nextflow.config file is implicitly called when we execute nextflow from the folder it is in. We do not have to explicitely name it in the nextflow run command.",
+    "crumbs": [
+      "Home",
+      "Workflow manager",
+      "Nextflow RNAseq"
+    ]
+  },
+  {
+    "objectID": "course_nextflow_rnaseq.html#define-the-workflow-parameters",
+    "href": "course_nextflow_rnaseq.html#define-the-workflow-parameters",
+    "title": "Nextflow RNAseq pipeline",
+    "section": "Define the workflow parameters",
+    "text": "Define the workflow parameters\nParameters are inputs and options that can be changed when the workflow is run.\nThe script script1.nf defines the workflow input parameters:\nparams.reads = \"$projectDir/data/ggal/gut_{1,2}.fq\"\nparams.transcriptome_file = \"$projectDir/data/ggal/transcriptome.fa\"\nparams.multiqc = \"$projectDir/multiqc\"\n\nprintln \"reads: $params.reads\"\nRun it by using the following command:\npixi run nextflow run script1.nf\n\n\n\n\n\n\nNote\n\n\n\nNote that we do not need to specify that we want to use the nextflow.config file. Since it is in the same directory it will be used automatically.\n\n\n\n\n\n\n\n\nImportantTo do for you\n\n\n\nModify script1.nf by adding a fourth parameter named outdir and set it to a default path that will be used as the workflow output directory.",
+    "crumbs": [
+      "Home",
+      "Workflow manager",
+      "Nextflow RNAseq"
+    ]
+  },
+  {
+    "objectID": "course_nextflow_rnaseq.html#create-a-transcriptome-index-file",
+    "href": "course_nextflow_rnaseq.html#create-a-transcriptome-index-file",
+    "title": "Nextflow RNAseq pipeline",
+    "section": "Create a transcriptome index file",
+    "text": "Create a transcriptome index file\nNextflow allows the execution of any command or script by using a process definition.\nA process is defined by providing three main declarations: the process input, output, and the command script.\nTo add a transcriptome INDEX processing step, add the following code blocks to your script1.nf. Alternatively, these code blocks have already been added to script2.nf.\nprocess INDEX {\n    input:\n    path transcriptome\n\n    output:\n    path 'salmon_index'\n\n    script:\n    \"\"\"\n    salmon index --threads $task.cpus -t $transcriptome -i salmon_index\n    \"\"\"\n}\nAdditionally, add a workflow scope containing an input channel definition and the index process:\nworkflow {\n    index_ch = INDEX(file(params.transcriptome_file, checkIfExists: true))\n}\nHere, the params.transcriptome_file parameter is used as the input for the INDEX process. The INDEX process (using the salmon tool) creates salmon_index, an indexed transcriptome that is passed as an output to the index_ch channel.\nRun with:\npixi run nextflow run script1.nf \n\n\n\n\n\n\nCaution\n\n\n\nWhy doesn’t this work? What have we forgotten?\n\n\n\nadd Salmon to your environment\npixi add salmon\n\n\nadd Salmon in a container to the process\nAdding a container to the process and running the tool via the container is more reproducible than adding it to your environment. Use the container directive and add the URL to the container to the process scope:\ncontainer 'https://depot.galaxyproject.org/singularity/salmon:1.10.1--h7e5ed60_0'\n\n\n\n\n\n\nNote\n\n\n\nYou can also specify a process specific output directory in the process block:\npublishDir \"$params.outdir/salmon\"\nThis command line would typically be located just below the container directive.",
+    "crumbs": [
+      "Home",
+      "Workflow manager",
+      "Nextflow RNAseq"
+    ]
+  },
+  {
+    "objectID": "course_nextflow_rnaseq.html#define-run-time-environment",
+    "href": "course_nextflow_rnaseq.html#define-run-time-environment",
+    "title": "Nextflow RNAseq pipeline",
+    "section": "Define run time environment",
+    "text": "Define run time environment\nRemember how Nextflow is big on execution abstraction? This is where we will put this concept into practice. In the nextflow.config add the following just before the closing squiggly bracket from the process definitions:\n    withName:'INDEX'{\n        time = 15.m\n        cpus = 2\n    }\nWith this we specify the alloted time and cpus for this specific process.\nTo specify memory add mem = xx.GB - check with your cluster to see how much memory is available and how to specify it. In our case we don’t need to because the memory implicit in the 2 cpus is enough for our purposes.\npixi run nextflow run script1.nf \nCollect read files by pairs\nThis step shows how to match read files into pairs, so they can be mapped by Salmon.\nRun script3.nf:\npixi run nextflow run script3.nf\nNow add\nread_pairs_ch.view()\nto the bottom of the script, save it and run it again.\nIt will print something similar to this:\n[gut, [/.../data/ggal/gut_1.fq, /.../data/ggal/gut_2.fq]]\nThe above example shows how the read_pairs_ch channel emits tuples composed of two elements, where the first is the read pair prefix and the second is a list representing the actual files.",
+    "crumbs": [
+      "Home",
+      "Workflow manager",
+      "Nextflow RNAseq"
+    ]
+  },
+  {
+    "objectID": "course_nextflow_rnaseq.html#expression-quantification",
+    "href": "course_nextflow_rnaseq.html#expression-quantification",
+    "title": "Nextflow RNAseq pipeline",
+    "section": "Expression quantification",
+    "text": "Expression quantification\nLook at the file “script4.nf”. This script adds a gene expression QUANTIFICATION process and a call to it within the workflow scope. Quantification requires the index transcriptome and RNA-Seq read pair fastq files.\nIn the workflow scope, note how the index_ch channel is assigned as output in the INDEX process.\nNext, note that the first input channel for the QUANTIFICATION process is the previously declared index_ch, which contains the path to the salmon_index.\nAlso, note that the second input channel for the QUANTIFICATION process, is the read_pair_ch we just created. This being a tuple** composed of two elements (a value: “sample_id” and a list of paths to the fastq reads: “reads”) in order to match the structure of the items emitted by the fromFilePairs channel factory.\n**tuple: a data structure consisting of multiple parts.\npixi run nextflow run script4.nf\nExecute the same script again with more read files, as shown below:\npixi run nextflow run script4.nf --reads 'data/ggal/*_{1,2}.fq'\nYou will notice that the QUANTIFICATION process is executed multiple times.\nNextflow parallelizes the execution of your workflow simply by providing multiple sets of input data to your script.\n\n\n\n\n\n\nImportantTo do for you\n\n\n\nAdd the process specific runtime environment definition for QUANTIFICATION to nextflow.config.",
+    "crumbs": [
+      "Home",
+      "Workflow manager",
+      "Nextflow RNAseq"
+    ]
+  },
+  {
+    "objectID": "course_nextflow_rnaseq.html#quality-control",
+    "href": "course_nextflow_rnaseq.html#quality-control",
+    "title": "Nextflow RNAseq pipeline",
+    "section": "Quality control",
+    "text": "Quality control\nNow we want to add another process, using our beloved FastQC to check the samples. The input is the same as the read pairs used in the QUANTIFICATION step.\n\n\n\n\n\n\nImportantTo do for you\n\n\n\nSit together with your neighbour and first think 5 minutes what you need to do to implement this new process.\nWe will then discuss in class.",
+    "crumbs": [
+      "Home",
+      "Workflow manager",
+      "Nextflow RNAseq"
+    ]
+  },
+  {
+    "objectID": "course_nextflow_rnaseq.html#multiqc",
+    "href": "course_nextflow_rnaseq.html#multiqc",
+    "title": "Nextflow RNAseq pipeline",
+    "section": "MultiQC",
+    "text": "MultiQC\nThis last step collects the outputs from the QUANTIFICATION and FASTQC processes to create a final report using MultiQC.\nAgain, what do you need to consider when adding this process to the pipeline?\n\n\n\n\n\n\nTip\n\n\n\nWe only want one task of MultiQC to be executed to produce one report. For this, it needs to wait for the report generating processes to stop. We can use the mix channel operator to combine the two channels followed by the collect operator, to return the complete channel contents as a single element.\nSo the new line in the workflow scope looks like this:\n\nMULTIQC(quant_ch.mix(fastqc_ch).collect())",
+    "crumbs": [
+      "Home",
+      "Workflow manager",
+      "Nextflow RNAseq"
+    ]
   },
   {
     "objectID": "ggplot_slides/course_ggplot_slides.html#graphs",
@@ -719,563 +1253,113 @@
     "text": "Thank you! Questions?\n\n\n\n\nAcknowledgements:\n• SLUBI • 3Bs • Slides adapted from RaukR • GPL-3 License"
   },
   {
-    "objectID": "course_nextflow_rnaseq.html",
-    "href": "course_nextflow_rnaseq.html",
-    "title": "Nextflow RNAseq pipeline",
+    "objectID": "about.html",
+    "href": "about.html",
+    "title": "About",
     "section": "",
-    "text": "To demonstrate a real-world biomedical scenario, we will implement a proof of concept RNA-Seq workflow which:\n\nIndexes a transcriptome file\nPerforms quality controls\nPerforms quantification\nCreates a MultiQC report\n\nThis will be done using a series of seven scripts, each of which builds on the previous to create a complete workflow. You can find these in the tutorial folder (script1.nf - script6.nf). These scripts will make use of third-party tools that are known by bioinformaticians but that may be new to you so we’ll briefly introduce them below.\n\nSalmon is a tool for quantifying molecules known as transcripts through a type of data called RNA-seq data.\nFastQC is a tool to perform quality control for high throughput sequence data. You can think of it as a way to assess the quality of your data.\nMultiQC searches a given directory for analysis logs and compiles a HTML report. It’s a general use tool, perfect for summarizing the output from numerous bioinformatics tools.\n\nThough these tools may not be the ones you will use in your pipeline, they could just be replaced by any common tool of your area. That’s the power of Nextflow!",
-    "crumbs": [
-      "Home",
-      "Workflow manager",
-      "Nextflow RNAseq"
-    ]
+    "text": "This advanced module of P000187, Reproducible Research in Bioinformatics and Computational Biology, is hosted by the Swedish Agricultural University’s Bioinformatics Infrastructure (SLUBI).\nIn this module we hope to advance your knowledge on how to use reproducible bioinformatics pipelines, report results in a streamlined manner, and implement the system in your own research.\nFeedback is appreciated!\n(This is a Quarto website. To learn more about Quarto websites visit https://quarto.org/docs/websites.)"
   },
   {
-    "objectID": "course_nextflow_rnaseq.html#simple-rna-seq-workflow-from-seqera-training-materials",
-    "href": "course_nextflow_rnaseq.html#simple-rna-seq-workflow-from-seqera-training-materials",
-    "title": "Nextflow RNAseq pipeline",
+    "objectID": "course_nf-core.html",
+    "href": "course_nf-core.html",
+    "title": "nfcore introduction",
     "section": "",
-    "text": "To demonstrate a real-world biomedical scenario, we will implement a proof of concept RNA-Seq workflow which:\n\nIndexes a transcriptome file\nPerforms quality controls\nPerforms quantification\nCreates a MultiQC report\n\nThis will be done using a series of seven scripts, each of which builds on the previous to create a complete workflow. You can find these in the tutorial folder (script1.nf - script6.nf). These scripts will make use of third-party tools that are known by bioinformaticians but that may be new to you so we’ll briefly introduce them below.\n\nSalmon is a tool for quantifying molecules known as transcripts through a type of data called RNA-seq data.\nFastQC is a tool to perform quality control for high throughput sequence data. You can think of it as a way to assess the quality of your data.\nMultiQC searches a given directory for analysis logs and compiles a HTML report. It’s a general use tool, perfect for summarizing the output from numerous bioinformatics tools.\n\nThough these tools may not be the ones you will use in your pipeline, they could just be replaced by any common tool of your area. That’s the power of Nextflow!",
+    "text": "source: nf-core\nNf-core is a very active community around nextflow. Volunteers develop nextflow pipelines around a variety of bioinformatic data.\nHere are some flagship pipelines that have been developed by the nf-core community (we will have a look at the entire list on the nf-core homepage in a bit):\nAll nf-core pipelines are open source and the source code is available on github. The pipelines are developed by volunteers, who can have a very varied background.\nHowever, nf-core does not only develop pipelines.\nThe community also develops:\nThere is a weekly online helpdesk, and even a podcast.",
     "crumbs": [
       "Home",
-      "Workflow manager",
-      "Nextflow RNAseq"
+      "Pipelines",
+      "nf-core"
     ]
   },
   {
-    "objectID": "course_nextflow_rnaseq.html#preparations",
-    "href": "course_nextflow_rnaseq.html#preparations",
-    "title": "Nextflow RNAseq pipeline",
-    "section": "Preparations",
-    "text": "Preparations\nIf you haven’t done so yet, copy the directory “nf-training” from the common_data directory into your personal directory. Change directory into it.",
+    "objectID": "course_nf-core.html#finding-and-evaluating-a-pipeline",
+    "href": "course_nf-core.html#finding-and-evaluating-a-pipeline",
+    "title": "nfcore introduction",
+    "section": "Finding and evaluating a pipeline",
+    "text": "Finding and evaluating a pipeline\nFrom the nf-core homepage, we can search for pipelines. We are going to demo the rnaseq pipeline. You can see that there is a lot going on in this pipeline! We will chat more about these things in class rather than including screenshots of everything.\n\n\n\nrnaseq landing page\n\n\nUnder the Usage, you will find a lot of information that describes the pipeline, including input information, the samplesheet.csv (which we will have to set up with our data later).\nUnder the Parameters tab you will find information on all of the things that we will set up in the next step.\nUnder the Output tab, you will find information on the expected output generated from the pipeline. This is useful to help you interpret what the pipeline produces.\n\n\n\n\n\n\nImportantTo do for you\n\n\n\nLook through the available pipelines and see if there is one that is interesting for you and your project.\nIn the next part we will set up a nf-core pipeline with the test profile, so then you can test the pipeline that is most interesting for you.",
     "crumbs": [
       "Home",
-      "Workflow manager",
-      "Nextflow RNAseq"
+      "Pipelines",
+      "nf-core"
     ]
   },
   {
-    "objectID": "course_nextflow_rnaseq.html#set-the-executor",
-    "href": "course_nextflow_rnaseq.html#set-the-executor",
-    "title": "Nextflow RNAseq pipeline",
-    "section": "Set the executor",
-    "text": "Set the executor\nSo far we have used the local executor for our scripts, which is a big no no on clusters since that uses the log-in node for the execution. The pipeline we are building up now is a bit more complicated and requires more computing power than string manipulation, so it is time to set slurm as the executor. This can be done in a file called nextflow.config. I have prepared that file for you: locate the file nextflow.config in your folder and replace its content with the following:\nprocess{\n    executor = \"slurm\"\n    time = '2.h'  // Set default time limit for all processes\n    \n    // Other settings\n    cpus = 4\n}\n\nresume = true\nsingularity.enabled = true\n\nexecutor {\n    account = 'your_project_account'\n}\n\nHere, we set the executor for every process to slurm.\nWe set resume to true, so it is automatically used for all our runs (which means we do not have to specify this in our nextflow run command anymore).\nWe enable singularity and set some singularity run options.\nLastly, we specify the account name for the slurm execution.\n\nThis nextflow.config file is implicitly called when we execute nextflow from the folder it is in. We do not have to explicitely name it in the nextflow run command.",
-    "crumbs": [
-      "Home",
-      "Workflow manager",
-      "Nextflow RNAseq"
-    ]
-  },
-  {
-    "objectID": "course_nextflow_rnaseq.html#define-the-workflow-parameters",
-    "href": "course_nextflow_rnaseq.html#define-the-workflow-parameters",
-    "title": "Nextflow RNAseq pipeline",
-    "section": "Define the workflow parameters",
-    "text": "Define the workflow parameters\nParameters are inputs and options that can be changed when the workflow is run.\nThe script script1.nf defines the workflow input parameters:\nparams.reads = \"$projectDir/data/ggal/gut_{1,2}.fq\"\nparams.transcriptome_file = \"$projectDir/data/ggal/transcriptome.fa\"\nparams.multiqc = \"$projectDir/multiqc\"\n\nprintln \"reads: $params.reads\"\nRun it by using the following command:\npixi run nextflow run script1.nf\n\n\n\n\n\n\nNote\n\n\n\nNote that we do not need to specify that we want to use the nextflow.config file. Since it is in the same directory it will be used automatically.\n\n\n\n\n\n\n\n\nImportantTo do for you\n\n\n\nModify script1.nf by adding a fourth parameter named outdir and set it to a default path that will be used as the workflow output directory.",
-    "crumbs": [
-      "Home",
-      "Workflow manager",
-      "Nextflow RNAseq"
-    ]
-  },
-  {
-    "objectID": "course_nextflow_rnaseq.html#create-a-transcriptome-index-file",
-    "href": "course_nextflow_rnaseq.html#create-a-transcriptome-index-file",
-    "title": "Nextflow RNAseq pipeline",
-    "section": "Create a transcriptome index file",
-    "text": "Create a transcriptome index file\nNextflow allows the execution of any command or script by using a process definition.\nA process is defined by providing three main declarations: the process input, output, and the command script.\nTo add a transcriptome INDEX processing step, add the following code blocks to your script1.nf. Alternatively, these code blocks have already been added to script2.nf.\nprocess INDEX {\n    input:\n    path transcriptome\n\n    output:\n    path 'salmon_index'\n\n    script:\n    \"\"\"\n    salmon index --threads $task.cpus -t $transcriptome -i salmon_index\n    \"\"\"\n}\nAdditionally, add a workflow scope containing an input channel definition and the index process:\nworkflow {\n    index_ch = INDEX(file(params.transcriptome_file, checkIfExists: true))\n}\nHere, the params.transcriptome_file parameter is used as the input for the INDEX process. The INDEX process (using the salmon tool) creates salmon_index, an indexed transcriptome that is passed as an output to the index_ch channel.\nRun with:\npixi run nextflow run script1.nf \n\n\n\n\n\n\nCaution\n\n\n\nWhy doesn’t this work? What have we forgotten?\n\n\n\nadd Salmon to your environment\npixi add salmon\n\n\nadd Salmon in a container to the process\nAdding a container to the process and running the tool via the container is more reproducible than adding it to your environment. Use the container directive and add the URL to the container to the process scope:\ncontainer 'https://depot.galaxyproject.org/singularity/salmon:1.10.1--h7e5ed60_0'\n\n\n\n\n\n\nNote\n\n\n\nYou can also specify a process specific output directory in the process block:\npublishDir \"$params.outdir/salmon\"\nThis command line would typically be located just below the container directive.",
-    "crumbs": [
-      "Home",
-      "Workflow manager",
-      "Nextflow RNAseq"
-    ]
-  },
-  {
-    "objectID": "course_nextflow_rnaseq.html#define-run-time-environment",
-    "href": "course_nextflow_rnaseq.html#define-run-time-environment",
-    "title": "Nextflow RNAseq pipeline",
-    "section": "Define run time environment",
-    "text": "Define run time environment\nRemember how Nextflow is big on execution abstraction? This is where we will put this concept into practice. In the nextflow.config add the following just before the closing squiggly bracket from the process definitions:\n    withName:'INDEX'{\n        time = 15.m\n        cpus = 2\n    }\nWith this we specify the alloted time and cpus for this specific process.\nTo specify memory add mem = xx.GB - check with your cluster to see how much memory is available and how to specify it. In our case we don’t need to because the memory implicit in the 2 cpus is enough for our purposes.\npixi run nextflow run script1.nf \nCollect read files by pairs\nThis step shows how to match read files into pairs, so they can be mapped by Salmon.\nRun script3.nf:\npixi run nextflow run script3.nf\nNow add\nread_pairs_ch.view()\nto the bottom of the script, save it and run it again.\nIt will print something similar to this:\n[gut, [/.../data/ggal/gut_1.fq, /.../data/ggal/gut_2.fq]]\nThe above example shows how the read_pairs_ch channel emits tuples composed of two elements, where the first is the read pair prefix and the second is a list representing the actual files.",
-    "crumbs": [
-      "Home",
-      "Workflow manager",
-      "Nextflow RNAseq"
-    ]
-  },
-  {
-    "objectID": "course_nextflow_rnaseq.html#expression-quantification",
-    "href": "course_nextflow_rnaseq.html#expression-quantification",
-    "title": "Nextflow RNAseq pipeline",
-    "section": "Expression quantification",
-    "text": "Expression quantification\nLook at the file “script4.nf”. This script adds a gene expression QUANTIFICATION process and a call to it within the workflow scope. Quantification requires the index transcriptome and RNA-Seq read pair fastq files.\nIn the workflow scope, note how the index_ch channel is assigned as output in the INDEX process.\nNext, note that the first input channel for the QUANTIFICATION process is the previously declared index_ch, which contains the path to the salmon_index.\nAlso, note that the second input channel for the QUANTIFICATION process, is the read_pair_ch we just created. This being a tuple** composed of two elements (a value: “sample_id” and a list of paths to the fastq reads: “reads”) in order to match the structure of the items emitted by the fromFilePairs channel factory.\n**tuple: a data structure consisting of multiple parts.\npixi run nextflow run script4.nf\nExecute the same script again with more read files, as shown below:\npixi run nextflow run script4.nf --reads 'data/ggal/*_{1,2}.fq'\nYou will notice that the QUANTIFICATION process is executed multiple times.\nNextflow parallelizes the execution of your workflow simply by providing multiple sets of input data to your script.\n\n\n\n\n\n\nImportantTo do for you\n\n\n\nAdd the process specific runtime environment definition for QUANTIFICATION to nextflow.config.",
-    "crumbs": [
-      "Home",
-      "Workflow manager",
-      "Nextflow RNAseq"
-    ]
-  },
-  {
-    "objectID": "course_nextflow_rnaseq.html#quality-control",
-    "href": "course_nextflow_rnaseq.html#quality-control",
-    "title": "Nextflow RNAseq pipeline",
-    "section": "Quality control",
-    "text": "Quality control\nNow we want to add another process, using our beloved FastQC to check the samples. The input is the same as the read pairs used in the QUANTIFICATION step.\n\n\n\n\n\n\nImportantTo do for you\n\n\n\nSit together with your neighbour and first think 5 minutes what you need to do to implement this new process.\nWe will then discuss in class.",
-    "crumbs": [
-      "Home",
-      "Workflow manager",
-      "Nextflow RNAseq"
-    ]
-  },
-  {
-    "objectID": "course_nextflow_rnaseq.html#multiqc",
-    "href": "course_nextflow_rnaseq.html#multiqc",
-    "title": "Nextflow RNAseq pipeline",
-    "section": "MultiQC",
-    "text": "MultiQC\nThis last step collects the outputs from the QUANTIFICATION and FASTQC processes to create a final report using MultiQC.\nAgain, what do you need to consider when adding this process to the pipeline?\n\n\n\n\n\n\nTip\n\n\n\nWe only want one task of MultiQC to be executed to produce one report. For this, it needs to wait for the report generating processes to stop. We can use the mix channel operator to combine the two channels followed by the collect operator, to return the complete channel contents as a single element.\nSo the new line in the workflow scope looks like this:\n\nMULTIQC(quant_ch.mix(fastqc_ch).collect())",
-    "crumbs": [
-      "Home",
-      "Workflow manager",
-      "Nextflow RNAseq"
-    ]
-  },
-  {
-    "objectID": "before_screen.html",
-    "href": "before_screen.html",
-    "title": "Manage persistent bash sessions",
+    "objectID": "before_quarto_and_git.html",
+    "href": "before_quarto_and_git.html",
+    "title": "Quarto Homepage on Github",
     "section": "",
-    "text": "If you work a lot in the console/terminal, especially when working on remote machines/servers via SSH, then you are likely sooner or later to get very annoyed when:\nScreen (and similar programs) allows you to run persistent bash sessions, so that if any of the above happens your bash session on the remote server will just continue. All running processes will proceed in your absence, and you can later re-attach to your session and find things exactly how they would have been had you sat right there, starring at the screen for hours 😎!\nThis is very useful since your re-attached session will continue in the same directory and will have all the project relevant command history saved.",
-    "crumbs": [
-      "Home",
-      "Preparations",
-      "screen session"
-    ]
+    "text": "Creating a website in Quarto\nPublish the quarto homepage on GitHub via GitHub Actions."
   },
   {
-    "objectID": "before_screen.html#practice-a-screen-tutorial",
-    "href": "before_screen.html#practice-a-screen-tutorial",
-    "title": "Manage persistent bash sessions",
-    "section": "Practice a screen tutorial",
-    "text": "Practice a screen tutorial\nConnect to the HPC2N login node, enter the screen command in your terminal and practice the following tutorial starting from “2. Name Your Session”.\nAfter the above practice, in your terminal window you can test out the power of screen:\n\nwithin your screen session, run this infinite loop: while true; do date; sleep 1; done\nclose the terminal window running your above split screen session altogether (brutal closing, ie clicking the “close window” garbage can icon on the top right corner of the terminal window in VScode, or closing VScode and your connection to HPC2n completely).\nthen open a fresh terminal window, (be sure you are connected to HPC2N) and re-attach to your still alive and kicking screen session.\nnotice how the date/times have continued to be printed to the screen in the background.\npress CTRL-C to interrupt the loop, then CTRL-A ESC to enter scrolling mode, then you can use the PAGE-UP and PAGE-DOWN keys to observe the activity that took place in screen even whilst you were detached from the screen !\n\nThank-you to Gabriele Pozatti for this section!",
-    "crumbs": [
-      "Home",
-      "Preparations",
-      "screen session"
-    ]
-  },
-  {
-    "objectID": "course_intro.html#hello-and-welcome-to-the-advanced-module-of-reproducible-research-in-bioinformatics-and-computational-biology",
-    "href": "course_intro.html#hello-and-welcome-to-the-advanced-module-of-reproducible-research-in-bioinformatics-and-computational-biology",
-    "title": "Personal course homepage",
-    "section": "Hello and welcome to the advanced module of Reproducible Research in Bioinformatics and Computational Biology!",
-    "text": "Hello and welcome to the advanced module of Reproducible Research in Bioinformatics and Computational Biology!\nToday we will talk about the why’s and how’s of this module, and you will set up your own course homepage. This homepage will be your personal learning space throughout the module. Each evening, you’ll write a short blog post to reflect on what you’ve learned during the day. Some days, you might write several posts if you have a lot to share. These daily reflections will help you keep track of your progress, deepen your understanding, and build a clear record of your learning, as well as a habit of documentation.",
-    "crumbs": [
-      "Home",
-      "Why this course?",
-      "Personal course homepage"
-    ]
-  },
-  {
-    "objectID": "course_intro.html#your-homepage-and-github",
-    "href": "course_intro.html#your-homepage-and-github",
-    "title": "Personal course homepage",
-    "section": "Your Homepage and GitHub",
-    "text": "Your Homepage and GitHub\nYour Quarto homepage will be version-controlled using Git and GitHub. By the end of the module, you will share both the URL of your GitHub repository and the URL of your published homepage. This way I can review your work, follow your progress, and see how your site has developed over time.",
-    "crumbs": [
-      "Home",
-      "Why this course?",
-      "Personal course homepage"
-    ]
-  },
-  {
-    "objectID": "course_intro.html#good-git-practices",
-    "href": "course_intro.html#good-git-practices",
-    "title": "Personal course homepage",
-    "section": "Good Git Practices",
-    "text": "Good Git Practices\nThroughout the module, I expect you to follow good Git practices. This means writing clear and informative commit messages, keeping each commit focused on one topic or change, and committing regularly rather than saving everything for the end. These habits are an essential part of professional software development and will make your project much easier to follow and maintain.",
-    "crumbs": [
-      "Home",
-      "Why this course?",
-      "Personal course homepage"
-    ]
-  },
-  {
-    "objectID": "course_intro.html#writing-your-daily-blog",
-    "href": "course_intro.html#writing-your-daily-blog",
-    "title": "Personal course homepage",
-    "section": "Writing Your Daily Blog",
-    "text": "Writing Your Daily Blog\nYour daily posts do not have to be long or perfect. The goal is to build a habit of documentation and communication. Use simple language, write honestly about what you’ve learned, and don’t be afraid to include code, images, or links to illustrate your thoughts. Over time, these posts will form a valuable record of your growth and achievements during the course - and maybe later?",
-    "crumbs": [
-      "Home",
-      "Why this course?",
-      "Personal course homepage"
-    ]
-  },
-  {
-    "objectID": "before_quarto.html",
-    "href": "before_quarto.html",
-    "title": "Quarto",
+    "objectID": "course_qc_container.html",
+    "href": "course_qc_container.html",
+    "title": "Quality control with containers",
     "section": "",
-    "text": "Here we install Quarto in VScode and use it to build and publish a blog. (If you did module 1, you have already seen Quarto; this puts it to practical use.)",
+    "text": "Now, let’s do some more quality control (because we already know how to do it, and can concentrate on the container part), and run the tools with containers, and not (only) with the Pixi environment.\n\n\n\n\n\n\nImportantTo do for you\n\n\n\nRun FastQC and MultiQC on the data, using containers. Run MultiQC from within the container AND the outside.\n\n\n\n\n\n\n\n\nTip\n\n\n\nGet together with a neighbour and think about setting up this “project”. What do you need?\n\nScreen session?\nData directory with symbolic links?\nPixi environment?\nWhere to get the container?\n…\n\nMaybe use a different data set this time, to mix it up a little? Remember to make symbolic links to the data!",
     "crumbs": [
       "Home",
-      "Preparations",
-      "Quarto"
+      "Working with containers",
+      "QC with Apptainer"
     ]
   },
   {
-    "objectID": "before_quarto.html#literate-programming",
-    "href": "before_quarto.html#literate-programming",
-    "title": "Quarto",
-    "section": "Literate programming",
-    "text": "Literate programming\nWhen analysing data, it is good practice to work as reproducibleas possible. Part of that is not only developing and executing code (for example in a R session), but to save and comment the code. As always, this documentation step is crucial to understand the code, especially when sharing code with others, or getting back to it at a later point in time.\nLiterate programming combines code and documentation in the same document: the documentation is in plain text, and the code is wrapped in so called chunks, that are executable from within the document.\nThese notebooks that allow for literate programming come in different flavors, for example jupyter notebooksand marimo for Python applications, Rmarkdown for R code. Its successor, quarto can be used to integrate a variety of coding languanges. In this course, we will introduce you to quarto.",
-    "crumbs": [
-      "Home",
-      "Preparations",
-      "Quarto"
-    ]
-  },
-  {
-    "objectID": "before_quarto.html#quarto",
-    "href": "before_quarto.html#quarto",
-    "title": "Quarto",
-    "section": "Quarto",
-    "text": "Quarto\n\nAn open-source scientific and technical publishing system.\n\nMeaning that you can use your favorite text editor (such as VScode (o; ) to write documents in plain text markdown.\nQuarto chunks, or code cells, are executable from within the document and can be written in a variety of different languages - such as python, R, Julia, bash, Observable, and more.\nYour document can then be rendered into a variety of different output formats: html, pdf, MS Word, Markdown, and more.\nWith this you can make presentations, dashboards, homepages (like this one), reports, books, manuscripts, and more.\n\n\n\n\n\n\nImportantTo do for you\n\n\n\nInstall Quarto, and follow the tutorial for VScode.\n\n\n\n\n\n\n\n\nNote\n\n\n\nQuarto has a very good documentation, that you can access on their homepage -&gt; Guide, or by searching the web for “Quarto, feature you are looking for”.",
-    "crumbs": [
-      "Home",
-      "Preparations",
-      "Quarto"
-    ]
-  },
-  {
-    "objectID": "course_nextflow.html",
-    "href": "course_nextflow.html",
-    "title": "Nextflow",
+    "objectID": "course_nf-core_rnaseq.html",
+    "href": "course_nf-core_rnaseq.html",
+    "title": "nf-core RNAseq pipeline",
     "section": "",
-    "text": "When developing your code in bioinformatics, you will likely use different tool for different parts of your analyses. Traditionally, you would have about one script per tool, all of which you deploy by hand, one after the other. Together, this is called a workflowor pipeline.\nManual deployment of pipelines can be tedious, especially if you have analyses with many steps, or many samples of different sizes that might need a varying amount of computational power. Luckily for you, other bioinformaticians and software developers have developed something to make your life much easier:",
+    "text": "Great, now we have tested that nextflow and nf-core are set up correctly. Now we want to use the pipeline on our own data. For the sake of the tutorial, I will use the RNAseq data some of you have worked earlier on.\nAs a little reminder: the data is located in:\nTo practice we will go through some of the steps you have done before:",
     "crumbs": [
       "Home",
-      "Workflow manager",
-      "Nextflow"
+      "Pipelines",
+      "Use nf-core"
     ]
   },
   {
-    "objectID": "course_nextflow.html#workflow-managers",
-    "href": "course_nextflow.html#workflow-managers",
-    "title": "Nextflow",
-    "section": "Workflow managers",
-    "text": "Workflow managers\n\nWorkflow managers provide a framework for the creation, execution, and monitoring of pipeline. &lt;…&gt; They simplify pipeline development, optimize resource usage, handle software installation and versions, and run on different compute platforms, enabling workflow portability and sharing. Wratten et al. (2021) Nature Methods\n\nWith workflow managers you can develop an automated pipeline from your scripts that can then be run on a variety of systems. Once it is developed, execute a single command to start the pipeline. The manager then coordinates the deployment of the scripts in the appropriate sequence, monitors the jobs, handles the file transfers between scripts, gathers the output, and handles re-execution of failed jobs for you. Workflow managed pipelines can run containers, which eliminates software installation and version conflicts.\nThat means that by design the pipelines are:\n\nportable\nmore time efficient (no more downtime between pipeline steps)\nmore resource efficient (mostly, but this might vary depending how skilled a developer you yourself are)\neasier to install (especially when combined with containers, or environment managers)\nmore reproducible\n\nThere are in principle two different flavors of workflow managers: snakemake, and nextflow. In this course we will be introducing you to nexflow.",
+    "objectID": "course_nf-core_rnaseq.html#create-the-pixi-environment",
+    "href": "course_nf-core_rnaseq.html#create-the-pixi-environment",
+    "title": "nf-core RNAseq pipeline",
+    "section": "Create the Pixi environment",
+    "text": "Create the Pixi environment\nWhile initializing, make a new directory for this analysis - think about naming it something with meaning.\nWhat dependencies do you need for nextflow and nf-core?",
     "crumbs": [
       "Home",
-      "Workflow manager",
-      "Nextflow"
+      "Pipelines",
+      "Use nf-core"
     ]
   },
   {
-    "objectID": "course_nextflow.html#nextflow",
-    "href": "course_nextflow.html#nextflow",
-    "title": "Nextflow",
-    "section": "Nextflow",
-    "text": "Nextflow\nIn nextflow, your scripts are turned into processes, connected by channels that contain the data - input, output etc. The order of the processes, and their interaction with each other, is specfied in the workflow scope.\n\n\n\nsource: Software carpentries\n\n\n\n\n\n\n\n\nNote\n\n\n\nIn this course, we will not write our own processes, or pipeline. However, if you are interested, there are a lot of very good training materials available online.\n\n\nThe executable part of the processes, the so called script, can be written in any language, so in theory you could always choose the language that is best suited for the job (in practice you might be limited to the languages you know). However, the modularity of the processes allows for easy re-use of existing scripts and processes.\nWhen moving the pipeline from one system to another, the script stays the same and does not change, the same containers are used. The only thing that changes are the parameters that pertain to the environment and available resources. In other words, with nextflow, the functional logic, the processes, are separated from the executive (how the workflow runs). This makes the nextflow pipelines highly interoperable and portable. They can be run on various platforms, such as HPC clusters, local computers, cloud systems etc..\nThe pipelines can be integrated with version control tools, such as git or bitbucket, and containers technologies, such as apptainer or docker. This makes the pipeline very reproducible.\nThe nextflow pipelines are extremely scalable, can be developed on a few samples and easily be run on hundreds or thousands of samples. When possible, processes are run in parallel automatically.\nNexflow performs automatic checks on the processes and their in- and output. It can automatically resume execution at a point of failure without having to re-compute successfully completed parts.\nNextflow is open source.\nHere is a more visual summary of some of the points above:\n\n\n\nsource: Maxime U Garcia, Seqera labs",
+    "objectID": "course_nf-core_rnaseq.html#link-your-data-into-the-directory",
+    "href": "course_nf-core_rnaseq.html#link-your-data-into-the-directory",
+    "title": "nf-core RNAseq pipeline",
+    "section": "Link your data into the directory",
+    "text": "Link your data into the directory\nMake a subdirectory, data, change into it and create a symlink to the data:\nUse ln -s SOURCE TARGET. Since you are in the directory datathe TARGET is simply ..\nChange back to the parent directory.\n\n\n\n\n\n\nNote\n\n\n\nThis is how my project directory looks like afterwards:\n.\n├── data\n│   ├── SRR5223504_1.fastq.gz -&gt; ../../common_data/RNAseq/SRR5223504_1.fastq.gz\n│   ├── SRR5223504_2.fastq.gz -&gt; ../../common_data/RNAseq/SRR5223504_2.fastq.gz\n│   ├── SRR5223517_1.fastq.gz -&gt; ../../common_data/RNAseq/SRR5223517_1.fastq.gz\n│   ├── SRR5223517_2.fastq.gz -&gt; ../../common_data/RNAseq/SRR5223517_2.fastq.gz\n│   ├── SRR5223546_1.fastq.gz -&gt; ../../common_data/RNAseq/SRR5223546_1.fastq.gz\n│   ├── SRR5223546_2.fastq.gz -&gt; ../../common_data/RNAseq/SRR5223546_2.fastq.gz\n│   ├── SRR5223559_1.fastq.gz -&gt; ../../common_data/RNAseq/SRR5223559_1.fastq.gz\n│   └── SRR5223559_2.fastq.gz -&gt; ../../common_data/RNAseq/SRR5223559_2.fastq.gz\n├── pixi.lock\n└── pixi.toml",
     "crumbs": [
       "Home",
-      "Workflow manager",
-      "Nextflow"
+      "Pipelines",
+      "Use nf-core"
     ]
   },
   {
-    "objectID": "before_accounts.html",
-    "href": "before_accounts.html",
-    "title": "Create user accounts for the server",
-    "section": "",
-    "text": "The following procedure takes a few days to get through because of clearance delays, so please start straight away, since every thing else in the course depends on it :)\nWe will run parts of this course on a HighPerformance Computing cluster, HPC2N. The cluster is a local resource in Umeå, and to use it you need a user account both at the National Academic Infrastructure for Super­computing in Sweden (NAISS), and at HPC2N.",
+    "objectID": "course_nf-core_rnaseq.html#nf-core-launch",
+    "href": "course_nf-core_rnaseq.html#nf-core-launch",
+    "title": "nf-core RNAseq pipeline",
+    "section": "nf-core launch",
+    "text": "nf-core launch\nNf-core helps you set up the pipelines with the nf-core launcher. To access that, click on the launch version 3.19.0 button on the nf-core/rnaseq homepage. (This was the version available in the launcher at the time of writing this session. The version number will change in the future). We are then redirected to a page where we can fill in all of our information about input files, as well as selecting or deselecting certain parts of the pipeline. We will share the things here that you need to input each time, and go through some finer details based on the discussion with you.\n\nSetting working and results directories\n\n\n\n\n\n\nImportant\n\n\n\nWe recommend that you use absolute paths rather than relative paths for setting up your runs.\n\n\nDuring the first part, you need to set a working and result directory. If you are using a server that has a profile established, you can put the name of the server there. In our case, we will use the server configuration file locally.\nSet resume to True, otherwise you don’t need to change anything here.\n\n\n\nSetting work and output directories\n\n\nNext, the pipeline asks for the input CSV. Exact requirements for how that input file should look like can be found under the tab Usage on the pipeline homepage. This input CSV is unique to each analysis.\n\n\n\nSetting results and input CSV\n\n\n\n\n\n\n\n\nImportantTo do for you\n\n\n\nCreate the necessary input file and add the path to it in the launcher.\nSet the outdir to the name and path to a directory you want the output to be saved to.\n\n\n\n\nSetting all other inputs that are required\nIn this section, you set variables that are related to your reference genome. If you are using something listed on iGenomes, you can input that name. If you are working with your own reference genome, or something not listed, you need to input the absolute path of the reference genomes you have downloaded.\n\n\n\nReference genome options\n\n\nDepending on your strategy, you might need to input a corresponding gff as well. It really depends on the kind of analysis you are hoping to perform.\nIn our case, we have human samples, so in theory we can use the iGenomes reference. However, the transcriptome and GTF files in iGenomes are out of date, so nf-core recommends downloading and using the more up-to-date version.\n\n\n\n\n\n\nImportantTo do for you\n\n\n\nLet’s do that.\nThen, add the names and path to the downloaded reference (if located in a different directory) files in the launcher.\n\n\nOther than the options above, you don’t need to change anything to run the pipeline. However, for your project you might want to change some of the default parameters. For this evercise we will keep the rest as is.\n\n\nGetting your JSON file\nOnce everything is filled in, click on Launch and you will be redirected to another page containing your JSON file that has information on your run.\nCopy the JSON file a bit lower on the screen and saving it as nf-params.json in your folder on HPC2N.\nAdd the save_reference line as recommended by nf-core (because we are using their downloaded human genome).\n\n\nConfiguration profile\nAs before, you need the HPC2N configuration file, with the correct project ID.\nAdd your e-mail under email and you will receive a message with a summary of the run.",
     "crumbs": [
       "Home",
-      "Preparations",
-      "Server accounts"
+      "Pipelines",
+      "Use nf-core"
     ]
   },
   {
-    "objectID": "before_accounts.html#create-a-user-account-at-suprnaiss",
-    "href": "before_accounts.html#create-a-user-account-at-suprnaiss",
-    "title": "Create user accounts for the server",
-    "section": "Create a user account at SUPR/NAISS",
-    "text": "Create a user account at SUPR/NAISS\n\n\n\n\n\n\nImportantTo do for you\n\n\n\nFill out & submit account request form. Read carefully and follow the provided instructions.\n\n\n\n\n\n\n\n\nTip\n\n\n\n\nUse Register with Federated Identity if you are enrolled in a Swedish university.\nIf you are not enrolled in a Swedish university or if the previous option doesn’t work for you, use instead Register without Federated Identity.\n\n\n\n\nAccept NAISS user agreement\nJust after creating the SUPR account, on the page you are taken to, there will be a section titled “User Agreement” at the very top. Just under it is the button named “Accept NAISS User Agreement”.\n\n\n\n\n\n\nImportantTo do for you\n\n\n\nClick it.\n\n\nAlternately, if you do this at a later point. Login to SUPR. At the very top it will say “NAISS User Agreement Pending”.\n\n\n\n\n\n\nTip\n\n\n\n\nUse With SWAMID if you are enrolled in a Swedish university - this option is much faster!\nIf you are not enrolled in a Swedish university use instead Alternative: Offline via Paper Form. Here you will have to print out, sign and send in the form. This may take up to a week. \n\n\n\nWhen you have a SUPR account you can join our course project on HPC2N:",
+    "objectID": "course_nf-core_rnaseq.html#starting-the-run",
+    "href": "course_nf-core_rnaseq.html#starting-the-run",
+    "title": "nf-core RNAseq pipeline",
+    "section": "Starting The Run",
+    "text": "Starting The Run\nThe launcher gives us the command to run the pipeline:\nnextflow run nf-core/rnaseq -r 3.19.0 -resume -params-file nf-params.json\nWe need to change this slightly, to add that we are running it via Pixi, and to add the server specific configuration file:\n\nsubmit directly via pixi\nNow you can run the pipeline with the following command (you might have to change it a bit to add pathways to files that are not in your current working directory):\npixi run nextflow run nf-core/rnaseq -r 3.19.0 -resume -params-file nf-params.json -c hpc2n.config\nThere are several layers to this command:\nFirst we invoke Pixi and tell it to run the following commands.\nThen we say which program we want to run, namely Nextflow.\nThe following commands are Nextflow/ nf-core commands:\n\nwe want to run the nf-core/rnaseq pipeline, version 3.19.0\nwe want to use the parameter file called nf-params.json\nwe want to use the hpc configuration file called hpc2n.config\n\n\n\nsubmit via sbatch\nAlternatively, you can run nextflow via pixi using a batch script and slurm: copy the following text to file called name_submit_rnaseq.sh where name is your name.\n#!/bin/bash -l\n#SBATCH -A our_proj_allocation\n#SBATCH -n 5\n#SBATCH -t 24:00:00\n\n/your_home_directory/.pixi/bin/pixi run nextflow run nf-core/rnaseq -r 3.19.0 -params-file /your_path/nf-params.json -c server.config\nAnd then submit it to slurm with\nsbatch name_submit_rnaseq.sh\nYou can check the progress of your job with squeue -u your_username\nAnd now we wait until the run is done! - My run took a little more than five hours for all four samples.\n\n\n\n\n\n\nTip\n\n\n\nNextflow is notoriously bad at cleaning after itself. You can check previous runs with pixi run nextflow log. And then clean up with for example pixi run nextflow clean -f -before &lt;run_name&gt;. Here is an explanation of the command.",
     "crumbs": [
       "Home",
-      "Preparations",
-      "Server accounts"
-    ]
-  },
-  {
-    "objectID": "before_accounts.html#join-the-course-project-at-hpc2n",
-    "href": "before_accounts.html#join-the-course-project-at-hpc2n",
-    "title": "Create user accounts for the server",
-    "section": "Join the course project at HPC2N",
-    "text": "Join the course project at HPC2N\n\n\n\n\n\n\nImportantTo do for you\n\n\n\nLog in to SUPR.\n\nClick “Projects” in the left side column.\nUnder “Requesting Membership in Projects”, search for Binzer-Panchal, since I am the PI of the project you wish to join. Click “Search for Project”.\nClick “Request” on the “Reproducible Research in Bioinformatics and Computational Biology” project.\nWhen I have accepted your membership in the project, go to SUPR again to apply for an account at HPC2N. You will receive an email when your application for membership in a project has been accepted.",
-    "crumbs": [
-      "Home",
-      "Preparations",
-      "Server accounts"
-    ]
-  },
-  {
-    "objectID": "before_accounts.html#create-a-user-account-at-hpc2n",
-    "href": "before_accounts.html#create-a-user-account-at-hpc2n",
-    "title": "Create user accounts for the server",
-    "section": "Create a user account at HPC2N",
-    "text": "Create a user account at HPC2N\nNote: you must be a member of a project before you do this!\n\n\n\n\n\n\nImportantTo do for you\n\n\n\n\nLogin to SUPR.\nClick “Accounts” in the left side column.\nYou can request an account at HPC2N now. Look under the heading “Account Requests”.\nClick “Request account”.\nYour information will then be sent to HPC2N, and you will be taken back to a webpage where you can choose your username.\nUser accounts are usually created once a week. You will get an email from HPC2N when your account has been created.",
-    "crumbs": [
-      "Home",
-      "Preparations",
-      "Server accounts"
-    ]
-  },
-  {
-    "objectID": "before_accounts.html#questions",
-    "href": "before_accounts.html#questions",
-    "title": "Create user accounts for the server",
-    "section": "Questions?",
-    "text": "Questions?\nContact me via Canvas!",
-    "crumbs": [
-      "Home",
-      "Preparations",
-      "Server accounts"
-    ]
-  },
-  {
-    "objectID": "module1_git.html",
-    "href": "module1_git.html",
-    "title": "Version control",
-    "section": "",
-    "text": "We all have worked on data before, done analyses, talked with our PI, changed the analyses, worked a bit more… and in the end we have something like this:\nVersion control, the practice of tracking and managing changes to files, can help us not descend into chaos. With a version controlled project you always know which file, and even which part of the file, is the most recent, and you can even go back to older versions if you have to.\nVersion control can be used on the local system, where both the version database and the checked out file - the one that is actively being worked on - are on the local computer. Good, but the local computer can be corrupted and then the data is compromised.\nVersion control can also be centralized, where the version database is on a central server, and the active file can be checked out from several different computers. This is useful when working from different systems, or when working with collaborators. However, when the central servers is compromised the historical version are lost.\nAt last, version control can be fully distributed, with all versions of the file being on the server and different computers. Each computer checks out the file from its own version database to work on them. The databases are then synchronized between the different computers and the server. One such distributed version control system is git. It can handle everything from small to very large projects and is simple to use. GitHubis a code hosting platform for version control and collaboration, built on git.\nDistributed version control facilitates collaboration with others. Software like git automatically tracks differences in files, and flags conflicts between files.\nAdditionally, GitHub, the code hosting platform based on git that we are using in this course, can be used to maintain uniformity within a working group. The group can develop their own project template that people can use and populate for their own projects.",
-    "crumbs": [
-      "Home",
-      "Module 1 content",
-      "Git and GitHub"
-    ]
-  },
-  {
-    "objectID": "module1_git.html#git",
-    "href": "module1_git.html#git",
-    "title": "Version control",
-    "section": "git",
-    "text": "git\n Git is a version control software that is fully distributed - meaning that each project folder contains the full history of the project. These folders are also called repositories and can be on several computers, or servers.\n\n\n\n\n\n\nNote\n\n\n\nA repository in git is the .git/ folder inside of your directory. This repository tracks all changes made to files in your project and contains your project history. Usually we refer to the git repository as the local repository.\n\n\nLet’s have a closer look at how it works:\n\nGit has three main states that your files can reside in: modified, staged, and committed:\n\n\n\nModified means that you have changed the file but have not committed it to your database yet.\nStaged means that you have marked a modified file in its current version to go into your next commit snapshot.\nCommitted means that the data is safely stored in your local database.\n\n\n\nsource: git documentation\n\nThis leads to the three main sections of a Git project: the working directory, the staging area, and the Git directory (or repository).\n\n\n\nWorking directory, staging area, and Git directory\n\n\nAnd the basic commands of git:\n\n\n\nBasic git commands\n\n\nThe majority of your version control work will happen in your local repository. You have the entire history of the project on your local disk, and do not need an internet connection to work on your data with git.\nHowever, if you want to have a backup of your code, share it or collaborate with others, you might want to add GitHub into the mix:",
-    "crumbs": [
-      "Home",
-      "Module 1 content",
-      "Git and GitHub"
-    ]
-  },
-  {
-    "objectID": "module1_git.html#working-with-github",
-    "href": "module1_git.html#working-with-github",
-    "title": "Version control",
-    "section": "Working with GitHub",
-    "text": "Working with GitHub\nIf you have a repository on GitHub you can clone its contents to you local server. That clones both the working copy, and the .git repository.\nYou can then work locally on your project, make changes, stage and commit them. Then, you can push them to the remote repository on GitHub, syncing the local and the remote repository. From there your collaborator can then pull them again.\n\n\n\nhttps://www.git-tower.com/learn/git/ebook/en/command-line/remote-repositories/introduction",
-    "crumbs": [
-      "Home",
-      "Module 1 content",
-      "Git and GitHub"
-    ]
-  },
-  {
-    "objectID": "module1_git.html#collaborating-on-github",
-    "href": "module1_git.html#collaborating-on-github",
-    "title": "Version control",
-    "section": "Collaborating on GitHub",
-    "text": "Collaborating on GitHub\nWith the setting above you can share code with someone, and this works well when publishing code. This works well when you own the GitHub repository or have write access to it.\nIn collaborative and open-source settings, however, you often want to contribute to a repository you do not control. This is where forking comes in.\nForking a repository means creating your own copy of an existing GitHub repository under your own GitHub account. Your fork is a remote repository that you control, but it still remembers where it came from.\nYou then clone your fork to your local computer and work as usual: add, commit, push, and pull. When you are ready to share your changes, you can propose them back to the original repository by opening a pull request: a request to merge your changes into the original project.\nIn this way, forking allows collaboration without giving everyone direct write access to the same repository. It also allows for more formal collaboration, with quality checked code etc.\n\n\n\nhttps://www.linode.com/docs/guides/how-to-install-git-and-clone-a-github-repository/",
-    "crumbs": [
-      "Home",
-      "Module 1 content",
-      "Git and GitHub"
-    ]
-  },
-  {
-    "objectID": "bonus_python_pixi.html",
-    "href": "bonus_python_pixi.html",
-    "title": "Using Python in Pixi",
-    "section": "",
-    "text": "You can also install Python packages into your Pixi environment. As an example we will use FastQE, a Python based tool that translates the fastq quality scores into emojis.",
-    "crumbs": [
-      "Home",
-      "Working with environments",
-      "Bonus: Python in Pixi"
-    ]
-  },
-  {
-    "objectID": "bonus_python_pixi.html#prepare-the-environment",
-    "href": "bonus_python_pixi.html#prepare-the-environment",
-    "title": "Using Python in Pixi",
-    "section": "Prepare the environment",
-    "text": "Prepare the environment\npixi init fastqe -c conda-forge\ncd fastqe/\npixi add python\npixi add --pypi fastqe\npixi add --pypi setuptools",
-    "crumbs": [
-      "Home",
-      "Working with environments",
-      "Bonus: Python in Pixi"
-    ]
-  },
-  {
-    "objectID": "bonus_python_pixi.html#run-fastqe-on-your-samples",
-    "href": "bonus_python_pixi.html#run-fastqe-on-your-samples",
-    "title": "Using Python in Pixi",
-    "section": "run FastQE on your sample(s)",
-    "text": "run FastQE on your sample(s)\npixi run srun -A project_ID -t 02:00 fastqe --html  --output sample_name.html ../sample1.fastq",
-    "crumbs": [
-      "Home",
-      "Working with environments",
-      "Bonus: Python in Pixi"
-    ]
-  },
-  {
-    "objectID": "course_data_management.html#data-life-cycle",
-    "href": "course_data_management.html#data-life-cycle",
-    "title": "Data Management for Reproducible Research",
-    "section": "Data Life Cycle",
-    "text": "Data Life Cycle\nWhen working with any type of data, it makes sense to sit down before the project starts to think through the different life stages of the data in your project. This will help counteract some of the problems that can arise when projects grow more organically, and will help consistency within the research group, ease collaboration, and mostly your future self that will understand what past-self has been up to in the project.\n\n\n\n\n\n\nNote\n\n\n\nMore and more funding agencies expect a Data Management Plan at some point of a project application. In there, you need to document that you have thought of, and planned for, the life cycle of your data.\n\n\n\n\n\nThe Research Data Management toolkit for Life Sciences",
-    "crumbs": [
-      "Home",
-      "Why this course?",
-      "Reproducible bioinformatics"
-    ]
-  },
-  {
-    "objectID": "course_data_management.html#fair-principles",
-    "href": "course_data_management.html#fair-principles",
-    "title": "Data Management for Reproducible Research",
-    "section": "FAIR principles",
-    "text": "FAIR principles\nIn the past, research data was often generated with one question in mind. Often, they would afterwards land in some drawer and be forgoten about. Nowadays researchers acknowledge that data can also be re-used, or combined with other data, to answer different questions.\nThe FAIR principles promote efficient data discovery and reuse by providing guidelines to make digital resources:\n\n\n\nWilkinson et al. (2016)\n\n\nFAIR principles, in turn, rely on good data management practices in all phases of research:\n\nResearch documentation\nData organisation\nInformation security\nEthics and legislation",
-    "crumbs": [
-      "Home",
-      "Why this course?",
-      "Reproducible bioinformatics"
-    ]
-  },
-  {
-    "objectID": "course_data_management.html#reproducible-research",
-    "href": "course_data_management.html#reproducible-research",
-    "title": "Data Management for Reproducible Research",
-    "section": "Reproducible research",
-    "text": "Reproducible research\nLucky for us, once we implement good data management practices, we will also increase the reproducibility of our analyses. Extensive documentation will increase faith in the outcome of analyses, and will help people (again, future-you) understand what has been done.\nLast, but not least, reproducible research practices make project hand-overs smoother, when the next person already understands the structure of the project, and can rely on good documentation.",
-    "crumbs": [
-      "Home",
-      "Why this course?",
-      "Reproducible bioinformatics"
-    ]
-  },
-  {
-    "objectID": "course_data_management.html#what-data-do-we-work-with",
-    "href": "course_data_management.html#what-data-do-we-work-with",
-    "title": "Data Management for Reproducible Research",
-    "section": "What data do we work with?",
-    "text": "What data do we work with?\n\nBioinformatics is an interdisciplinary field of science that develops methods and software tools for understanding biological data, especially when the data sets are large and complex. (Wikipedia)\n\nThis data can come from a variety of different biological processes:\n\n\n\nsource: Lizel Potgieter\n\n\nEarly on, sequencing data was not readily available, but due to decreasing costs and increased computational power biological data is now being produced in ever increasing quantities:\n\n\n\nGrowth of the Sequence Read Archive, SRA, from 2012 to 2021\n\n\nAt the same time, new technologies are being developed, and new tools that might or might not be maintained or benchmarked against existing tools. It’s the wild west out there!\n\n\n\nOverview of modern sequencing technologies and where they apply to biological processes",
-    "crumbs": [
-      "Home",
-      "Why this course?",
-      "Reproducible bioinformatics"
-    ]
-  },
-  {
-    "objectID": "course_data_management.html#working-with-data",
-    "href": "course_data_management.html#working-with-data",
-    "title": "Data Management for Reproducible Research",
-    "section": "Working with data",
-    "text": "Working with data\nOften, with a new project, one sits down with the data, tries out things and see if they worked. A lot of bioinformatics is not being afraid to try things, and reading the documentation.\nThis traditional way of working with bioinformatics data can have merits and lead to new discoveries. However, in this course we would like to introduce you to a more structured way to make sense of your data.\nLet’s have a look at a typical PhD student’s research project:\n\nThey might analyse their data, and get some results.\nAfter talking with their supervisor they might get a few other samples from a collaborator, or need to drop them from the analyses due to quality concerns.\nThey run the analyses again and get a different set of results.\nThere might be a few iterations of this process, and then the reviewers require some additional analyses…\n\nIn the “end” we have something like this:\n\n\n\nWhich one of these is the latest version?\n\n\n\n\n\n\n\n\nTipBest practices file organization\n\n\n\n\nThere is a folder for the raw data, which does not get altered.\nCode is kept separate from data.\nUse a version control system (at least for code) – e.g. git.\nThere should be a README in every directory, describing the purpose of the directory and its contents.\nUse file naming schemes that makes it easy to find files and understand what they are (for humans and machines) and document them.\nUse non-proprietary formats – .csv rather than .xlsx",
-    "crumbs": [
-      "Home",
-      "Why this course?",
-      "Reproducible bioinformatics"
-    ]
-  },
-  {
-    "objectID": "course_data_management.html#literate-programming",
-    "href": "course_data_management.html#literate-programming",
-    "title": "Data Management for Reproducible Research",
-    "section": "Literate programming",
-    "text": "Literate programming\nOur hypothetical PhD student, even if taking into account the best practice tips from above, is still likely to run the same analyses over and over whenever the input data changes. Sometimes, this might be months, or even years, after the original analysis was performed.\nLuckily, they can save their code snippets (with intuitive file names) and re-use the code from back then. This is often done with R-scripts, but can just as well be applied to bash scripts, python scripts etc.\nIn the past years, the development went even further and one can even combine code and documentation in the same document. The code is wrapped in so called chunks, or code cells, that are executable from within the document.\n\nDebugging is twice as hard as writing the code in the first place. Therefore, if you write the code as cleverly as possible, you are, by definition, not smart enough to debug it. Brian Kernighan\n\nBefore the course you have already worked with one such notebook - Quarto. We will continue to work with it during this course.\n\n\n\n\n\n\nTip\n\n\n\n\nDocument your methods and workflows.\nDocument where and when you downloaded data.\nDocument the versions of the software that you ran.",
-    "crumbs": [
-      "Home",
-      "Why this course?",
-      "Reproducible bioinformatics"
-    ]
-  },
-  {
-    "objectID": "course_data_management.html#version-control",
-    "href": "course_data_management.html#version-control",
-    "title": "Data Management for Reproducible Research",
-    "section": "Version control",
-    "text": "Version control\nNow that our student has reproducible documents, with reasonable names, that can execute their analyses reliably over and over again, what happens if they modify their analyses? Will they end up again with different result files and their project sink down in chaos?\nNo, because there is version control, the practice of tracking and managing changes to files.\nAgain, before the course you worked through the basics of git, and how to use it with GitHub collaboratively. We will continue using git during the course as well.",
-    "crumbs": [
-      "Home",
-      "Why this course?",
-      "Reproducible bioinformatics"
-    ]
-  },
-  {
-    "objectID": "course_data_management.html#environment-managers",
-    "href": "course_data_management.html#environment-managers",
-    "title": "Data Management for Reproducible Research",
-    "section": "Environment managers",
-    "text": "Environment managers\nUsing git, our PhD student can now share their reproducible code with their colloaborators, or between systems. They can rest assured that the different versions of the notebook are tracked and can be checked out when necessary. But what about the bioinformatic tools? Can they also be shared easily?\nDifferent computers can run on different operating systems, or can have different versions of databases installed. This can lead to conflicts between tools, or software versions and can impact code usability, or reproducibility.\nFortunately, smart people have developed environment managers such as conda, bioconda, or pixi. These tools find and install packages, so that the same package versions are being run between different computers. However, the code might still give different results on different operating systems.\nDuring this course we will be building our own environments with Pixi - you’ll see how great it is not having to manually install tools anymore!",
-    "crumbs": [
-      "Home",
-      "Why this course?",
-      "Reproducible bioinformatics"
-    ]
-  },
-  {
-    "objectID": "course_data_management.html#containers-in-bioinformatics",
-    "href": "course_data_management.html#containers-in-bioinformatics",
-    "title": "Data Management for Reproducible Research",
-    "section": "Containers in bioinformatics",
-    "text": "Containers in bioinformatics\nBut what if our PhD student needs to run their code on different operating systems?\nThey can use containers, that contain everything needed to run the application, even the operating system. Containers are being exchanged as container images, which makes them lightweight. Containers do not change over time, so the results will be the same today and in a few years. Everyone gets the same container that works in the same way.\nIn this course, you will have guessed it, we will learn about containers, where to get them and how to use them.",
-    "crumbs": [
-      "Home",
-      "Why this course?",
-      "Reproducible bioinformatics"
-    ]
-  },
-  {
-    "objectID": "course_data_management.html#workflow-manager",
-    "href": "course_data_management.html#workflow-manager",
-    "title": "Data Management for Reproducible Research",
-    "section": "Workflow manager",
-    "text": "Workflow manager\nNow our PhD student can use containers, or environments, to provide a uniform environment for their version controlled, wonderfully documented and reproducible code. Fantastic! But they still have to deploy, or at least monitor, their scripts manually.\nFortunately there are workflow managers that can integrate all of the above, submit your jobs for you, and even monitor and re-submit scripts after failure. They will automatically submit jobs for you, decreasing downtime and increasing efficiency.\n\n\n\n\n\n\nTip\n\n\n\nHumans tend to do mistakes, especially when it comes to tedious or repetitive tasks. If you automate data handling, formatting etc. you are less likely to make mistakes like typos, or changing colors in images.\n\n\nIn this course, we will also cover a workflow manager, Nextflow and learn how to make our own workflow, and how to run already developed workflows.",
-    "crumbs": [
-      "Home",
-      "Why this course?",
-      "Reproducible bioinformatics"
-    ]
-  },
-  {
-    "objectID": "course_data_management.html#goal-of-the-course",
-    "href": "course_data_management.html#goal-of-the-course",
-    "title": "Data Management for Reproducible Research",
-    "section": "Goal of the course",
-    "text": "Goal of the course\nWith this, we want to give you tools that will help you plan and carry out your research. These tools will make your work more efficient and more reproducible. No matter what kind of data you use, you will take something useful from this course.\n\n\n\nOverview of modern sequencing technologies and where they apply to biological processes",
-    "crumbs": [
-      "Home",
-      "Why this course?",
-      "Reproducible bioinformatics"
-    ]
-  },
-  {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "Reproducible Research",
-    "section": "",
-    "text": "This website contains the material for the advanced module of Reproducible Research in Bioinformatics and Computational Biology (course P000187, 4.5 credits) — a collaboration between SLU’s GS-VMAS Graduate School and MedBioInfo.\nThe full course runs 31 August – 18 September 2026 in three parts: a one-week online introductory module, a week for an individual assignment, and this one-week advanced module, taught on location in Ultuna for both cohorts (14–18 September 2026).\nThe aim of this module is to share how to use bioinformatics tools in a reproducible and scalable way. We will use environments, containers, and established pipelines so that you can run these analyses on any operating system, as well as on systems that are not high performance computing clusters. And first and foremost: these tools and techniques can be used regardless of which type of bioinformatics you are ultimately working with.\nThe website will remain active after the course so that you have access to the material even after the course.\nTo get the most out of this course, we expect you to do some preparation in advance. This is to set-up and get aquainted with some of the tools we will be using. The week before the in-person meeting, there will be regular Zoom drop-in times where you can ask questions while working through the material.\nI want to thank Lizel Potgieter for her valuable contributions to the materials for this course!",
-    "crumbs": [
-      "Home"
-    ]
-  },
-  {
-    "objectID": "index.html#module-content",
-    "href": "index.html#module-content",
-    "title": "Reproducible Research",
-    "section": "Module content",
-    "text": "Module content\n\nbefore this module:\n\nBefore the course\n\n\nTopic\nContent\n\n\n\n\nHPC access\nCreate user accounts for the HPC resources\n\n\nVScode\nSettting up and getting aquainted with VScode\n\n\nServer access\nSSH connect to the course server\n\n\nCommand line\nUse the command line to manipulate data\n\n\nscreen\nManage persistent bash sessions\n\n\nQuarto\nInstalling and using Quarto with VScode\n\n\ngit and GitHub\nVersion control with git and GitHub\n\n\n\n\n\nduring this module:\n\nDuring the course\n\n\nDay\nSession\n\n\n\n\nMonday\nWelcome, course setup\n\n\n\nData Management & Reproducible Research\n\n\n\nUsing git collaboratively\n\n\n\nCreate a blog with Quarto\n\n\n\nPublish your blog with GitHub actions\n\n\nTuesday\nIntroduction to environments\n\n\n\nQuality control of sequencing data\n\n\n\nBonus: Python in Pixi\n\n\n\nIntroduction to containers\n\n\n\nUsing containers on your data\n\n\nWednesday\nIntroduction to Nextflow\n\n\n\nNextflow basics\n\n\n\nNextflow RNAseq\n\n\nThursday\nnf-core\n\n\n\nTest a nf-core pipeline\n\n\n\nSet up a nf-core pipeline\n\n\nFriday\nVisualize your results: ggplot\n\n\n\nDiscussion: AI in Bioinformatics\n\n\n\nclean-up & finishing",
-    "crumbs": [
-      "Home"
+      "Pipelines",
+      "Use nf-core"
     ]
   },
   {

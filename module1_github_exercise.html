@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>nfcore introduction – Reproducible Research 2026</title>
+<title>Git in GitHub – Reproducible Research 2026</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -128,7 +128,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./course_nf-core.html">Pipelines</a></li><li class="breadcrumb-item"><a href="./course_nf-core.html">nf-core</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./module1_git.html">Module 1 content</a></li><li class="breadcrumb-item"><a href="./module1_github_exercise.html">Exercise: Git on GitHub</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -357,7 +357,7 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-7" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./course_nf-core.html" class="sidebar-item-text sidebar-link active">
+  <a href="./course_nf-core.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">nf-core</span></a>
   </div>
 </li>
@@ -415,7 +415,7 @@ ul.task-list li input[type="checkbox"] {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./module1_github_exercise.html" class="sidebar-item-text sidebar-link">
+  <a href="./module1_github_exercise.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">Exercise: Git on GitHub</span></a>
   </div>
 </li>
@@ -431,17 +431,21 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#what-makes-nf-core-pipelines-interesting-for-you" id="toc-what-makes-nf-core-pipelines-interesting-for-you" class="nav-link active" data-scroll-target="#what-makes-nf-core-pipelines-interesting-for-you">What makes nf-core pipelines interesting for you?</a></li>
-  <li><a href="#finding-and-evaluating-a-pipeline" id="toc-finding-and-evaluating-a-pipeline" class="nav-link" data-scroll-target="#finding-and-evaluating-a-pipeline">Finding and evaluating a pipeline</a></li>
+  <li><a href="#in-this-tutorial-you-will" id="toc-in-this-tutorial-you-will" class="nav-link active" data-scroll-target="#in-this-tutorial-you-will">In this tutorial you will</a></li>
+  <li><a href="#create-a-new-repository" id="toc-create-a-new-repository" class="nav-link" data-scroll-target="#create-a-new-repository">Create a new repository</a></li>
+  <li><a href="#edit-the-readme" id="toc-edit-the-readme" class="nav-link" data-scroll-target="#edit-the-readme">Edit the README</a></li>
+  <li><a href="#save-your-changes-commit" id="toc-save-your-changes-commit" class="nav-link" data-scroll-target="#save-your-changes-commit">Save your changes (commit)</a></li>
+  <li><a href="#view-the-commit-history" id="toc-view-the-commit-history" class="nav-link" data-scroll-target="#view-the-commit-history">View the commit history</a></li>
+  <li><a href="#further-resources" id="toc-further-resources" class="nav-link" data-scroll-target="#further-resources">Further resources</a></li>
   </ul>
 </nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./course_nf-core.html">Pipelines</a></li><li class="breadcrumb-item"><a href="./course_nf-core.html">nf-core</a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./module1_git.html">Module 1 content</a></li><li class="breadcrumb-item"><a href="./module1_github_exercise.html">Exercise: Git on GitHub</a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title">nfcore introduction</h1>
+<h1 class="title">Git in GitHub</h1>
 </div>
 
 
@@ -458,76 +462,120 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="figures/nf-core/nf-core_logo.png" class="class img-fluid figure-img" style="width:70.0%"></p>
-<figcaption>source: <a href="https://nf-co.re/">nf-core</a></figcaption>
-</figure>
-</div>
-<p>Nf-core is a very active community around nextflow. Volunteers develop nextflow pipelines around a variety of bioinformatic data.</p>
-<p>Here are some flagship pipelines that have been developed by the nf-core community (we will have a look at the entire list on the nf-core homepage in a bit):</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="figures/nf-core/nf-core_popular_pipelines.png" class="class img-fluid figure-img" style="width:80.0%"></p>
-<figcaption>source: <a href="https://nf-co.re/">nf-core</a></figcaption>
-</figure>
-</div>
-<p>All nf-core pipelines are open source and the source code is available on github. The pipelines are developed by volunteers, who can have a very varied background.</p>
-<div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Note
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>While nf-core is fantastic, please be aware that their pipelines are developed and maintained (or not maintained) by the community. <strong>You should not use the pipelines as a black box</strong>, but as a tool you need to understand. The <strong>responsibility for the end results is still yours</strong>, so you need to see if your data is suited for the analysis (good enough quality?), and if the analysis is suitable for your data!</p>
-</div>
-</div>
-<p>However, nf-core does not only develop pipelines.</p>
-<p>The community also develops:</p>
+<p>In the following exercise, you will create a GitHub repository to track your code and document your work.<br>
+The repository will serve as a central place to store files, keep track of changes, and share your work.</p>
+<p>We will assume that you have already worked locally on your project, and are now ready to publish the data.</p>
+<p>We will go through the steps together. Please make sure you are logged in to your GitHub account before continuing.</p>
+<hr>
+<section id="in-this-tutorial-you-will" class="level2">
+<h2 class="anchored" data-anchor-id="in-this-tutorial-you-will">In this tutorial you will</h2>
 <ul>
-<li>processes that they make available as <code>modules</code> (and optimizes them too).</li>
-<li>training material for all user classes.</li>
-<li>best practices for documentation.</li>
-<li>templates for development.</li>
+<li>create a new repository on GitHub</li>
+<li>edit files directly on GitHub</li>
+<li>commit changes with meaningful messages</li>
+<li>explore the commit history of a repository</li>
 </ul>
-<p>There is a weekly online helpdesk, and even a podcast.</p>
-<section id="what-makes-nf-core-pipelines-interesting-for-you" class="level3">
-<h3 class="anchored" data-anchor-id="what-makes-nf-core-pipelines-interesting-for-you">What makes nf-core pipelines interesting for you?</h3>
-<p>Nf-core provides already developed pipelines for many different data sets. Likely, a pipelines exists that you can use on your data. The <strong>documentation of the pipelines follows nf-core guidelines</strong> and is extensive and informative - it is easy to understand what the pipeline does and how it works. All <strong>output is explained in detail</strong>, with links to more extensive documentation.</p>
-<p>Once you have understood how to run a nf-core pipeline their <strong>consistency and standardization</strong> means you will know most about running a different one.</p>
-<p>Using the nf-core launcher, will <strong>check your input</strong>, and automatically <strong>generate commands and configuration</strong> files.</p>
-<p>And this is on top of all nextflow functionality such as portability, reproducibility and the resume-at-fault option!</p>
+<hr>
 </section>
-<section id="finding-and-evaluating-a-pipeline" class="level2">
-<h2 class="anchored" data-anchor-id="finding-and-evaluating-a-pipeline">Finding and evaluating a pipeline</h2>
-<p>From the nf-core homepage, we can search for pipelines. We are going to demo the <a href="https://nf-co.re/rnaseq/3.20.0">rnaseq</a> pipeline. You can see that there is a lot going on in this pipeline! We will chat more about these things in class rather than including screenshots of everything.</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="figures/nf-core/rnaseq_landing_page.png" class="img-fluid figure-img"></p>
-<figcaption>rnaseq landing page</figcaption>
-</figure>
-</div>
-<p>Under the <code>Usage</code>, you will find a lot of information that describes the pipeline, including input information, the <code>samplesheet.csv</code> (which we will have to set up with our data later).</p>
-<p>Under the <code>Parameters</code> tab you will find information on all of the things that we will set up in the next step.</p>
-<p>Under the <code>Output</code> tab, you will find information on the expected output generated from the pipeline. This is useful to help you interpret what the pipeline produces.</p>
-<div class="callout callout-style-default callout-important callout-titled">
+<section id="create-a-new-repository" class="level2">
+<h2 class="anchored" data-anchor-id="create-a-new-repository">Create a new repository</h2>
+<ol type="1">
+<li>Go to <a href="https://github.com" class="uri">https://github.com</a>.</li>
+<li>Click the green <strong>New</strong> icon in the top-right corner under the top banner of the homepage.</li>
+</ol>
+<p>You will now see the repository creation page. You will be the default owner of this new repository. Fill in the following information:</p>
+<ul>
+<li><p><strong>Repository name</strong><br>
+Choose a short and descriptive name for your project. GitHub automatically checks if the name is available (it will be if you do not already have a repository with that name, regardless of if others have one), and will indicate availability with a green checkmark.</p></li>
+<li><p><strong>Description</strong><br>
+Add a brief description of what the repository is for.</p></li>
+<li><p><strong>Visibility</strong><br>
+Select <strong>Public</strong>. This means that everybody can see and download (clone) the repository and its contents, but they cannot change them without your permission. Perfect for sharing data!</p></li>
+<li><p><strong>Initialize this repository</strong></p>
+<ul>
+<li>Check <strong>Add a README file</strong><br>
+</li>
+<li>Add a <strong>.gitignore</strong> and choose the <strong>R</strong> template<br>
+</li>
+<li>Add a <strong>license</strong></li>
+</ul></li>
+</ul>
+<div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Important</span>To do for you
+Tip
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Look through the available pipelines and see if there is one that is interesting for you and your project.</p>
-<p>In the next part we will set up a nf-core pipeline with the test profile, so then you can test the pipeline that is most interesting for you.</p>
+<p>Think briefly about your project and what kind of code it will contain.<br>
+If you are unsure which license to choose, the website<br>
+<a href="https://choosealicense.com/">Choose an open source license</a> provides a helpful overview.</p>
 </div>
 </div>
+<ol start="4" type="1">
+<li>Click <strong>Create repository</strong>.</li>
+</ol>
+<hr>
+</section>
+<section id="edit-the-readme" class="level2">
+<h2 class="anchored" data-anchor-id="edit-the-readme">Edit the README</h2>
+<p>After the repository has been created, you will see the <code>README.md</code> file.</p>
+<ol type="1">
+<li>Click the <strong>Edit</strong> (pencil) icon.</li>
+<li>Add some basic information about your project (for example, what it does or what it is for).</li>
+</ol>
+<p>The README uses <strong>Markdown</strong>, which you have worked with before.<br>
+A short guide to Markdown formatting on GitHub is available here:</p>
+<p><a href="https://docs.github.com/en/get-started/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax" class="uri">https://docs.github.com/en/get-started/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax</a></p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Tip
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>You can preview how the rendered text will look like before committing the changes to the repository. Click on the <strong>Preview</strong> button.</p>
+</div>
+</div>
+<hr>
+</section>
+<section id="save-your-changes-commit" class="level2">
+<h2 class="anchored" data-anchor-id="save-your-changes-commit">Save your changes (commit)</h2>
+<p>On GitHub, if you edit files and save them you automatically commit them to the git history.</p>
+<p>To save the changes to the README:</p>
+<ol type="1">
+<li>Click the green <strong>Commit changes</strong>.</li>
+<li>Enter a short <strong>commit message</strong> describing what you changed (for example, “Add initial README”). Nowadays the Copilot will help you with this.</li>
+<li>Select <strong>Commit directly to the <em>main</em> branch</strong></li>
+<li>Confirm the commit by clicking the green <strong>Commit changes</strong> button.</li>
+</ol>
+<p>Commit messages help you understand what changed and when, and make it easier to find changes later.</p>
+<hr>
+</section>
+<section id="view-the-commit-history" class="level2">
+<h2 class="anchored" data-anchor-id="view-the-commit-history">View the commit history</h2>
+<p>GitHub keeps a record of all commits in a repository.</p>
+<ul>
+<li>Click the button with the <strong>clock symbol</strong> that says <strong>History</strong> to open the commit history.</li>
+<li>Each entry shows the commit message, author, and a unique identifier.</li>
+<li>Clicking on a commit shows the exact changes made.</li>
+</ul>
+<p>Your new repository will only contain a few commits, but older repositories show a more detailed history.<br>
+As an example, you can explore the<br>
+<a href="https://github.com/SLUBioinformaticsInfrastructure/Three_Bees_Workshop_Series">SLUBI 3bees workshop series</a> repository.</p>
+<hr>
+</section>
+<section id="further-resources" class="level2">
+<h2 class="anchored" data-anchor-id="further-resources">Further resources</h2>
+<p>If you want a guided introduction to GitHub basics, you can follow this tutorial:</p>
+<p><a href="https://github.com/skills/introduction-to-github" class="uri">https://github.com/skills/introduction-to-github</a></p>
+<p>It covers repositories, commits, branches, and pull requests. Some of these topics will be useful later as you work more with Git and GitHub.</p>
 
 
 </section>
