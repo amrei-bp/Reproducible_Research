@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Using git collaboratively – Reproducible Research 2026</title>
+<title>Setting upp Git in RStudio – Reproducible Research 2026</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -128,7 +128,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./course_git.html">Version control &amp; documentation</a></li><li class="breadcrumb-item"><a href="./course_git.html">git pull requests</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Setting upp Git in RStudio</li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -247,7 +247,7 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./course_git.html" class="sidebar-item-text sidebar-link active">
+  <a href="./course_git.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">git pull requests</span></a>
   </div>
 </li>
@@ -444,15 +444,27 @@ ul.task-list li input[type="checkbox"] {
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#prerequisites" id="toc-prerequisites" class="nav-link active" data-scroll-target="#prerequisites">Prerequisites:</a></li>
+  <li><a href="#setting-up-git-for-rstudio" id="toc-setting-up-git-for-rstudio" class="nav-link" data-scroll-target="#setting-up-git-for-rstudio">Setting up git for rstudio</a>
+  <ul class="collapse">
+  <li><a href="#install-git" id="toc-install-git" class="nav-link" data-scroll-target="#install-git">Install git</a></li>
+  <li><a href="#configure-git-in-rstudio" id="toc-configure-git-in-rstudio" class="nav-link" data-scroll-target="#configure-git-in-rstudio">Configure git in Rstudio</a></li>
+  <li><a href="#set-up-keys-for-ssh-access" id="toc-set-up-keys-for-ssh-access" class="nav-link" data-scroll-target="#set-up-keys-for-ssh-access">Set up keys for SSH access</a></li>
+  </ul></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./course_git.html">Version control &amp; documentation</a></li><li class="breadcrumb-item"><a href="./course_git.html">git pull requests</a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Using git collaboratively</h1>
+<h1 class="title">Setting upp Git in RStudio</h1>
 </div>
 
 
@@ -469,10 +481,92 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<p>Here we use git collaboratively — branches and pull requests to develop code together. (Module 1 covered git basics in RStudio; this extends that to teamwork.)</p>
-<p>This module will be run by Sam, and he has his own slides and content on Canvas.</p>
+<section id="prerequisites" class="level1">
+<h1>Prerequisites:</h1>
+<p>You will need a <code>GitHub Account</code>, an installation of <code>R</code> and <code>RStudio</code>.</p>
+</section>
+<section id="setting-up-git-for-rstudio" class="level1">
+<h1>Setting up git for rstudio</h1>
+<section id="install-git" class="level2">
+<h2 class="anchored" data-anchor-id="install-git">Install git</h2>
+<p>First, you will need to install git on your local machine:</p>
+<p><a href="https://happygitwithr.com/install-git">Instructions on how to install git</a></p>
+</section>
+<section id="configure-git-in-rstudio" class="level2">
+<h2 class="anchored" data-anchor-id="configure-git-in-rstudio">Configure git in Rstudio</h2>
+<p>Then, you need to configure git in your Rstudio. For this you need your GitHub user name and the e-mail associated with your GitHub account.</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>How to find your GitHub username and email address
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<section id="find-your-github-username" class="level3">
+<h3 class="anchored" data-anchor-id="find-your-github-username">1. Find your GitHub username</h3>
+<ol type="1">
+<li>Go to <a href="https://github.com" class="uri">https://github.com</a> and log in.</li>
+<li>Click on your profile picture in the top-right corner.</li>
+<li>Your GitHub username is shown:
+<ul>
+<li>next to your profile picture on your profile page, and</li>
+<li>in the URL of your profile page<br>
+(for example: <code>https://github.com/your-username</code>).</li>
+</ul></li>
+</ol>
+</section>
+<section id="find-the-email-address-associated-with-your-github-account" class="level3">
+<h3 class="anchored" data-anchor-id="find-the-email-address-associated-with-your-github-account">2. Find the email address associated with your GitHub account</h3>
+<ol type="1">
+<li>While logged in, click your profile picture (top-right).</li>
+<li>Select <strong>Settings</strong>.</li>
+<li>In the left-hand menu, click <strong>Emails</strong>.</li>
+<li>You will see:
+<ul>
+<li>your primary email address, and</li>
+<li>any additional email addresses linked to your account.</li>
+</ul></li>
+</ol>
+<p><strong>Important:</strong><br>
+GitHub can hide your email from public view. The email shown in <em>Settings → Emails</em> is the one associated with your account and can be used for course setup or Git configuration.</p>
+</section>
+</div>
+</div>
+<p>Once you have the user name and e-mail address, you can follow the <a href="https://happygitwithr.com/hello-git">instructions on how to configure git in Rstudio</a>.</p>
+<p>You only have to follow the first point (7 Introduce yourself to Git).</p>
+</section>
+<section id="set-up-keys-for-ssh-access" class="level2">
+<h2 class="anchored" data-anchor-id="set-up-keys-for-ssh-access">Set up keys for SSH access</h2>
+<p>To be able to push changes to GitHub, you need to be able to identify you with GitHub.</p>
+<p>Go to the following page, and follow the instructions for</p>
+<ul class="task-list">
+<li><label><input type="checkbox">1) checking for existing SSH keys</label></li>
+<li><label><input type="checkbox">if needed, 2) generate a new SSH key</label></li>
+<li><label><input type="checkbox">and add the SSH key to your GitHub account</label></li>
+</ul>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Important
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Add the keys as authentication keys!</p>
+</div>
+</div>
+<p><a href="https://docs.github.com/en/authentication/connecting-to-github-with-ssh/adding-a-new-ssh-key-to-your-github-account">Adding a new SSH key to your GitHub account</a></p>
+<p>Alternative information, with a bit more information on what SSH keys are and how they work:</p>
+<p><a href="https://happygitwithr.com/ssh-keys">Set up keys to identify yourself with github</a></p>
 
 
+</section>
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
