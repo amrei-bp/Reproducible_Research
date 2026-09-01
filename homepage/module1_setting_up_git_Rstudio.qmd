@@ -1,0 +1,67 @@
+---
+title: "Setting upp Git in RStudio"
+
+---
+
+# Prerequisites: 
+
+You will need a `GitHub Account`, an installation of `R` and `RStudio`. 
+
+# Setting up git for rstudio
+
+## Install git
+
+First, you will need to install git on your local machine:
+
+[Instructions on how to install git](https://happygitwithr.com/install-git)
+
+## Configure git in Rstudio
+
+Then, you need to configure git in your Rstudio. For this you need your GitHub user name and the e-mail associated with your GitHub account. 
+
+::: {.callout-tip}
+## How to find your GitHub username and email address
+
+### 1. Find your GitHub username
+1. Go to <https://github.com> and log in.
+2. Click on your profile picture in the top-right corner.
+3. Your GitHub username is shown:
+   - next to your profile picture on your profile page, and
+   - in the URL of your profile page  
+     (for example: `https://github.com/your-username`).
+
+### 2. Find the email address associated with your GitHub account
+1. While logged in, click your profile picture (top-right).
+2. Select **Settings**.
+3. In the left-hand menu, click **Emails**.
+4. You will see:
+   - your primary email address, and
+   - any additional email addresses linked to your account.
+
+**Important:**  
+GitHub can hide your email from public view. The email shown in *Settings → Emails* is the one associated with your account and can be used for course setup or Git configuration.
+:::
+
+Once you have the user name and e-mail address, you can follow the [instructions on how to configure git in Rstudio](https://happygitwithr.com/hello-git). 
+
+You only have to follow the first point (7 Introduce yourself to Git). 
+
+## Set up keys for SSH access
+
+To be able to push changes to GitHub, you need to be able to identify you with GitHub. 
+
+Go to the following page, and follow the instructions for 
+
+- [ ] 1) checking for existing SSH keys
+- [ ] if needed, 2) generate a new SSH key
+- [ ] and add the SSH key to your GitHub account
+
+::: {.callout-important}
+Add the keys as authentication keys!
+:::
+
+[Adding a new SSH key to your GitHub account](https://docs.github.com/en/authentication/connecting-to-github-with-ssh/adding-a-new-ssh-key-to-your-github-account)
+
+Alternative information, with a bit more information on what SSH keys are and how they work:
+
+[Set up keys to identify yourself with github](https://happygitwithr.com/ssh-keys)
