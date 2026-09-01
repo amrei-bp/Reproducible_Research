@@ -104,7 +104,7 @@ website:
           - text: "Exercise: Git on GitHub"
             href: module1_github_exercise.qmd
           - text: "Setup: Git for RStudio"
-            href: module1_quarto.qmd
+            href: module1_setting_up_git_Rstudio.qmd
           - text: "Exercise: Git in RStudio"
             href: module1_git_rstudio_exercise.qmd
           - text: "Intro to Quarto"
