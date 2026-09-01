@@ -371,7 +371,7 @@
     "crumbs": [
       "Home",
       "Module 1 content",
-      "Setup: Git for RStudio"
+      "Intro to Quarto"
     ]
   },
   {
@@ -383,7 +383,7 @@
     "crumbs": [
       "Home",
       "Module 1 content",
-      "Setup: Git for RStudio"
+      "Intro to Quarto"
     ]
   },
   {
@@ -395,7 +395,7 @@
     "crumbs": [
       "Home",
       "Module 1 content",
-      "Setup: Git for RStudio"
+      "Intro to Quarto"
     ]
   },
   {
@@ -407,7 +407,7 @@
     "crumbs": [
       "Home",
       "Module 1 content",
-      "Setup: Git for RStudio"
+      "Intro to Quarto"
     ]
   },
   {
@@ -419,7 +419,7 @@
     "crumbs": [
       "Home",
       "Module 1 content",
-      "Setup: Git for RStudio"
+      "Intro to Quarto"
     ]
   },
   {
@@ -431,7 +431,7 @@
     "crumbs": [
       "Home",
       "Module 1 content",
-      "Setup: Git for RStudio"
+      "Intro to Quarto"
     ]
   },
   {
@@ -443,7 +443,7 @@
     "crumbs": [
       "Home",
       "Module 1 content",
-      "Setup: Git for RStudio"
+      "Intro to Quarto"
     ]
   },
   {
@@ -455,7 +455,7 @@
     "crumbs": [
       "Home",
       "Module 1 content",
-      "Setup: Git for RStudio"
+      "Intro to Quarto"
     ]
   },
   {
@@ -467,7 +467,7 @@
     "crumbs": [
       "Home",
       "Module 1 content",
-      "Setup: Git for RStudio"
+      "Intro to Quarto"
     ]
   },
   {
@@ -479,7 +479,7 @@
     "crumbs": [
       "Home",
       "Module 1 content",
-      "Setup: Git for RStudio"
+      "Intro to Quarto"
     ]
   },
   {
@@ -491,7 +491,7 @@
     "crumbs": [
       "Home",
       "Module 1 content",
-      "Setup: Git for RStudio"
+      "Intro to Quarto"
     ]
   },
   {
@@ -1283,28 +1283,48 @@
     "href": "module1_setting_up_git_Rstudio.html",
     "title": "Setting upp Git in RStudio",
     "section": "",
-    "text": "You will need a GitHub Account, an installation of R and RStudio."
+    "text": "You will need a GitHub Account, an installation of R and RStudio.",
+    "crumbs": [
+      "Home",
+      "Module 1 content",
+      "Setup: Git for RStudio"
+    ]
   },
   {
     "objectID": "module1_setting_up_git_Rstudio.html#install-git",
     "href": "module1_setting_up_git_Rstudio.html#install-git",
     "title": "Setting upp Git in RStudio",
     "section": "Install git",
-    "text": "Install git\nFirst, you will need to install git on your local machine:\nInstructions on how to install git"
+    "text": "Install git\nFirst, you will need to install git on your local machine:\nInstructions on how to install git",
+    "crumbs": [
+      "Home",
+      "Module 1 content",
+      "Setup: Git for RStudio"
+    ]
   },
   {
     "objectID": "module1_setting_up_git_Rstudio.html#configure-git-in-rstudio",
     "href": "module1_setting_up_git_Rstudio.html#configure-git-in-rstudio",
     "title": "Setting upp Git in RStudio",
     "section": "Configure git in Rstudio",
-    "text": "Configure git in Rstudio\nThen, you need to configure git in your Rstudio. For this you need your GitHub user name and the e-mail associated with your GitHub account.\n\n\n\n\n\n\nTipHow to find your GitHub username and email address\n\n\n\n\n1. Find your GitHub username\n\nGo to https://github.com and log in.\nClick on your profile picture in the top-right corner.\nYour GitHub username is shown:\n\nnext to your profile picture on your profile page, and\nin the URL of your profile page\n(for example: https://github.com/your-username).\n\n\n\n\n2. Find the email address associated with your GitHub account\n\nWhile logged in, click your profile picture (top-right).\nSelect Settings.\nIn the left-hand menu, click Emails.\nYou will see:\n\nyour primary email address, and\nany additional email addresses linked to your account.\n\n\nImportant:\nGitHub can hide your email from public view. The email shown in Settings → Emails is the one associated with your account and can be used for course setup or Git configuration.\n\n\n\nOnce you have the user name and e-mail address, you can follow the instructions on how to configure git in Rstudio.\nYou only have to follow the first point (7 Introduce yourself to Git)."
+    "text": "Configure git in Rstudio\nThen, you need to configure git in your Rstudio. For this you need your GitHub user name and the e-mail associated with your GitHub account.\n\n\n\n\n\n\nTipHow to find your GitHub username and email address\n\n\n\n\n1. Find your GitHub username\n\nGo to https://github.com and log in.\nClick on your profile picture in the top-right corner.\nYour GitHub username is shown:\n\nnext to your profile picture on your profile page, and\nin the URL of your profile page\n(for example: https://github.com/your-username).\n\n\n\n\n2. Find the email address associated with your GitHub account\n\nWhile logged in, click your profile picture (top-right).\nSelect Settings.\nIn the left-hand menu, click Emails.\nYou will see:\n\nyour primary email address, and\nany additional email addresses linked to your account.\n\n\nImportant:\nGitHub can hide your email from public view. The email shown in Settings → Emails is the one associated with your account and can be used for course setup or Git configuration.\n\n\n\nOnce you have the user name and e-mail address, you can follow the instructions on how to configure git in Rstudio.\nYou only have to follow the first point (7 Introduce yourself to Git).",
+    "crumbs": [
+      "Home",
+      "Module 1 content",
+      "Setup: Git for RStudio"
+    ]
   },
   {
     "objectID": "module1_setting_up_git_Rstudio.html#set-up-keys-for-ssh-access",
     "href": "module1_setting_up_git_Rstudio.html#set-up-keys-for-ssh-access",
     "title": "Setting upp Git in RStudio",
     "section": "Set up keys for SSH access",
-    "text": "Set up keys for SSH access\nTo be able to push changes to GitHub, you need to be able to identify you with GitHub.\nGo to the following page, and follow the instructions for\n\n1) checking for existing SSH keys\nif needed, 2) generate a new SSH key\nand add the SSH key to your GitHub account\n\n\n\n\n\n\n\nImportant\n\n\n\nAdd the keys as authentication keys!\n\n\nAdding a new SSH key to your GitHub account\nAlternative information, with a bit more information on what SSH keys are and how they work:\nSet up keys to identify yourself with github"
+    "text": "Set up keys for SSH access\nTo be able to push changes to GitHub, you need to be able to identify you with GitHub.\nGo to the following page, and follow the instructions for\n\n1) checking for existing SSH keys\nif needed, 2) generate a new SSH key\nand add the SSH key to your GitHub account\n\n\n\n\n\n\n\nImportant\n\n\n\nAdd the keys as authentication keys!\n\n\nAdding a new SSH key to your GitHub account\nAlternative information, with a bit more information on what SSH keys are and how they work:\nSet up keys to identify yourself with github",
+    "crumbs": [
+      "Home",
+      "Module 1 content",
+      "Setup: Git for RStudio"
+    ]
   },
   {
     "objectID": "module1_git.html",
