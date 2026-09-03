@@ -4,9 +4,7 @@ title: "Create a Quarto blog"
 
 <br>
 
-In this module you will build and publish a daily blog with Quarto. (Module 1 introduced Quarto; here you use it yourself, every day.)
-
-For this course module we will create a blog in Quarto and publish it with GitHub pages (in the next part). At the end of every day, I want you to take some time to review the day's topics and write (and publish) a blog entry for each topic. 
+In this module you will build and publish a daily blog with Quarto. (Module 1 introduced Quarto; here you use it yourself, every day.) You will create a blog in Quarto and publish it with GitHub pages (in the next part). At the end of every day, I want you to take some time to review the day's topics and write (and publish) a blog entry for each topic. 
 
 This gives you time to review what we've done, and practice literate programming, presentation, and git. You can explore Quarto and it's possibilities, or add bits and pieces to topics you're already familiar with.  
 
