@@ -42,7 +42,7 @@ Here, we will create a project called `name_pixi_training` (please use your own 
 ```{.bash}
 pixi init name_pixi_training -c conda-forge -c bioconda
 ```
-Pixi will create a folder named `name_pixi_training` with a a file `pixi.toml`. Let's have a look at that file!
+Pixi will create a folder named `name_pixi_training` with a file `pixi.toml`. Let's have a look at that file!
 
 ::: {.callout-tip collapse="true"}
 ## How to get to the file
