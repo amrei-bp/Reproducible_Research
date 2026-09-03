@@ -17,7 +17,7 @@ As you can see, you can run Pixi on all major operating systems, and you can inc
 ::: {.callout-important}
 ## To do for you
 
-Log in to the course server and execute this in the terminal:
+To install Pixi for your user account, log in to the course server and execute this in the terminal:
 
 ```{.bash}
 wget -qO- https://pixi.sh/install.sh | sh
