@@ -546,7 +546,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Log in to the course server and execute this in the terminal:</p>
+<p>To install Pixi for your user account, log in to the course server and execute this in the terminal:</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">wget</span> <span class="at">-qO-</span> https://pixi.sh/install.sh <span class="kw">|</span> <span class="fu">sh</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
@@ -573,7 +573,7 @@ Tip
 <p>You should create separate environments for each project you run, just to keep things tidy. To create an environment, you have to specify a name for your environment. You can include different platforms/operating systems in your environment, for example if you want to develop your code on a Windows system, and later use the same code on many samples on a large Linux cluster. You can also include different vetted sources for your tools, the so called channels.</p>
 <p>Here, we will create a project called <code>name_pixi_training</code> (please use your own name to avoid creating multiple environments with the same name). We are adding the <a href="https://conda-forge.org">conda-forge</a> and <a href="https://bioconda.github.io">bioconda</a> channels with the <code>-c</code> flag.</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pixi</span> init name_pixi_training <span class="at">-c</span> conda-forge <span class="at">-c</span> bioconda</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>Pixi will create a folder named <code>name_pixi_training</code> with a a file <code>pixi.toml</code>. Let’s have a look at that file!</p>
+<p>Pixi will create a folder named <code>name_pixi_training</code> with a file <code>pixi.toml</code>. Let’s have a look at that file!</p>
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
