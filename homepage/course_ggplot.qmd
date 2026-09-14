@@ -23,5 +23,5 @@ Click the three horizontal bars in the lower left corner of the presentation, th
 ::: {.callout-important}
 ## To do for you
 
-Now that you have seen some of the capabilities of ggplot, try them out in this [tutorial from Roy Francis at NBIS](https://nbisweden.github.io/raukr-2023/labs/ggplot/).
+Now that you have seen some of the capabilities of ggplot, try them out in this [tutorial from Roy Francis at NBIS](https://nbisweden.github.io/raukr-2026/labs/ggplot/).
 :::
