@@ -490,10 +490,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#define-the-workflow-parameters" id="toc-define-the-workflow-parameters" class="nav-link" data-scroll-target="#define-the-workflow-parameters">Define the workflow parameters</a></li>
   <li><a href="#create-a-transcriptome-index-file" id="toc-create-a-transcriptome-index-file" class="nav-link" data-scroll-target="#create-a-transcriptome-index-file">Create a transcriptome index file</a>
   <ul class="collapse">
-  <li><a href="#add-salmon-to-your-environment" id="toc-add-salmon-to-your-environment" class="nav-link" data-scroll-target="#add-salmon-to-your-environment">add Salmon to your environment</a></li>
-  <li><a href="#add-salmon-in-a-container-to-the-process" id="toc-add-salmon-in-a-container-to-the-process" class="nav-link" data-scroll-target="#add-salmon-in-a-container-to-the-process">add Salmon in a container to the process</a></li>
+  <li><a href="#either-add-salmon-to-your-environment" id="toc-either-add-salmon-to-your-environment" class="nav-link" data-scroll-target="#either-add-salmon-to-your-environment">EITHER add Salmon to your environment</a></li>
+  <li><a href="#or-add-salmon-in-a-container-to-the-process" id="toc-or-add-salmon-in-a-container-to-the-process" class="nav-link" data-scroll-target="#or-add-salmon-in-a-container-to-the-process">OR add Salmon in a container to the process</a></li>
   </ul></li>
   <li><a href="#define-run-time-environment" id="toc-define-run-time-environment" class="nav-link" data-scroll-target="#define-run-time-environment">Define run time environment</a></li>
+  <li><a href="#interlude-visualize-tuples" id="toc-interlude-visualize-tuples" class="nav-link" data-scroll-target="#interlude-visualize-tuples">Interlude: Visualize tuples</a></li>
   <li><a href="#expression-quantification" id="toc-expression-quantification" class="nav-link" data-scroll-target="#expression-quantification">Expression quantification</a></li>
   <li><a href="#quality-control" id="toc-quality-control" class="nav-link" data-scroll-target="#quality-control">Quality control</a></li>
   <li><a href="#multiqc" id="toc-multiqc" class="nav-link" data-scroll-target="#multiqc">MultiQC</a></li>
@@ -531,7 +532,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>Performs quantification</li>
 <li>Creates a MultiQC report</li>
 </ol>
-<p>This will be done using a series of seven scripts, each of which builds on the previous to create a complete workflow. You can find these in the tutorial folder (<code>script1.nf</code> - <code>script6.nf</code>). These scripts will make use of third-party tools that are known by bioinformaticians but that may be new to you so we’ll briefly introduce them below.</p>
+<p>This will be done using a series of seven scripts, each of which builds on the previous to create a complete workflow. You can find these in the tutorial folder (<code>script1.nf</code> - <code>script7.nf</code>). These scripts will make use of third-party tools that are known by bioinformaticians but that may be new to you so we’ll briefly introduce them below.</p>
 <ul>
 <li><a href="https://combine-lab.github.io/salmon/">Salmon</a> is a tool for quantifying molecules known as transcripts through a type of data called RNA-seq data.</li>
 <li><a href="https://www.bioinformatics.babraham.ac.uk/projects/fastqc/">FastQC</a> is a tool to perform quality control for high throughput sequence data. You can think of it as a way to assess the quality of your data.</li>
@@ -564,7 +565,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>Here, we set the executor for every process to slurm.</li>
 <li>We set resume to true, so it is automatically used for all our runs (which means we do not have to specify this in our nextflow run command anymore).</li>
 <li>We enable singularity and set some singularity run options.</li>
-<li>Lastly, we specify the account name for the slurm execution.</li>
+<li>Lastly, we specify the account name for the slurm execution, replace the placeholder with the actual compute allocation ID.</li>
 </ul>
 <p>This nextflow.config file is implicitly called when we execute nextflow from the folder it is in. We do not have to explicitely name it in the nextflow run command.</p>
 </section>
@@ -572,11 +573,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h2 class="anchored" data-anchor-id="define-the-workflow-parameters">Define the workflow parameters</h2>
 <p>Parameters are inputs and options that can be changed when the workflow is run.</p>
 <p>The script script1.nf defines the workflow input parameters:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode md code-with-copy"><code class="sourceCode markdown"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>params.reads = "$projectDir/data/ggal/gut_{1,2}.fq"</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>params.transcriptome_file = "$projectDir/data/ggal/transcriptome.fa"</span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>params.multiqc = "$projectDir/multiqc"</span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>println "reads: $params.reads"</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode md code-with-copy"><code class="sourceCode markdown"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>#!/usr/bin/env nextflow</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>params.reads = "$projectDir/data/ggal/gut_{1,2}.fq"</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>params.transcriptome_file = "$projectDir/data/ggal/transcriptome.fa"</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>params.multiqc = "$projectDir/multiqc"</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>workflow {</span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>    println "reads: $params.reads"</span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>Run it by using the following command:</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pixi</span> run nextflow run script1.nf</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="callout callout-style-default callout-note callout-titled">
@@ -623,7 +628,7 @@ Note
 <span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a><span class="in">    salmon index --threads $task.cpus -t $transcriptome -i salmon_index</span></span>
 <span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a><span class="in">    """</span></span>
 <span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>Additionally, add a <code>workflow scope</code> containing an input channel definition and the index process:</p>
+<p>Additionally, replace the existing <code>workflow scope</code> with an input channel definition and the index process:</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode md code-with-copy"><code class="sourceCode markdown"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>workflow {</span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>    index_ch = INDEX(file(params.transcriptome_file, checkIfExists: true))</span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -643,14 +648,14 @@ Caution
 <p>Why doesn’t this work? What have we forgotten?</p>
 </div>
 </div>
-<section id="add-salmon-to-your-environment" class="level3">
-<h3 class="anchored" data-anchor-id="add-salmon-to-your-environment">add Salmon to your environment</h3>
+<section id="either-add-salmon-to-your-environment" class="level3">
+<h3 class="anchored" data-anchor-id="either-add-salmon-to-your-environment">EITHER add Salmon to your environment</h3>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pixi</span> add salmon</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
-<section id="add-salmon-in-a-container-to-the-process" class="level3">
-<h3 class="anchored" data-anchor-id="add-salmon-in-a-container-to-the-process">add Salmon in a container to the process</h3>
-<p>Adding a container to the process and running the tool via the container is more reproducible than adding it to your environment. Use the <code>container</code> directive and add the URL to the container to the process scope:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="ex">container</span> <span class="st">'https://depot.galaxyproject.org/singularity/salmon:1.10.1--h7e5ed60_0'</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<section id="or-add-salmon-in-a-container-to-the-process" class="level3">
+<h3 class="anchored" data-anchor-id="or-add-salmon-in-a-container-to-the-process">OR add Salmon in a container to the process</h3>
+<p>Adding a container to the process and running the tool via the container is more reproducible than adding it to your environment. Use the <code>container</code> directive and add the URL to the container to the process scope, above the input block:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="ex">container</span> <span class="st">'oras://community.wave.seqera.io/library/salmon:2.7.0--cb05356ce9eb88b7'</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -664,6 +669,7 @@ Note
 <p>You can also specify a process specific output directory in the process block:</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="sourceCode md code-with-copy"><code class="sourceCode markdown"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>publishDir "$params.outdir/salmon"</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>This command line would typically be located just below the container directive.</p>
+<p>By default <code>publishDir</code> <strong>links</strong> the published files back into the <code>work/</code> directory rather than copying them. This is fast and saves space, but it means the files disappear if you clean <code>work/</code>. Add <code>mode: 'copy'</code> when you want an independent copy that survives a cleanup, for example a result you intend to keep or share.</p>
 </div>
 </div>
 </section>
@@ -678,16 +684,58 @@ Note
 <p>With this we specify the alloted time and cpus for this specific process.</p>
 <p>To specify memory add mem = xx.GB - check with your cluster to see how much memory is available and how to specify it. In our case we don’t need to because the memory implicit in the 2 cpus is enough for our purposes.</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb11"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pixi</span> run nextflow run script1.nf </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>Collect read files by pairs</p>
-<p>This step shows how to match read files into pairs, so they can be mapped by Salmon.</p>
-<p>Run script3.nf:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb12"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pixi</span> run nextflow run script3.nf</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>Now add</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb13"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">read_pairs_ch.view()</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>to the bottom of the script, save it and run it again.</p>
-<p>It will print something similar to this:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb14"><pre class="sourceCode md code-with-copy"><code class="sourceCode markdown"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co">[</span><span class="ot">gut, [/.../data/ggal/gut_1.fq, /.../data/ggal/gut_2.fq]</span><span class="co">]</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>The above example shows how the read_pairs_ch channel emits <code>tuples</code> composed of two elements, where the first is the <code>read pair prefix</code> and the second is a <code>list</code> representing the actual files.</p>
+</section>
+<section id="interlude-visualize-tuples" class="level2">
+<h2 class="anchored" data-anchor-id="interlude-visualize-tuples">Interlude: Visualize tuples</h2>
+<p>Salmon needs <strong>both</strong> reads of a pair together to quantify a sample. Our data folder holds six files — three samples, two files each:</p>
+<pre><code>gut_1.fq    gut_2.fq
+liver_1.fq  liver_2.fq
+lung_1.fq   lung_2.fq</code></pre>
+<p>If we simply collected every <code>.fq</code> into one channel, Nextflow would see six loose files with nothing saying that <code>gut_1</code> and <code>gut_2</code> belong together. We need them <strong>grouped by sample</strong>.</p>
+<p>That is what the <code>fromFilePairs</code> channel factory does, and we can have a look at it in <code>script3.nf</code>. The <code>{1,2}</code> in the pattern marks the part that differs between the two files of a pair; Nextflow groups the files that share everything else:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb13"><pre class="sourceCode groovy code-with-copy"><code class="sourceCode groovy"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>read_pairs_ch <span class="op">=</span> channel<span class="op">.</span><span class="fu">fromFilePairs</span><span class="op">(</span>params<span class="op">.</span>reads<span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>To see what it produces, view the channel from inside the workflow:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb14"><pre class="sourceCode groovy code-with-copy"><code class="sourceCode groovy"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>workflow <span class="op">{</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>    read_pairs_ch <span class="op">=</span> channel<span class="op">.</span><span class="fu">fromFilePairs</span><span class="op">(</span>params<span class="op">.</span>reads<span class="op">)</span></span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>    read_pairs_ch<span class="op">.</span><span class="fu">view</span><span class="op">()</span></span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Run it:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb15"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pixi</span> run nextflow run script3.nf</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>It prints one item per sample:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb16"><pre class="sourceCode md code-with-copy"><code class="sourceCode markdown"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co">[</span><span class="ot">gut, [/.../data/ggal/gut_1.fq, /.../data/ggal/gut_2.fq]</span><span class="co">]</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Read that line piece by piece — each item is a <strong>tuple</strong> with two parts:</p>
+<ul>
+<li><code>gut</code> — the <strong>sample ID</strong>, taken from the shared prefix of the file names, and</li>
+<li><code>[gut_1.fq, gut_2.fq]</code> — a <strong>list</strong> of the two files that belong to that sample.</li>
+</ul>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Tip
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Think of it like matching socks: <code>fromFilePairs</code> puts <code>_1</code> and <code>_2</code> together by their shared name, and the <code>{1,2}</code> glob tells Nextflow which part is allowed to differ.</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><code>params.reads</code> points at <code>gut</code> only, so you see one pair. Point it at all three samples to watch them grouped side by side:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb17"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pixi</span> run nextflow run script3.nf <span class="at">--reads</span> <span class="st">'data/ggal/*_{1,2}.fq'</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Because each item carries the ID <strong>and</strong> both files together, Salmon can process each sample in a single task — and Nextflow runs all three in parallel. That is the behaviour you will use in the next step.</p>
+</div>
+</div>
 </section>
 <section id="expression-quantification" class="level2">
 <h2 class="anchored" data-anchor-id="expression-quantification">Expression quantification</h2>
@@ -696,9 +744,9 @@ Note
 <p>Next, note that the first input channel for the QUANTIFICATION process is the previously declared index_ch, which contains the path to the salmon_index.</p>
 <p>Also, note that the second input channel for the QUANTIFICATION process, is the read_pair_ch we just created. This being a tuple** composed of two elements (a value: “sample_id” and a list of paths to the fastq reads: “reads”) in order to match the structure of the items emitted by the <code>fromFilePairs</code> channel factory.</p>
 <p>**tuple: a data structure consisting of multiple parts.</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb15"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pixi</span> run nextflow run script4.nf</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb18"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pixi</span> run nextflow run script4.nf</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>Execute the same script again with more read files, as shown below:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb16"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pixi</span> run nextflow run script4.nf <span class="at">--reads</span> <span class="st">'data/ggal/*_{1,2}.fq'</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb19"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pixi</span> run nextflow run script4.nf <span class="at">--reads</span> <span class="st">'data/ggal/*_{1,2}.fq'</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>You will notice that the QUANTIFICATION process is executed multiple times.</p>
 <p>Nextflow parallelizes the execution of your workflow simply by providing multiple sets of input data to your script.</p>
 <div class="callout callout-style-default callout-important callout-titled">
