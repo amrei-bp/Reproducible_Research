@@ -107,6 +107,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-label": "Search"
   }
 }</script>
+<script src="site_libs/quarto-diagram/mermaid.min.js"></script>
+<script src="site_libs/quarto-diagram/mermaid-init.js"></script>
+<link href="site_libs/quarto-diagram/mermaid.css" rel="stylesheet">
 
 
 <link rel="stylesheet" href="styles.css">
@@ -485,6 +488,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
    
   <ul>
   <li><a href="#simple-rna-seq-workflow-from-seqera-training-materials" id="toc-simple-rna-seq-workflow-from-seqera-training-materials" class="nav-link active" data-scroll-target="#simple-rna-seq-workflow-from-seqera-training-materials">Simple RNA-Seq workflow (from Seqera training materials)</a></li>
+  <li><a href="#the-pipeline-at-a-glance" id="toc-the-pipeline-at-a-glance" class="nav-link" data-scroll-target="#the-pipeline-at-a-glance">The pipeline at a glance</a></li>
   <li><a href="#preparations" id="toc-preparations" class="nav-link" data-scroll-target="#preparations">Preparations</a></li>
   <li><a href="#set-the-executor" id="toc-set-the-executor" class="nav-link" data-scroll-target="#set-the-executor">Set the executor</a></li>
   <li><a href="#define-the-workflow-parameters" id="toc-define-the-workflow-parameters" class="nav-link" data-scroll-target="#define-the-workflow-parameters">Define the workflow parameters</a></li>
@@ -525,20 +529,63 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <section id="simple-rna-seq-workflow-from-seqera-training-materials" class="level2">
 <h2 class="anchored" data-anchor-id="simple-rna-seq-workflow-from-seqera-training-materials">Simple RNA-Seq workflow (from Seqera training materials)</h2>
-<p>To demonstrate a real-world biomedical scenario, we will implement a proof of concept RNA-Seq workflow which:</p>
-<ol type="1">
-<li>Indexes a transcriptome file</li>
-<li>Performs quality controls</li>
-<li>Performs quantification</li>
-<li>Creates a MultiQC report</li>
-</ol>
-<p>This will be done using a series of seven scripts, each of which builds on the previous to create a complete workflow. You can find these in the tutorial folder (<code>script1.nf</code> - <code>script7.nf</code>). These scripts will make use of third-party tools that are known by bioinformaticians but that may be new to you so we’ll briefly introduce them below.</p>
+<p>To demonstrate a real-world biomedical scenario, we will implement a proof-of-concept RNA-seq workflow that indexes a transcriptome, checks read quality, quantifies expression, and produces a summary report.</p>
+<p>We will build it up across a series of seven scripts (<code>script1.nf</code> – <code>script7.nf</code>), each one adding a step to the previous. The workflow uses three third-party tools that may be new to you:</p>
 <ul>
-<li><a href="https://combine-lab.github.io/salmon/">Salmon</a> is a tool for quantifying molecules known as transcripts through a type of data called RNA-seq data.</li>
-<li><a href="https://www.bioinformatics.babraham.ac.uk/projects/fastqc/">FastQC</a> is a tool to perform quality control for high throughput sequence data. You can think of it as a way to assess the quality of your data.</li>
-<li><a href="https://multiqc.info/">MultiQC</a> searches a given directory for analysis logs and compiles a HTML report. It’s a general use tool, perfect for summarizing the output from numerous bioinformatics tools.</li>
+<li><a href="https://combine-lab.github.io/salmon/">Salmon</a> — quantifies transcripts from RNA-seq data.</li>
+<li><a href="https://www.bioinformatics.babraham.ac.uk/projects/fastqc/">FastQC</a> — performs quality control on high-throughput sequencing data.</li>
+<li><a href="https://multiqc.info/">MultiQC</a> — searches a directory for analysis logs and compiles them into a single HTML report.</li>
 </ul>
-<p>Though these tools may not be the ones you will use in your pipeline, they could just be replaced by any common tool of your area. That’s the power of Nextflow!</p>
+<p>These may not be the exact tools you will use in your own field, but they can be swapped for any comparable tool — that is the power of Nextflow.</p>
+</section>
+<section id="the-pipeline-at-a-glance" class="level2">
+<h2 class="anchored" data-anchor-id="the-pipeline-at-a-glance">The pipeline at a glance</h2>
+<p>Before we build it piece by piece, here is the whole workflow. It takes a reference transcriptome and paired-end RNA-seq reads, and produces per-sample expression estimates plus a single quality report. Each box is one step; the arrows show what feeds into what.</p>
+<div class="cell" data-layout-align="default">
+<div class="cell-output-display">
+<div>
+<p></p><figure class="figure"><p></p>
+<div>
+<pre class="mermaid mermaid-js">%%{init: {'themeVariables': {'lineColor': '#0f7040'}}}%%
+flowchart TD
+    T([transcriptome.fa]) --&gt; IDX["INDEX — salmon index"]
+    IDX --&gt; SI([salmon_index])
+    R([paired-end reads]) --&gt;|fromFilePairs| RP([read pairs, per sample])
+    SI --&gt; Q["QUANTIFICATION — salmon quant"]
+    RP --&gt; Q
+    RP --&gt; FQ["FASTQC — quality control"]
+    Q --&gt; M["MULTIQC — summary report"]
+    FQ --&gt; M
+    Q --&gt; QR([quantification results])
+    M --&gt; REP([multiqc_report.html])
+
+    linkStyle default stroke-width:4px
+</pre>
+</div>
+<p></p></figure><p></p>
+</div>
+</div>
+</div>
+<p><strong>Step by step — and why each tool is used when:</strong></p>
+<ol type="1">
+<li><p><strong>Index the transcriptome reference — <code>salmon index</code>.</strong> Salmon cannot quantify reads against a plain FASTA; it first needs to turn the reference into a fast, searchable index. We do this once at the start, and every sample reuses the same index.</p></li>
+<li><p><strong>Quantify expression — <code>salmon quant</code>.</strong> For each sample, Salmon maps the read pair against the index and estimates how much of each transcript is present. Here Salmon turns raw reads into numbers to analyse.</p></li>
+<li><p><strong>Check read quality — <code>FastQC</code>.</strong> In parallel, FastQC inspects the raw reads of each sample (base quality, adapter content, and so on). We run it <em>alongside</em> quantification, not after, because quality control is independent of the counting.</p></li>
+<li><p><strong>Summarise everything — <code>MultiQC</code>.</strong> Finally, MultiQC gathers the logs from all the samples (Salmon and FastQC) into one HTML report, so you read a single summary instead of opening dozens of files. It waits for the all earlier steps to finish before it runs.</p></li>
+</ol>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Notice the two branches: <strong>quantification</strong> and <strong>quality control</strong> don’t depend on each other, so Nextflow runs them at the same time. They only come back together at <strong>MultiQC</strong>, which needs both before it can build the report. Keeping independent work parallel — and joining it only where necessary — is a large part of what makes a workflow manager worth using.</p>
+</div>
+</div>
 </section>
 <section id="preparations" class="level2">
 <h2 class="anchored" data-anchor-id="preparations">Preparations</h2>
