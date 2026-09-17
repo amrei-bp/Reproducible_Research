@@ -656,7 +656,7 @@ Important
 <h3 class="anchored" data-anchor-id="getting-your-json-file">Getting your JSON file</h3>
 <p>Once everything is filled in, click on <code>Launch</code> and you will be redirected to another page containing your JSON file that has information on your run.</p>
 <p>Copy the JSON file a bit lower on the screen and saving it as <code>nf-params.json</code> in your folder on HPC2N.</p>
-<p>Add the <code>save_reference</code> line as recommended by nf-core (because we are using their downloaded human genome).</p>
+<p>Add the <code>save_reference</code> line as recommended by nf-core (because we are using their downloaded human genome). You can add it to the json file with <code>"save_reference": true</code>. Make sure that all lines but the last one have a comma at the end.</p>
 </section>
 <section id="configuration-profile" class="level3">
 <h3 class="anchored" data-anchor-id="configuration-profile">Configuration profile</h3>
@@ -667,18 +667,18 @@ Important
 <section id="starting-the-run" class="level2">
 <h2 class="anchored" data-anchor-id="starting-the-run">Starting The Run</h2>
 <p>The launcher gives us the command to run the pipeline:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="ex">nextflow</span> run nf-core/rnaseq <span class="at">-r</span> 3.19.0 <span class="at">-resume</span> <span class="at">-params-file</span> nf-params.json</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="ex">nextflow</span> run nf-core/rnaseq <span class="at">-r</span> 3.26.0 <span class="at">-resume</span> <span class="at">-params-file</span> nf-params.json</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>We need to change this slightly, to add that we are running it via Pixi, and to add the server specific configuration file:</p>
 <section id="submit-directly-via-pixi" class="level3">
 <h3 class="anchored" data-anchor-id="submit-directly-via-pixi">submit directly via pixi</h3>
 <p>Now you can run the pipeline with the following command (you might have to change it a bit to add pathways to files that are not in your current working directory):</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pixi</span> run nextflow run nf-core/rnaseq <span class="at">-r</span> 3.19.0 <span class="at">-resume</span> <span class="at">-params-file</span> nf-params.json <span class="at">-c</span> hpc2n.config</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pixi</span> run nextflow run nf-core/rnaseq <span class="at">-r</span> 3.26.0 <span class="at">-resume</span> <span class="at">-params-file</span> nf-params.json <span class="at">-c</span> hpc2n.config</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>There are several layers to this command:</p>
 <p>First we invoke <code>Pixi</code> and tell it to <code>run</code> the following commands.</p>
 <p>Then we say which program we want to run, namely <code>Nextflow</code>.</p>
 <p>The following commands are Nextflow/ nf-core commands:</p>
 <ul>
-<li>we want to <code>run</code> the <code>nf-core/rnaseq</code> pipeline, version <code>3.19.0</code></li>
+<li>we want to <code>run</code> the <code>nf-core/rnaseq</code> pipeline, version <code>3.26.0</code></li>
 <li>we want to use the parameter file called <code>nf-params.json</code></li>
 <li>we want to use the hpc configuration file called <code>hpc2n.config</code></li>
 </ul>
@@ -691,7 +691,7 @@ Important
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH -n 5</span></span>
 <span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH -t 24:00:00</span></span>
 <span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a><span class="ex">/your_home_directory/.pixi/bin/pixi</span> run nextflow run nf-core/rnaseq <span class="at">-r</span> 3.19.0 <span class="at">-params-file</span> /your_path/nf-params.json <span class="at">-c</span> server.config</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a><span class="ex">/your_home_directory/.pixi/bin/pixi</span> run nextflow run nf-core/rnaseq <span class="at">-r</span> 3.26.0 <span class="at">-params-file</span> /your_path/nf-params.json <span class="at">-c</span> server.config</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>And then submit it to slurm with</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="ex">sbatch</span> name_submit_rnaseq.sh</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>You can check the progress of your job with <code>squeue -u your_username</code></p>
