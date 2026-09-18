@@ -43,7 +43,11 @@ There is no arguing that these algorithms have led to great progress within the 
 
 ChatGPT gained 100 million users in the 2 months after its release in 2022, making it the fastest-growing consumer application in [history](https://www.reuters.com/technology/chatgpt-sets-record-fastest-growing-user-base-analyst-note-2023-02-01/). Generative AI (GenAI) models now come in many different flavours, depending on the developer. 
 
+::: {layout-ncol=2}
 ![GenAI chatbots by market share in August 2025 from [FirstPageSage](https://firstpagesage.com/reports/top-generative-ai-chatbots/)](figures/ai/genai_marketshare.png)
+
+![GenAI chatbots by market share in 2026 from [FirstPageSage](https://firstpagesage.com/reports/top-generative-ai-chatbots/)](figures/ai/Top-Generative-AI-Chatbots-by-MarketShare2026.webp)
+:::
 
 
 
