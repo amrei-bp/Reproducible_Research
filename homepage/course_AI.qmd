@@ -13,7 +13,7 @@ Life was a bit slower, but you used your mind and your agency. You made decision
 
 ## Introduction
 
-In the past 3 years, AI has become more mainstream. The primary kind of AI people think of, is a Large Language Model (LLM). At this point, you cannot really avoid contact with these models anymore as they have infiltrated every aspect of the internet.
+In the past years, AI has become more mainstream. The primary kind of AI people think of, is a Large Language Model (LLM). At this point, you cannot really avoid contact with these models anymore as they have infiltrated every aspect of the internet.
 
 ![Searching LLM with Google to be answered with an LLM response](figures/ai/llm1.png)
 
@@ -46,7 +46,7 @@ ChatGPT gained 100 million users in the 2 months after its release in 2022, maki
 ::: {layout-ncol=2}
 ![GenAI chatbots by market share in August 2025 from [FirstPageSage](https://firstpagesage.com/reports/top-generative-ai-chatbots/)](figures/ai/genai_marketshare.png)
 
-![GenAI chatbots by market share in 2026 from [FirstPageSage](https://firstpagesage.com/reports/top-generative-ai-chatbots/)](figures/ai/Top-Generative-AI-Chatbots-by-MarketShare2026.webp)
+![GenAI chatbots by market share in September 2026 from [FirstPageSage](https://firstpagesage.com/reports/top-generative-ai-chatbots/)](figures/ai/Top-Generative-AI-Chatbots-by-MarketShare2026.webp)
 :::
 
 
@@ -109,7 +109,7 @@ As scientists, we know that we should use peer-reviewed resources whenever possi
 
 ### Global Linguistic Changes 
 
-Even though ChatGPT has only been widely used for 3 years, it has already started leaving its traces in how we speak. Words like `delve` and `meticulous` are being used more frequently in academic YouTube talks.
+Even though ChatGPT has only been widely used for a few years years, it has already started leaving its traces in how we speak. Words like `delve` and `meticulous` are being used more frequently in academic YouTube talks.
 
 ![GPT words in YouTube videos from [Yakura *et al* 2025](https://arxiv.org/pdf/2409.01754)](figures/ai/chatgpt_delve.png)
 
