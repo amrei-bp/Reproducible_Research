@@ -492,12 +492,17 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#learning-with-ai" id="toc-learning-with-ai" class="nav-link" data-scroll-target="#learning-with-ai">Learning with AI</a></li>
   <li><a href="#productivity-with-ai" id="toc-productivity-with-ai" class="nav-link" data-scroll-target="#productivity-with-ai">Productivity with AI</a></li>
   <li><a href="#data-privacy-and-legal-concerns" id="toc-data-privacy-and-legal-concerns" class="nav-link" data-scroll-target="#data-privacy-and-legal-concerns">Data Privacy and Legal Concerns</a></li>
+  <li><a href="#local-and-open-weight-models" id="toc-local-and-open-weight-models" class="nav-link" data-scroll-target="#local-and-open-weight-models">Local and open-weight models</a></li>
   <li><a href="#personal-responsibility" id="toc-personal-responsibility" class="nav-link" data-scroll-target="#personal-responsibility">Personal Responsibility</a></li>
   <li><a href="#global-linguistic-changes" id="toc-global-linguistic-changes" class="nav-link" data-scroll-target="#global-linguistic-changes">Global Linguistic Changes</a></li>
   <li><a href="#ai-on-the-internet" id="toc-ai-on-the-internet" class="nav-link" data-scroll-target="#ai-on-the-internet">AI on the Internet</a></li>
   <li><a href="#environmental-impact" id="toc-environmental-impact" class="nav-link" data-scroll-target="#environmental-impact">Environmental Impact</a></li>
+  <li><a href="#ai-and-reproducible-research" id="toc-ai-and-reproducible-research" class="nav-link" data-scroll-target="#ai-and-reproducible-research">AI and reproducible research</a></li>
   </ul></li>
+  <li><a href="#a-framework-for-working-with-ai" id="toc-a-framework-for-working-with-ai" class="nav-link" data-scroll-target="#a-framework-for-working-with-ai">A framework for working with AI</a>
+  <ul class="collapse">
   <li><a href="#how-to-decide-when-to-use-ai" id="toc-how-to-decide-when-to-use-ai" class="nav-link" data-scroll-target="#how-to-decide-when-to-use-ai">How To Decide When To Use AI</a></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
@@ -539,7 +544,7 @@ Caution
 </div>
 <section id="introduction" class="level2">
 <h2 class="anchored" data-anchor-id="introduction">Introduction</h2>
-<p>In the past 3 years, AI has become more mainstream. The primary kind of AI people think of, is a Large Language Model (LLM). At this point, you cannot really avoid contact with these models anymore as they have infiltrated every aspect of the internet.</p>
+<p>In the past years, AI has become more mainstream. The primary kind of AI people think of, is a Large Language Model (LLM). At this point, you cannot really avoid contact with these models anymore as they have infiltrated every aspect of the internet.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="figures/ai/llm1.png" class="img-fluid figure-img"></p>
@@ -547,7 +552,13 @@ Caution
 </figure>
 </div>
 <p>These algorithms are language models trained on incredibly large datasets. They are trained to recognise and generate natural language. The chatbots we are all familiar with are generative pretrained transformers (GPTs). These can be trained for specific tasks, or guided by prompt generation.</p>
-<p>This is not an AI theory course, and we really do not have enough knowledge to explain the underlying theory beyond a rudimentary level. We would, however, like to discuss the impact of AI on you as a user, and advocate for responsible use of AI in your current and future work.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="figures/ai/token_prediction.jpg" class="img-fluid figure-img"></p>
+<figcaption>Token prediction of LLM’s <a href="https://albanna-tutorials.com/llm_agents.html">source</a></figcaption>
+</figure>
+</div>
+<p>This is not an AI theory course, and we do not have the time to discuss the underlying theory beyond a rudimentary level. We would, however, like to discuss the impact of AI on you as a user, and advocate for responsible use of AI in your current and future work.</p>
 </section>
 <section id="machine-learning-in-bioinformatics" class="level2">
 <h2 class="anchored" data-anchor-id="machine-learning-in-bioinformatics">Machine Learning in Bioinformatics</h2>
@@ -576,11 +587,25 @@ Note
 <section id="incorporation-of-ai-in-our-lives" class="level2">
 <h2 class="anchored" data-anchor-id="incorporation-of-ai-in-our-lives">Incorporation of AI in Our Lives</h2>
 <p>ChatGPT gained 100 million users in the 2 months after its release in 2022, making it the fastest-growing consumer application in <a href="https://www.reuters.com/technology/chatgpt-sets-record-fastest-growing-user-base-analyst-note-2023-02-01/">history</a>. Generative AI (GenAI) models now come in many different flavours, depending on the developer.</p>
+<div class="quarto-layout-panel" data-layout-ncol="2">
+<div class="quarto-layout-row">
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="figures/ai/genai_marketshare.png" class="img-fluid figure-img"></p>
 <figcaption>GenAI chatbots by market share in August 2025 from <a href="https://firstpagesage.com/reports/top-generative-ai-chatbots/">FirstPageSage</a></figcaption>
 </figure>
+</div>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="figures/ai/Top-Generative-AI-Chatbots-by-MarketShare2026.webp" class="img-fluid figure-img"></p>
+<figcaption>GenAI chatbots by market share in September 2026 from <a href="https://firstpagesage.com/reports/top-generative-ai-chatbots/">FirstPageSage</a></figcaption>
+</figure>
+</div>
+</div>
+</div>
 </div>
 <section id="training-data" class="level4">
 <h4 class="anchored" data-anchor-id="training-data">Training Data</h4>
@@ -633,6 +658,48 @@ Note
 <p>Biological data enjoys a high level of protection, and is often considered as highly sensitive. Too often, users will input sequences, tables, or other data into a GPT to find ways to plot data, perform sequence annotations, or similar tasks. Be wary of doing this. Check the ToS explicitly, and frequently. Try to use GDPR compliant GPT’s if you must use a GPT. Try using only a description of your data - such as column names and type of data - instead of the actual data set.</p>
 <p>AI as browser extensions steal deeply personal information when enabled in a users’ <a href="https://arxiv.org/pdf/2503.16586">browser</a> including financial, education, and medical information, whether an extension is being actively used or not. The authors have also <a href="https://www.euronews.com/next/2025/08/13/ai-browsers-share-sensitive-personal-data-new-study-finds">commented</a> on how these practices interfere with the company’s own ToS as well as privacy legislation.</p>
 </section>
+<section id="local-and-open-weight-models" class="level3">
+<h3 class="anchored" data-anchor-id="local-and-open-weight-models">Local and open-weight models</h3>
+<p>Most of the privacy and terms-of-service problems above are driven by one thing: when you use a commercial model your prompt — and any data attached to it — leaves your computer and lands on someone else’s server. <strong>Local models</strong> avoid this. These are open-weight LLMs (for example Llama, Mistral, Qwen, Gemma, or DeepSeek) that you download and run on your own machine with a tool like <a href="https://ollama.com/">Ollama</a>, <a href="https://lmstudio.ai/">LM Studio</a>, or <a href="https://github.com/ggml-org/llama.cpp">llama.cpp</a>. This means that nothing you type leaves the machine.</p>
+<p>This is great, because:</p>
+<ul>
+<li>your prompts and data never travel to a third party — the single best mitigation for the sensitive-data concern above. You can describe a sequence or a table without it becoming training data or landing in a chat history you do not control. –&gt; Privacy</li>
+<li>you can pin a specific model and version, so it will not silently change under you the way a hosted model can. The same weights give the same behaviour next month. –&gt; Reproducibility</li>
+<li>you can use them offline on a laptop, on a plane, or on an air-gapped system.</li>
+</ul>
+<p>However, there are trade-offs:</p>
+<ul>
+<li>You might not have the hardware to run these models. Larger models need a lot of RAM and ideally a GPU — roughly, a model needs memory on the order of its size on disk.</li>
+<li>A model small enough to run on a laptop (often 7–14 billion parameters) is generally weaker than the frontier hosted models.</li>
+<li>It requires more technical knowledge to set up these local models, and you are the one responsible for maintaining them.</li>
+</ul>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>A reasonable middle path: use a <strong>local</strong> model for anything touching sensitive data (drafting, summarising column descriptions, quick code questions), and reserve <strong>hosted</strong> frontier models for tasks that need the extra capability and contain nothing you would not post publicly.</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>The local models still hallucinate and need the same verification than the commercial models.</p>
+</div>
+</div>
+</section>
 <section id="personal-responsibility" class="level3">
 <h3 class="anchored" data-anchor-id="personal-responsibility">Personal Responsibility</h3>
 <p>You as a user are responsible for the AI generated content you choose to use. If you, for instance, ask AI to generate a brand logo for you that is too close to something that exists already, the original owner is free to sue you as an <a href="https://www.theregister.com/2025/08/12/genai_lawsuit/">individual</a> for copyright infringement.</p>
@@ -640,7 +707,7 @@ Note
 </section>
 <section id="global-linguistic-changes" class="level3">
 <h3 class="anchored" data-anchor-id="global-linguistic-changes">Global Linguistic Changes</h3>
-<p>Even though ChatGPT has only been widely used for 3 years, it has already started leaving its traces in how we speak. Words like <code>delve</code> and <code>meticulous</code> are being used more frequently in academic YouTube talks.</p>
+<p>Even though ChatGPT has only been widely used for a few years years, it has already started leaving its traces in how we speak. Words like <code>delve</code> and <code>meticulous</code> are being used more frequently in academic YouTube talks.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="figures/ai/chatgpt_delve.png" class="img-fluid figure-img"></p>
@@ -650,7 +717,7 @@ Note
 <p>It has also been shown that different GPT’s have different writing styles, also known as idiolects.</p>
 <p>Some projects like <a href="https://aclanthology.org/2024.inlg-main.34.pdf">this one</a> are trying to customize GPT ideolects to match writing styles of unique users. This will make detecting AI use more difficult in future.</p>
 <div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-5-contents" aria-controls="callout-5" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -659,9 +726,9 @@ Note
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-3" class="callout-3-contents callout-collapse collapse">
+<div id="callout-5" class="callout-5-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p>This course was written by two people, and each person wrote their own sections without the use of any AI. Can you tell who wrote which sections based on idiolects?</p>
+<p>What are some markers you see in text that make you suspicious that it might have been generated by a LLM?</p>
 </div>
 </div>
 </div>
@@ -684,9 +751,47 @@ Note
 <p>Some data centers are being built near poor communities, drain resources from, and add pollution to the community (see <a href="https://www.grokmountain.com/p/origin-of-grok-3-the-colossus-data">Colossus</a> that has been built in <a href="https://tennesseelookout.com/2025/07/07/a-billionaire-an-ai-supercomputer-toxic-emissions-and-a-memphis-community-that-did-nothing-wrong/">Memphis</a> to power the X bot, <a href="https://www.theguardian.com/technology/2025/apr/24/elon-musk-xai-memphis">Grok</a> for an example. Musk is not the only offender.)</p>
 <p>While we cannot do anything about where data centers are built, we can make informed decisions about which platforms we use. We can also be careful with the number of queries we send, and how we use our queries. In April 2025, the CEO of OpenAI <a href="https://www.vice.com/en/article/telling-chatgpt-please-and-thank-you-costs-openai-millions-ceo-claims/">said</a> that polite requests like “please” and “thank you” have cost tens of millions of dollars due to the cost of electricity.</p>
 </section>
+<section id="ai-and-reproducible-research" class="level3">
+<h3 class="anchored" data-anchor-id="ai-and-reproducible-research">AI and reproducible research</h3>
+<p>On the other hand, AI can help you in being more reproducible, and your reproducibility practices can be a boon for AI models and agents. A 2026 essay by Lorena Barba, <a href="https://arxiv.org/abs/2609.11728"><em>Reproducibility in the Age of Agentic AI</em></a>, argues that the reproducible-research habits we have encountered and practiced in this course — version control, tests, a clear repository layout, and written records of your decisions — can be considered “context” of the project. This information can help an AI assistant or a human collaborator to work on a project without you sitting next to them.</p>
+<p>She argues that:</p>
+<ul>
+<li><p>The cost of keeping these habits has dropped, because an assistant can draft a test, a commit message, or a README section in seconds — the friction that used to make people skip reproducible habits is largely gone.</p></li>
+<li><p>Reproducibility now pay off immediately, not only years later: the information that protects a future student from reinventing the wheel is what an assistant uses to check its own work today.</p></li>
+</ul>
+<p>At the same time, Barba emphasizes that you as the author remain the owner and verifier of everything an assistant drafts in your name: an agent can write the test, but only you can decide whether it tests the right thing.</p>
 </section>
-<section id="how-to-decide-when-to-use-ai" class="level2">
-<h2 class="anchored" data-anchor-id="how-to-decide-when-to-use-ai">How To Decide When To Use AI</h2>
+</section>
+<section id="a-framework-for-working-with-ai" class="level2">
+<h2 class="anchored" data-anchor-id="a-framework-for-working-with-ai">A framework for working with AI</h2>
+<p>The <a href="https://aifluencyframework.org/">AI Fluency framework</a>, developed by Rick Dakan and Joseph Feller in collaboration with Anthropic, distinguishes three ways of working with a model:</p>
+<ul>
+<li><strong>Automation</strong> — you define a task and hand it off to a model.</li>
+<li><strong>Augmentation</strong> — you and the model work together, back and forth, on a problem.</li>
+<li><strong>Agency</strong> — you configure a model to pursue a goal on its own.</li>
+</ul>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="figures/ai/ai-fluency-automation-augmentation-agency.jpg" class="img-fluid figure-img"></p>
+<figcaption>Automation, augmentation, and agency (Dakan and Feller, with Anthropic)</figcaption>
+</figure>
+</div>
+<p>If you want to learn more, you can have a look at their free <a href="https://academy.claude.com/courses/ai-fluency-framework-foundations">course</a>.</p>
+<p>However, no matter how you work with AI, working well and effectively can be desribed by the <strong>four D’s</strong>:</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="figures/ai/ai-fluency-4d-framework.jpg" class="img-fluid figure-img"></p>
+<figcaption>The four D’s of AI fluency (Dakan and Feller, with Anthropic)</figcaption>
+</figure>
+</div>
+<ul>
+<li><strong>Delegation</strong> — deciding whether, when, and how to involve AI at all. Successful delegation requires both domain expertise and thorough understanding of AI. The goal of using AI is not to pass every single task to AI, but to create an effective human-AI partnership.</li>
+<li><strong>Description</strong> — describing what you want clearly enough to get a useful result. Description is about communicating with AI in a way that ensures that it can produce the product you are aiming to produce. Prompt engineering is an important aspect.</li>
+<li><strong>Discernment</strong> — judging the quality of what comes back rather than accepting it. Discernment relies on the user’s ability to evaluate the products produced by AI, the process followed to produce the product, and how it behaves. Human oversight in the generation process is important for every single LLM.</li>
+<li><strong>Diligence</strong> — taking responsibility for what you do with the output and how you got there, including being honest about when and how you used AI. Thoughtful diligence is important to ensure that the use of AI collaborations is effective, efficient, ethical, and safe</li>
+</ul>
+<section id="how-to-decide-when-to-use-ai" class="level3">
+<h3 class="anchored" data-anchor-id="how-to-decide-when-to-use-ai">How To Decide When To Use AI</h3>
 <p>If we know the risks and the true cost of what we are doing, we can make informed decisions about how we chose to incorporate new technologies into our day-to-day and working lives.</p>
 <p>Here are some questions that we find useful to ask ourselves before opening a GPT:</p>
 <ol type="1">
@@ -700,6 +805,7 @@ Note
 <p>Hold on to the ability to learn and the desire to be curious.</p>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->
