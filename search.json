@@ -1381,7 +1381,7 @@
     "href": "ggplot_slides/course_ggplot_slides.html#geoms-types",
     "title": "Visualize your data with ggplot",
     "section": "Geoms • types",
-    "text": "Geoms • types\n\n\n\n\n\np &lt;- ggplot(data = penguins)\n\n# scatterplot\np + geom_point(aes(x=flipper_length_mm,y=body_mass_g))\n\n# barplot\np + geom_bar(aes(x=species))\n\n# boxplot\np + geom_boxplot(aes(x=species,y=body_mass_g))\n\n# search\nhelp.search(\"^geom_\",package=\"ggplot2\")\n\n\n\n\n\n\n\n\n\n\n\n\n\nGeoms are the geometric components of a graph such as points, lines etc used to represent data. The same data can be visually represented in different geoms. For example, points or bars. Mandatory input requirements change depending on geoms."
+    "text": "Geoms • types\n\n\n\n\n\np &lt;- ggplot(data = penguins)\n\n# scatterplot\np + geom_point(aes(x=flipper_length_mm,y=body_mass_g))\n\n# barplot\np + geom_bar(aes(x=flipper_length_mm))\n\n# boxplot\np + geom_boxplot(aes(x=species,y=body_mass_g))\n\n# search\nhelp.search(\"^geom_\",package=\"ggplot2\")\n\n\n\n\n\n\n\n\n\n\n\n\n\nGeoms are the geometric components of a graph such as points, lines etc used to represent data. The same data can be visually represented in different geoms. For example, points or bars. Mandatory input requirements change depending on geoms."
   },
   {
     "objectID": "ggplot_slides/course_ggplot_slides.html#stats",
