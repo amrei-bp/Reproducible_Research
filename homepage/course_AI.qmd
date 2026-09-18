@@ -103,6 +103,30 @@ Biological data enjoys a high level of protection, and is often considered as hi
 
 AI as browser extensions steal deeply personal information when enabled in a users' [browser](https://arxiv.org/pdf/2503.16586) including financial, education, and medical information, whether an extension is being actively used or not. The authors have also [commented](https://www.euronews.com/next/2025/08/13/ai-browsers-share-sensitive-personal-data-new-study-finds) on how these practices interfere with the company's own ToS as well as privacy legislation.
 
+### Local and open-weight models
+
+Most of the privacy and terms-of-service problems above are driven by one thing: when you use a commercial model your prompt — and any data attached to it — leaves your computer and lands on someone else's server. **Local models** avoid this. These are open-weight LLMs (for example Llama, Mistral, Qwen, Gemma, or DeepSeek) that you download and run on your own machine with a tool like [Ollama](https://ollama.com/), [LM Studio](https://lmstudio.ai/), or [llama.cpp](https://github.com/ggml-org/llama.cpp). This means that nothing you type leaves the machine.
+
+This is great, because: 
+
+- your prompts and data never travel to a third party — the single best mitigation for the sensitive-data concern above. You can describe a sequence or a table without it becoming training data or landing in a chat history you do not control. --> Privacy
+- you can pin a specific model and version, so it will not silently change under you the way a hosted model can. The same weights give the same behaviour next month. --> Reproducibility
+- you can use them offline on a laptop, on a plane, or on an air-gapped system.
+
+However, there are trade-offs:
+
+- You might not have the hardware to run these models. Larger models need a lot of RAM and ideally a GPU — roughly, a model needs memory on the order of its size on disk. 
+- A model small enough to run on a laptop (often 7–14 billion parameters) is generally weaker than the frontier hosted models.
+- It requires more technical knowledge to set up these local models, and you are the one responsible for maintaining them. 
+
+::: {.callout-note}
+A reasonable middle path: use a **local** model for anything touching sensitive data (drafting, summarising column descriptions, quick code questions), and reserve **hosted** frontier models for tasks that need the extra capability and contain nothing you would not post publicly.
+:::
+
+::: {.callout-note}
+The local models still hallucinate and need the same verification than the commercial models. 
+:::
+
 ### Personal Responsibility
 
 You as a user are responsible for the AI generated content you choose to use. If you, for instance, ask AI to generate a brand logo for you that is too close to something that exists already, the original owner is free to sue you as an [individual](https://www.theregister.com/2025/08/12/genai_lawsuit/) for copyright infringement. 
