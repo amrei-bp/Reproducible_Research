@@ -19,7 +19,9 @@ In the past years, AI has become more mainstream. The primary kind of AI people 
 
 These algorithms are language models trained on incredibly large datasets. They are trained to recognise and generate natural language. The chatbots we are all familiar with are generative pretrained transformers (GPTs). These can be trained for specific tasks, or guided by prompt generation.
 
-This is not an AI theory course, and we really do not have enough knowledge to explain the underlying theory beyond a rudimentary level. We would, however, like to discuss the impact of AI on you as a user, and advocate for responsible use of AI in your current and future work.
+![Token prediction of LLM's [source](https://albanna-tutorials.com/llm_agents.html)](figures/ai/token_prediction.jpg)
+
+This is not an AI theory course, and we do not have the time to discuss the underlying theory beyond a rudimentary level. We would, however, like to discuss the impact of AI on you as a user, and advocate for responsible use of AI in your current and future work.
 
 ## Machine Learning in Bioinformatics
 
