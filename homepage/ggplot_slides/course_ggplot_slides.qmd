@@ -2,7 +2,7 @@
 title: "Visualize your data with ggplot"
 description: "Slides modified from Roy Francis (RaukR)"
 author: "Abu Bakar Siddique, Bioinformatician, SLUBI"
-date: "2025-10-10"
+date: "2025-09-18"
 format: 
     revealjs:
         slide-number: c/t
@@ -498,7 +498,7 @@ p <- ggplot(data = penguins)
 p + geom_point(aes(x=flipper_length_mm,y=body_mass_g))
 
 # barplot
-p + geom_bar(aes(x=species))
+p + geom_bar(aes(x=flipper_length_mm))
 
 # boxplot
 p + geom_boxplot(aes(x=species,y=body_mass_g))
