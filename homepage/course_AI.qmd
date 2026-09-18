@@ -1,5 +1,5 @@
 ---
-title: "Caution: AI in Bioinformatics"
+title: "AI in Bioinformatics"
 ---
 
 ::: {.callout-caution}
