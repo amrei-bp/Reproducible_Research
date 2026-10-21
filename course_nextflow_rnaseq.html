@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.10.18">
+<meta name="generator" content="quarto-1.10.19">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -77,10 +77,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-bb62276ab45c84d9efd712f51ff97b5a.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-5c1318cf63eba56dbef7ba16bc7d56f5.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-0c8e9a652f3c278f746434650100fc7e.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-786c1b78fe9767248416e2ce2d99e8f5.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -502,6 +502,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#expression-quantification" id="toc-expression-quantification" class="nav-link" data-scroll-target="#expression-quantification">Expression quantification</a></li>
   <li><a href="#quality-control" id="toc-quality-control" class="nav-link" data-scroll-target="#quality-control">Quality control</a></li>
   <li><a href="#multiqc" id="toc-multiqc" class="nav-link" data-scroll-target="#multiqc">MultiQC</a></li>
+  <li><a href="#the-finished-pipeline" id="toc-the-finished-pipeline" class="nav-link" data-scroll-target="#the-finished-pipeline">The finished pipeline</a></li>
   </ul>
 </nav>
     </div>
@@ -571,7 +572,7 @@ flowchart TD
 <li><p><strong>Index the transcriptome reference — <code>salmon index</code>.</strong> Salmon cannot quantify reads against a plain FASTA; it first needs to turn the reference into a fast, searchable index. We do this once at the start, and every sample reuses the same index.</p></li>
 <li><p><strong>Quantify expression — <code>salmon quant</code>.</strong> For each sample, Salmon maps the read pair against the index and estimates how much of each transcript is present. Here Salmon turns raw reads into numbers to analyse.</p></li>
 <li><p><strong>Check read quality — <code>FastQC</code>.</strong> In parallel, FastQC inspects the raw reads of each sample (base quality, adapter content, and so on). We run it <em>alongside</em> quantification, not after, because quality control is independent of the counting.</p></li>
-<li><p><strong>Summarise everything — <code>MultiQC</code>.</strong> Finally, MultiQC gathers the logs from all the samples (Salmon and FastQC) into one HTML report, so you read a single summary instead of opening dozens of files. It waits for the all earlier steps to finish before it runs.</p></li>
+<li><p><strong>Summarise everything — <code>MultiQC</code>.</strong> Finally, MultiQC gathers the logs from all the samples (Salmon and FastQC) into one HTML report, so you read a single summary instead of opening dozens of files. It waits for all earlier steps to finish before it runs.</p></li>
 </ol>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
@@ -611,10 +612,10 @@ Note
 <ul>
 <li>Here, we set the executor for every process to slurm.</li>
 <li>We set resume to true, so it is automatically used for all our runs (which means we do not have to specify this in our nextflow run command anymore).</li>
-<li>We enable singularity and set some singularity run options.</li>
+<li>We enable Singularity, so each process runs in the container named in its <code>container</code> directive.</li>
 <li>Lastly, we specify the account name for the slurm execution, replace the placeholder with the actual compute allocation ID.</li>
 </ul>
-<p>This nextflow.config file is implicitly called when we execute nextflow from the folder it is in. We do not have to explicitely name it in the nextflow run command.</p>
+<p>This nextflow.config file is implicitly called when we execute nextflow from the folder it is in. We do not have to explicitly name it in the nextflow run command.</p>
 </section>
 <section id="define-the-workflow-parameters" class="level2">
 <h2 class="anchored" data-anchor-id="define-the-workflow-parameters">Define the workflow parameters</h2>
@@ -729,7 +730,7 @@ Note
 <span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>        <span class="ex">cpus</span> = 2</span>
 <span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>    <span class="er">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>With this we specify the alloted time and cpus for this specific process.</p>
-<p>To specify memory add mem = xx.GB - check with your cluster to see how much memory is available and how to specify it. In our case we don’t need to because the memory implicit in the 2 cpus is enough for our purposes.</p>
+<p>To specify memory, add the <code>memory</code> directive, for example <code>memory = 4.GB</code>. Check with your cluster how much memory is available and whether you need to request it. In our case we don’t need to because the memory implicit in the 2 cpus is enough for our purposes.</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb11"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pixi</span> run nextflow run script1.nf </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
 <section id="interlude-visualize-tuples" class="level2">
@@ -849,6 +850,18 @@ Tip
 </blockquote>
 </div>
 </div>
+</section>
+<section id="the-finished-pipeline" class="level2">
+<h2 class="anchored" data-anchor-id="the-finished-pipeline">The finished pipeline</h2>
+<p>The finished version of this pipeline is in the <a href="https://github.com/amrei-bp/Reproducible_Research/tree/main/pipeline"><code>pipeline/</code></a> folder of the course repository:</p>
+<ul>
+<li><code>main.nf</code> is the complete workflow (the equivalent of <code>script7.nf</code>, with all containers in place),</li>
+<li><code>nextflow.config</code> has a <code>slurm</code> profile for the cluster and a small <code>test</code> profile,</li>
+<li><code>steps/</code> contains <code>script1.nf</code> to <code>script7.nf</code> as used in this session.</li>
+</ul>
+<p>Run it on the cluster with:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb20"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pixi</span> run nextflow run main.nf <span class="at">-profile</span> slurm <span class="at">--account</span> your_project_account</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>The pipeline is tested automatically on GitHub with the same containers, every time it changes. Check out the GitHub actions workflow for that!</p>
 
 
 </section>
