@@ -43,7 +43,7 @@ flowchart TD
 
 3. **Check read quality — `FastQC`.** In parallel, FastQC inspects the raw reads of each sample (base quality, adapter content, and so on). We run it *alongside* quantification, not after, because quality control is independent of the counting.
 
-4. **Summarise everything — `MultiQC`.** Finally, MultiQC gathers the logs from all the samples (Salmon and FastQC) into one HTML report, so you read a single summary instead of opening dozens of files. It waits for the all earlier steps to finish before it runs.
+4. **Summarise everything — `MultiQC`.** Finally, MultiQC gathers the logs from all the samples (Salmon and FastQC) into one HTML report, so you read a single summary instead of opening dozens of files. It waits for all earlier steps to finish before it runs.
 
 ::: {.callout-note}
 Notice the two branches: **quantification** and **quality control** don't depend on each other, so Nextflow runs them at the same time. They only come back together at **MultiQC**, which needs both before it can build the report. Keeping independent work parallel — and joining it only where necessary — is a large part of what makes a workflow manager worth using.
@@ -76,10 +76,10 @@ executor {
 
 - Here, we set the executor for every process to slurm.
 - We set resume to true, so it is automatically used for all our runs (which means we do not have to specify this in our nextflow run command anymore). 
-- We enable singularity and set some singularity run options.
+- We enable Singularity, so each process runs in the container named in its `container` directive.
 - Lastly, we specify the account name for the slurm execution, replace the placeholder with the actual compute allocation ID. 
 
-This nextflow.config file is implicitly called when we execute nextflow from the folder it is in. We do not have to explicitely name it in the nextflow run command. 
+This nextflow.config file is implicitly called when we execute nextflow from the folder it is in. We do not have to explicitly name it in the nextflow run command. 
 
 ## Define the workflow parameters
 
@@ -197,7 +197,7 @@ Remember how Nextflow is big on execution abstraction? This is where we will put
 
 With this we specify the alloted time and cpus for this specific process.
 
-To specify memory add mem = xx.GB - check with your cluster to see how much memory is available and how to specify it. In our case we don't need to because the memory implicit in the 2 cpus is enough for our purposes.
+To specify memory, add the `memory` directive, for example `memory = 4.GB`. Check with your cluster how much memory is available and whether you need to request it. In our case we don't need to because the memory implicit in the 2 cpus is enough for our purposes.
 
 ```{.bash}
 pixi run nextflow run script1.nf 
