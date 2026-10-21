@@ -1,0 +1,83 @@
+# Runs the course RNA-seq pipeline (pipeline/) with the small test data.
+# Uses Apptainer and the same oras:// containers that students use on the HPC.
+name: Pipeline test
+
+on:
+  push:
+    paths:
+      - "pipeline/**"
+      - ".github/workflows/pipeline-test.yml"
+  pull_request:
+    paths:
+      - "pipeline/**"
+      - ".github/workflows/pipeline-test.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  test:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 45
+    defaults:
+      run:
+        working-directory: pipeline
+    env:
+      APPTAINER_VERSION: "1.5.4"
+      NXF_ANSI_LOG: "false"
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v7
+
+      - name: Install Apptainer
+        run: |
+          deb="apptainer_${APPTAINER_VERSION}_amd64.deb"
+          curl -fsSLO "https://github.com/apptainer/apptainer/releases/download/v${APPTAINER_VERSION}/${deb}"
+          sudo apt-get update
+          sudo apt-get install -y "./${deb}"
+          apptainer --version
+          singularity --version
+
+      - name: Install Nextflow (from pixi.lock)
+        uses: prefix-dev/setup-pixi@v0.11.2
+        with:
+          manifest-path: pipeline/pixi.toml
+          locked: true
+          cache: true
+
+      - name: Cache container images
+        uses: actions/cache@v6
+        with:
+          path: pipeline/singularity_cache
+          key: sif-${{ hashFiles('pipeline/main.nf') }}
+
+      - name: Lint
+        run: pixi run lint
+
+      - name: Run pipeline with test profile
+        run: pixi run test
+
+      - name: Check outputs
+        run: |
+          for sample in gut liver lung; do
+            test -s "results/salmon/${sample}/quant.sf"
+            test -s "results/fastqc/fastqc_${sample}_logs/${sample}_1_fastqc.html"
+          done
+          test -s results/multiqc/multiqc_report.html
+          echo "All expected outputs are present."
+
+      - name: Upload report and log
+        if: always()
+        uses: actions/upload-artifact@v7
+        with:
+          name: pipeline-test-results
+          path: |
+            pipeline/results/multiqc/multiqc_report.html
+            pipeline/.nextflow.log
+          if-no-files-found: ignore

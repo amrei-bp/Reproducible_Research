@@ -1,0 +1,10 @@
+# Nextflow run files
+work/
+.nextflow/
+.nextflow.log*
+results/
+singularity_cache/
+
+# pixi environments
+.pixi/*
+!.pixi/config.toml

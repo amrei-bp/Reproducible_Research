@@ -1,0 +1,14 @@
+[workspace]
+channels = ["bioconda", "conda-forge"]
+name = "rnaseq-course-pipeline"
+description = "Nextflow for the course RNA-seq teaching pipeline"
+platforms = ["linux-64"]
+version = "0.1.0"
+
+[tasks]
+# Quick check with the small test data (needs Apptainer or Singularity)
+test = "nextflow run main.nf -profile test"
+lint = "nextflow lint main.nf nextflow.config steps/"
+
+[dependencies]
+nextflow = ">=26.4.6,<27"
