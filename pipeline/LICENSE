@@ -1,0 +1,19 @@
+The contents of this folder (pipeline/) are licensed under the
+Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International
+licence (CC BY-NC-SA 4.0):
+https://creativecommons.org/licenses/by-nc-sa/4.0/
+Full legal code: https://creativecommons.org/licenses/by-nc-sa/4.0/legalcode.en
+
+This folder is adapted from the Nextflow training material by Seqera
+(nextflow-io/training, https://github.com/nextflow-io/training), which is
+licensed under CC BY-NC-SA 4.0. Source version:
+https://github.com/nextflow-io/training/tree/e9439633455959297125a827316084188ff21c5d/nf-training
+
+Adapted from: script1.nf - script7.nf and the data in data/ggal/.
+Changes: see "Credits and changes" in README.md.
+
+Adaptations copyright (c) 2026 Amrei.
+
+This licence applies to the pipeline/ folder only. The rest of the
+repository is licensed under the MIT licence (see ../LICENSE).
+Seqera does not endorse this adaptation.
